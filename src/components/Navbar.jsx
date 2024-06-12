@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav>
-      <div className="bg-white-500 w-full flex text-black px-4 fixed top-0 ">
+      <div className="bg-white w-full flex text-black px-4 fixed top-0 z-10">
         <div className="w-full max-w-screen-xl h-full flex justify-between mx-auto items-center">
           <Link to="/">
-            <h1 className="text-xl font-semibold py-3">JobBoard</h1>
+            <h1 className="text-3xl font-bold tracking-wide py-3 text-green-700">JobBoard</h1>
           </Link>
           <div className="flex gap-4 py-3 items-center font-semibold">
             <Link to="/login">

@@ -8,6 +8,10 @@ import { toast } from "react-hot-toast";
 
 import email from "../assets/Asset!/email.gif";
 import hero1 from "../assets/Asset!/hero1.webp";
+import video from "../assets/video.mp4";
+
+import Categories from "../components/Categories";
+import JobListing from "../components/JobListing";
 
 export default function Home() {
   const [userName, setUserName] = useState();
@@ -42,8 +46,6 @@ export default function Home() {
   //   navigate("/login");
   // };
 
-
-  
   useEffect(() => {
     gsap.fromTo(
       ".box",
@@ -59,12 +61,11 @@ export default function Home() {
         ease: "elastic.inOut",
       }
     );
-
   }, []);
 
   return (
     <>
-      <div className="flex w-full max-w-screen-2xl mt-16">
+      <div className="flex flex-col w-full max-w-screen-2xl pb-20">
         <div className="flex h-[60vh] w-full">
           <div className="w-1/2 flex justify-center items-center ml-[5%] flex-col pt-16 leftdiv">
             <h1 className="text-4xl font-bold w-full text-left">
@@ -96,9 +97,10 @@ export default function Home() {
             <img
               className="w-full h-full object-cover "
               src={hero1}
-              // src="https://i3.wp.com/cdn.dribbble.com/users/3050354/screenshots/14646894/media/1f31948afd5401c44d4bae934f07641a.gif?ssl=1"
+              // src="https://i.pinimg.com/originals/a3/84/3e/a3843e404a271edb47b1908dd2a6230b.gif"
               alt=""
             />
+            {/* <video className="w-full h-full object-cover pointer-events-none"  autoPlay  muted src={video}></video> */}
             <div className="absolute left-[32%] top-[24%] xl:top-[24%] 2xl:top-[22%] h-10">
               <img
                 className="box w-[24%] xl:w-[22%] h-auto"
@@ -108,7 +110,22 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div></div>
+
+        <div className="w-full flex flex-col px-[5%] mt-16">
+          <div className="flex justify-between mb-8">
+            <h1 className="text-black text-xl font-semibold">Most Demanding Categories</h1>
+            <h1 className="font-medium text-green-600 hover:cursor-pointer">Explore all fields &gt;</h1>
+          </div>
+          <Categories />
+        </div>
+
+        <div className="w-full flex flex-col px-[5%] mt-24">
+          <div className="flex justify-between mb-8">
+            <h1 className="text-black text-xl font-semibold">Recent Job Circulars</h1>
+            <h1 className="font-medium text-green-600 hover:cursor-pointer">Explore more &gt;</h1>
+          </div>
+          <JobListing />
+        </div>
       </div>
       {/* {userName && (
         <div>
