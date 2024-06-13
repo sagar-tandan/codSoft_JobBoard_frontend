@@ -25,6 +25,8 @@ export default function JobDetails() {
   } = location.state;
   //   console.log(responsibility);
 
+  const [width, setWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     // Scroll to the element with the ID "top"
     const element = document.getElementById("top");
@@ -33,44 +35,110 @@ export default function JobDetails() {
     }
   }, []);
 
-  return (
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
 
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
     <div
       id="top"
       className="flex flex-col w-full max-w-screen-2xl pb-20 pt-24 px-[5%] font-poppins mx-auto overflow-hidden"
     >
-      <div className="w-full bg-[#f2f2f2] flex gap-3 p-12">
-        <div className="w-full flex gap-6 justify-start items-center">
-          <div>
-            <img className="w-20 h-20 rounded-full" src={image} alt={name} />
-          </div>
-          <div className="flex flex-col">
-            <h1 className="text-black font-semibold text-xl">{pos}</h1>
-            <h2 className="text-green-500 font-semibold">{name}</h2>
-            <div className="flex gap-4 text-sm text-[#666666] font-medium">
-              <div>{loc}</div>
-              <div>{loc}</div>
+      {width > 500 ? (
+        <div className="w-full bg-[#f2f2f2] flex gap-3 p-4 lg:p-12 mx-auto">
+          <div className="w-full flex gap-3 sm:gap-6 justify-start items-center">
+            <div className={`${width > 500 ? "inline-block" : "hidden"}`}>
+              <img
+                className={`w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full`}
+                src={image}
+                alt={name}
+              />
+            </div>
+            <div className="flex justify-between w-full">
+              <div className="flex flex-col">
+                <h1 className="text-black font-semibold text-lg md:text-xl">
+                  {pos}
+                </h1>
+
+                <h2 className="text-green-500 font-semibold text-sm md:text-lg">
+                  {name}
+                </h2>
+                <div
+                  className={`${
+                    width > 500 ? "flex gap-3" : "flex flex-col gap-[2px]"
+                  } text-sm text-[#666666] font-medium flex-wrap`}
+                >
+                  <div>{loc}</div>
+                  <div>9860788076</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-5 ">
+                <h1 className="text-black font-medium md:font-semibold text-sm sm:text-lg md:text-xl">
+                  ${salary}
+                  <span className="font-medium text-sm text-[#616161]">
+                    /monthly
+                  </span>
+                </h1>
+                <div className="flex flex-col justify-center items-center text-sm md:text-lg border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
+                  Apply Now
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      ) : (
+        <div className="w-full bg-[#f2f2f2] flex gap-3 p-4 lg:p-12 mx-auto">
+          <div className="w-full flex gap-3 sm:gap-6 justify-start items-center">
+            <div className="flex justify-between w-full gap-3">
+              <div className="flex flex-col w-full gap-1">
+                <h1 className="text-black font-semibold text-lg ">{pos}</h1>
+                <h2 className="text-green-500 font-semibold text-sm md:text-lg">
+                  {name}
+                </h2>
+                <h1 className="text-black font-medium md:font-semibold text-sm sm:text-lg md:text-xl">
+                  ${salary}
+                  <span className="font-medium text-sm text-[#616161]">
+                    /monthly
+                  </span>
+                </h1>
+                <div
+                  className={`${
+                    width > 500 ? "flex gap-3" : "flex flex-col gap-[2px]"
+                  } text-sm text-[#666666] font-medium flex-wrap`}
+                >
+                  <div>{loc}</div>
+                  <div>9860788076</div>
+                </div>
 
-        <div className="flex flex-col gap-5">
-          <h1 className="text-black font-semibold text-xl">
-            ${salary}
-            <span className="font-medium text-sm text-[#616161]">/monthly</span>
-          </h1>
-          <div className="flex flex-col justify-center items-center  gap-1 border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
-            Apply Now
+                <div className="w-full flex flex-col items-end">
+                  <div className="w-full flex justify-end text-sm md:text-lg  text-white font-medium ">
+                    <h1 className="border-green-500 bg-green-500 px-3 py-1 rounded-lg hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
+                      Apply Now
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Now next div into 2 sections */}
       <div className="w-full flex gap-8 flex-col lg:flex-row">
         <div className="lg:w-[65%] w-full">
           {/* description */}
           <div className="w-full flex flex-col gap-2 mt-14">
-            <h1 className="text-2xl font-semibold">Description</h1>
+            <h1 className="text-xl font-semibold">Description</h1>
             <div
               className=" text-[#666666] text-sm sm:text-lg"
               dangerouslySetInnerHTML={{ __html: desc }}
@@ -78,7 +146,7 @@ export default function JobDetails() {
           </div>
 
           <div className="w-full flex flex-col gap-4 mt-14">
-            <h1 className="text-2xl font-semibold">Responsibilities</h1>
+            <h1 className="text-xl font-semibold">Responsibilities</h1>
             <div className=" text-[#666666] flex flex-col gap-2 ">
               {responsibility.map((res) => (
                 <div className="w-full flex gap-2 text-sm sm:text-lg">
@@ -90,7 +158,7 @@ export default function JobDetails() {
           </div>
 
           <div className="w-full flex flex-col gap-4 mt-14">
-            <h1 className="text-2xl font-semibold">Requirements</h1>
+            <h1 className="text-xl font-semibold">Requirements</h1>
             <div className=" text-[#666666] flex flex-col gap-2 text-sm sm:text-lg">
               {requirements.map((res) => (
                 <div className="w-full flex gap-2">
@@ -102,7 +170,7 @@ export default function JobDetails() {
           </div>
 
           <div className="w-full flex flex-col gap-4 mt-14">
-            <h1 className="text-2xl font-semibold">Benefits</h1>
+            <h1 className="text-xl font-semibold">Benefits</h1>
             <div className=" text-[#666666] flex flex-col gap-2 text-sm sm:text-lg">
               {benefit.map((res) => (
                 <div className="w-full flex gap-2">
