@@ -1,5 +1,6 @@
 import React from "react";
 import JobCards from "./JobCards.jsx";
+import { Link } from "react-router-dom";
 
 export default function JobListing() {
   const jobs = [
@@ -13,6 +14,7 @@ export default function JobListing() {
       time: "Full Time",
       skills: "HTML, CSS, JavaScript, ReactJs",
       salary: "1000",
+      desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
     },
     {
       id: 2,
@@ -24,6 +26,8 @@ export default function JobListing() {
       time: "Full Time",
       skills: "Python, FAST API, Django",
       salary: "4000",
+      desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
+
     },
     {
       id: 3,
@@ -35,6 +39,8 @@ export default function JobListing() {
       time: "Full Time",
       skills: "HTML, CSS, JavaScript, Nextjs",
       salary: "2000",
+      desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
+
     },
     {
       id: 4,
@@ -46,6 +52,8 @@ export default function JobListing() {
       time: "Full Time",
       skills: "Python, Django",
       salary: "2000",
+      desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
+
     },
     {
       id: 5,
@@ -57,6 +65,8 @@ export default function JobListing() {
       time: "Full Time",
       skills: "MERN, Nodejs, Express, MongoDb",
       salary: "4000",
+      desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
+
     },
     {
       id: 6,
@@ -68,6 +78,8 @@ export default function JobListing() {
       time: "Full Time",
       skills: "Python, data science, deep learning",
       salary: "6000",
+      desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
+
     },
     {
       id: 7,
@@ -98,10 +110,11 @@ export default function JobListing() {
   const topJObs = jobs.slice(0, 6);
   return (
     <div>
-      <div className="w-full flex gap-5 overflow-hidden flex-wrap mx-auto justify-start">
+      <div className="w-full flex gap-8 overflow-hidden flex-wrap mx-auto justify-start">
         {topJObs.map((job) => (
           <div key={job.id}>
             <JobCards
+              id={job.id}
               name={job.name}
               image={job.image}
               location={job.location}
@@ -109,6 +122,7 @@ export default function JobListing() {
               time={job.time}
               skills={job.skills}
               salary={job.salary}
+              desc = {job.desc}
             />
           </div>
         ))}

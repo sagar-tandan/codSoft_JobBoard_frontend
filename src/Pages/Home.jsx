@@ -65,7 +65,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col w-full max-w-screen-2xl pb-20">
+      <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins">
         <div className="flex h-[60vh] w-full">
           <div className="w-1/2 flex justify-center items-center ml-[5%] flex-col pt-16 leftdiv">
             <h1 className="text-4xl font-bold w-full text-left">

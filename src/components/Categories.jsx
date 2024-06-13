@@ -50,7 +50,7 @@ export default function Categories() {
   const firstSixCategories = categories.slice(0, 6);
 
   return (
-    <div className="w-full flex gap-2">
+    <div className="w-full flex gap-2 font-poppins">
       {firstSixCategories.map((category) => (
         <div
           key={category.id}
