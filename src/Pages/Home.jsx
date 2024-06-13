@@ -111,7 +111,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col px-[5%] mt-16">
+        <div className="w-full flex flex-col px-[5%] lg:mt-16">
           <div className="flex justify-between mb-8">
             <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
               Most Demanding Categories
@@ -129,7 +129,7 @@ export default function Home() {
           <Categories />
         </div>
 
-        <div className="w-full flex flex-col px-[5%] mt-24">
+        <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-24">
           <div className="flex justify-between mb-8">
             <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
               Recent Job Circulars
