@@ -75,7 +75,7 @@ export default function Home() {
               For any <span className="text-green-600">Job</span>{" "}
             </h1>
             <div className="w-full flex justify-center lg:justify-start">
-              <p className="w-full lg:w-[70%]  text-[#5f5f5f] mt-4 text-sm lg:text-md">
+              <p className="lg:mx-0 flex items-center justify-center lg:justify-start w-[90%] lg:w-[70%] text-[#5f5f5f] mt-4 text-sm lg:text-md">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
               </p>
             </div>
@@ -85,10 +85,10 @@ export default function Home() {
                 <input
                   className="bg-[#f2f2f2] px-3 py-2 rounded-full w-full outline-[1px]"
                   type="text"
-                  placeholder="Search jobs,"
+                  placeholder="Search jobs and all"
                 />
               </div>
-              <div className="flex justify-center items-center w-[80px] lg:w-[120px] text-sm lg:text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 ">
+              <div className="flex justify-center items-center w-[80px] md:w-[100px] lg:w-[120px] text-sm lg:text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 ">
                 Search
               </div>
             </div>
