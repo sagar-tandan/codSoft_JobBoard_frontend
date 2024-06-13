@@ -65,7 +65,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden">
+      <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden mt-16 md:mt-6">
         <div className="flex h-[60vh] w-full">
           <div className=" w-[100%] lg:w-1/2 flex justify-center items-center lg:ml-[5%] flex-col pt-16 px-[10%] lg:px-[0%]">
             <h1 className="lg:text-4xl text-2xl font-bold w-full text-center lg:text-left">
@@ -111,7 +111,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col px-[5%] lg:mt-16">
+        <div className="w-full flex flex-col px-[5%] mt-14 lg:mt-16">
           <div className="flex justify-between mb-8">
             <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
               Most Demanding Categories
@@ -119,10 +119,10 @@ export default function Home() {
             <h1 className="text-black text-lg inline-block lg:hidden font-semibold">
               Popular Categories
             </h1>
-            <h1 className="lg:inline-block hidden font-medium text-green-600 hover:cursor-pointer">
+            <h1 className="lg:flex items-center hidden font-medium text-green-600 hover:cursor-pointer">
               Explore all fields &gt;
             </h1>
-            <h1 className="font-medium text-sm inline-block lg:hidden text-green-600 hover:cursor-pointer">
+            <h1 className="font-medium text-sm flex items-center lg:hidden text-green-600 hover:cursor-pointer">
               Explore &gt;
             </h1>
           </div>

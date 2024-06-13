@@ -34,9 +34,10 @@ export default function JobDetails() {
   }, []);
 
   return (
+
     <div
       id="top"
-      className=" flex flex-col w-full max-w-screen-2xl pb-20 pt-24 px-[5%] font-poppins mx-auto"
+      className="flex flex-col w-full max-w-screen-2xl pb-20 pt-24 px-[5%] font-poppins mx-auto overflow-hidden"
     >
       <div className="w-full bg-[#f2f2f2] flex gap-3 p-12">
         <div className="w-full flex gap-6 justify-start items-center">
@@ -65,13 +66,13 @@ export default function JobDetails() {
       </div>
 
       {/* Now next div into 2 sections */}
-      <div className="w-full flex gap-8">
-        <div className="w-[65%]">
+      <div className="w-full flex gap-8 flex-col lg:flex-row">
+        <div className="lg:w-[65%] w-full">
           {/* description */}
           <div className="w-full flex flex-col gap-2 mt-14">
             <h1 className="text-2xl font-semibold">Description</h1>
             <div
-              className=" text-[#666666]"
+              className=" text-[#666666] text-sm sm:text-lg"
               dangerouslySetInnerHTML={{ __html: desc }}
             />
           </div>
@@ -80,7 +81,7 @@ export default function JobDetails() {
             <h1 className="text-2xl font-semibold">Responsibilities</h1>
             <div className=" text-[#666666] flex flex-col gap-2 ">
               {responsibility.map((res) => (
-                <div className="w-full flex gap-2">
+                <div className="w-full flex gap-2 text-sm sm:text-lg">
                   <h1> ✔</h1>
                   <h1>{res.content}</h1>
                 </div>
@@ -90,7 +91,7 @@ export default function JobDetails() {
 
           <div className="w-full flex flex-col gap-4 mt-14">
             <h1 className="text-2xl font-semibold">Requirements</h1>
-            <div className=" text-[#666666] flex flex-col gap-2">
+            <div className=" text-[#666666] flex flex-col gap-2 text-sm sm:text-lg">
               {requirements.map((res) => (
                 <div className="w-full flex gap-2">
                   <h1> ✔</h1>
@@ -102,7 +103,7 @@ export default function JobDetails() {
 
           <div className="w-full flex flex-col gap-4 mt-14">
             <h1 className="text-2xl font-semibold">Benefits</h1>
-            <div className=" text-[#666666] flex flex-col gap-2">
+            <div className=" text-[#666666] flex flex-col gap-2 text-sm sm:text-lg">
               {benefit.map((res) => (
                 <div className="w-full flex gap-2">
                   <h1> ✔</h1>
@@ -112,11 +113,13 @@ export default function JobDetails() {
             </div>
           </div>
         </div>
-        <div className="w-[35%]  mt-[72px]">
+
+        {/* summary */}
+        <div className="lg:w-[35%] w-full mt-[72px] text-sm sm:text-lg">
           <div className="flex flex-col bg-[#f2f2f2] p-4 py-10">
             <h1 className="text-xl font-semibold text-black">Summary</h1>
             <div className="bg-green-500 h-[2px] w-[50px] mt-1"></div>
-            <div className="w-full flex mt-8 justify-between">
+            <div className="w-full flex mt-8 gap-2 sm:gap-3 xl:justify-between">
               <ul className="flex flex-col font-medium gap-6">
                 <li>Job Type</li>
                 <li>Category</li>
@@ -127,7 +130,7 @@ export default function JobDetails() {
                 <li>Gender</li>
                 <li>Qualification</li>
                 <li>Level</li>
-                <li>Application End</li>
+                <li>Expiry</li>
               </ul>
 
               <ul className="flex flex-col font-medium gap-6">
@@ -143,10 +146,18 @@ export default function JobDetails() {
                 <li>:</li>
               </ul>
 
-              <ul className="flex flex-col font-medium gap-6 text-[#666666]">
+              <ul className="w-full flex flex-col font-medium gap-6 text-[#666666]">
                 <li className="text-green-500">{time}</li>
                 <li>{category}</li>
-                <li className="truncate">{skills}</li>
+                <li className="lg:hidden hidden md:inline-block ">{skills}</li>
+
+                <li className="xl:hidden inline-block md:hidden lg:inline-block">
+                  {skills?.substring(0, 14) + "..."}
+                </li>
+                <li className="hidden xl:inline-block ">
+                  {skills?.substring(0, 35) + "..."}
+                </li>
+
                 <li>{date}</li>
                 <li>
                   {"$"} {salary} / Monthly
