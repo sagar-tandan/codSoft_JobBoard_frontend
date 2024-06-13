@@ -10,7 +10,17 @@ export default function JobCards({
   time,
   skills,
   salary,
-  desc
+  desc,
+  responsibility,
+  requirements,
+  benefit,
+  category,
+  Gender,
+  Experience,
+  Qualification,
+  level,
+  AppEnd,
+  date
 }) {
   const navigate = useNavigate();
 
@@ -24,7 +34,20 @@ export default function JobCards({
         loc: location,
         pos: position,
         salary: salary,
-        desc : desc,
+        desc: desc,
+        responsibility: responsibility,
+        requirements: requirements,
+        benefit: benefit,
+        category: category,
+        Gender: Gender,
+        Experience: Experience,
+        Qualification: Qualification,
+        level: level,
+        AppEnd: AppEnd,
+        time: time,
+        date: date,
+        skills: skills,
+
       },
     });
   };

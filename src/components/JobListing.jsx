@@ -15,6 +15,94 @@ export default function JobListing() {
       skills: "HTML, CSS, JavaScript, ReactJs",
       salary: "1000",
       desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
+      categoty: "IT Development",
+      Gender: "Male or Female",
+      Experience: "02 Years",
+      Qualification: "BSC, MSC",
+      level: "Junior",
+      AppEnd: "20 July, 2024",
+      date: "20 Jun, 2024",
+      responsibility: [
+        {
+          id: 1,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 2,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 3,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 4,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 5,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+      ],
+      requirements: [
+        {
+          id: 1,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 2,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 3,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 4,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 5,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+      ],
+      benefit: [
+        {
+          id: 1,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 2,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 3,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 4,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 5,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+      ],
     },
     {
       id: 2,
@@ -27,7 +115,95 @@ export default function JobListing() {
       skills: "Python, FAST API, Django",
       salary: "4000",
       desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
+      categoty: "IT Development",
+      Gender: "Male or Female",
+      Experience: "02 Years",
+      Qualification: "BSC, MSC",
+      level: "Junior",
+      AppEnd: "20 July, 2024",
+      date: "20 Jun, 2024",
 
+      responsibility: [
+        {
+          id: 1,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 2,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 3,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 4,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 5,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+      ],
+      requirements: [
+        {
+          id: 1,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 2,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 3,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 4,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 5,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+      ],
+      benefit: [
+        {
+          id: 1,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 2,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 3,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 4,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+        {
+          id: 5,
+          content:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illum.",
+        },
+      ],
     },
     {
       id: 3,
@@ -40,7 +216,6 @@ export default function JobListing() {
       skills: "HTML, CSS, JavaScript, Nextjs",
       salary: "2000",
       desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
-
     },
     {
       id: 4,
@@ -53,7 +228,6 @@ export default function JobListing() {
       skills: "Python, Django",
       salary: "2000",
       desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
-
     },
     {
       id: 5,
@@ -66,7 +240,6 @@ export default function JobListing() {
       skills: "MERN, Nodejs, Express, MongoDb",
       salary: "4000",
       desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
-
     },
     {
       id: 6,
@@ -79,7 +252,6 @@ export default function JobListing() {
       skills: "Python, data science, deep learning",
       salary: "6000",
       desc: "<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos necessitatibus ea impedit ullam et accusantium quo quasi possimus consectetur deleniti blanditiis velit vero, sapiente soluta incidunt eaque! Quidem praesentium totam pariatur doloribus porro exercitationem fugiat non rem distinctio quo ipsam quis assumenda ducimus, ullam reiciendis numquam? Alias, dolores voluptate! ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatum officiis tenetur eos, minima soluta exercitationem accusamus sapiente ducimus et! Vero, sunt reiciendis.</p> <br> <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iste dolores illum impedit natus vel fugit error officiis unde eius! Minus aperiam mollitia dolor!</>",
-
     },
     {
       id: 7,
@@ -122,7 +294,17 @@ export default function JobListing() {
               time={job.time}
               skills={job.skills}
               salary={job.salary}
-              desc = {job.desc}
+              desc={job.desc}
+              responsibility={job.responsibility}
+              requirements={job.requirements}
+              benefit={job.benefit}
+              category={job.categoty}
+              Gender={job.Gender}
+              Experience={job.Experience}
+              Qualification={job.Qualification}
+              level={job.level}
+              AppEnd={job.AppEnd}
+              date= {job.date}
             />
           </div>
         ))}

@@ -69,10 +69,10 @@ export default function Home() {
         <div className="flex h-[60vh] w-full">
           <div className="w-1/2 flex justify-center items-center ml-[5%] flex-col pt-16 leftdiv">
             <h1 className="text-4xl font-bold w-full text-left">
-              Find & <span className="text-green-500">Hire</span> Experts{" "}
+              Find & <span className="text-green-600">Hire</span> Experts{" "}
             </h1>
             <h1 className="text-4xl font-bold  w-full text-left">
-              For any <span className="text-green-500">Job</span>{" "}
+              For any <span className="text-green-600">Job</span>{" "}
             </h1>
             <div className="w-full flex">
               <p className="w-[70%] text-[#5f5f5f] mt-4 text-md">

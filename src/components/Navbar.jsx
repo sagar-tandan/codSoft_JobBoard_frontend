@@ -7,7 +7,7 @@ export default function Navbar() {
       <div className="bg-white w-full flex text-black px-4 fixed top-0 z-10">
         <div className="w-full max-w-screen-xl h-full flex justify-between mx-auto items-center">
           <Link to="/">
-            <h1 className="text-3xl font-bold tracking-wide py-3 text-green-700">JobBoard</h1>
+            <h1 className="text-3xl font-bold tracking-wide py-3 text-green-600">JobBoard</h1>
           </Link>
           <div className="flex gap-4 py-3 items-center font-semibold">
             <Link to="/login">
