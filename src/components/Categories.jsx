@@ -50,14 +50,14 @@ export default function Categories() {
   const firstSixCategories = categories.slice(0, 6);
 
   return (
-    <div className="w-full flex gap-2 font-poppins overflow-x-scroll ">
+    <div className="w-full flex gap-2 lg:justify-between font-poppins overflow-x-scroll scroll-smooth scrollbar-hide">
       {firstSixCategories.map((category) => (
         <div
           key={category.id}
-          className="w-full flex gap-2 justify-center items-center px-2 py-1 border-[1px] bg-[#f2f2f2] hover:border-[#6e6e6e] hover:bg-white hover:cursor-pointer transition-all ease-in-out duration-300 rounded-full"
+          className="w-[220px] lg:w-[210px] flex-shrink-0 flex gap-2 justify-center items-center px-2 py-1 border-[1px] bg-[#f2f2f2] hover:border-[#6e6e6e] hover:bg-white hover:cursor-pointer transition-all ease-in-out duration-300 rounded-full"
         >
-          <img className="w-7 h-7" src={category.image} alt="" />
-          <h1 className="text-black">{category.name}</h1>
+          <img className="w-5 h-5" src={category.image} alt="" />
+          <h1 className="text-black text-sm">{category.name}</h1>
         </div>
       ))}
     </div>
