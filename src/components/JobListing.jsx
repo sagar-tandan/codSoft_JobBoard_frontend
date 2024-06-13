@@ -282,7 +282,7 @@ export default function JobListing() {
   const topJObs = jobs.slice(0, 6);
   return (
     <div>
-      <div className="w-full flex gap-8 overflow-hidden flex-wrap mx-auto justify-start">
+      <div className="w-full flex gap-3 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center lg:justify-start">
         {topJObs.map((job) => (
           <div key={job.id}>
             <JobCards

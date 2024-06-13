@@ -65,22 +65,22 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto">
+      <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden">
         <div className="flex h-[60vh] w-full">
-          <div className="w-1/2 flex justify-center items-center ml-[5%] flex-col pt-16 leftdiv">
-            <h1 className="text-4xl font-bold w-full text-left">
+          <div className=" w-[100%] lg:w-1/2 flex justify-center items-center lg:ml-[5%] flex-col pt-16 px-[10%] lg:px-[0%]">
+            <h1 className="lg:text-4xl text-2xl font-bold w-full text-center lg:text-left">
               Find & <span className="text-green-600">Hire</span> Experts{" "}
             </h1>
-            <h1 className="text-4xl font-bold  w-full text-left">
+            <h1 className="lg:text-4xl text-2xl  font-bold  w-full text-center lg:text-left">
               For any <span className="text-green-600">Job</span>{" "}
             </h1>
-            <div className="w-full flex">
-              <p className="w-[70%] text-[#5f5f5f] mt-4 text-md">
+            <div className="w-full flex justify-center lg:justify-start">
+              <p className="w-full lg:w-[70%]  text-[#5f5f5f] mt-4 text-sm lg:text-md">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
               </p>
             </div>
 
-            <div className="w-full mt-4 flex gap-2">
+            <div className="w-full mt-4 flex gap-2 justify-center lg:justify-start">
               <div className="w-[65%] ">
                 <input
                   className="bg-[#f2f2f2] px-3 py-2 rounded-full w-full outline-[1px]"
@@ -88,12 +88,12 @@ export default function Home() {
                   placeholder="Search jobs,"
                 />
               </div>
-              <div className="flex justify-center items-center w-[120px] text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 ">
+              <div className="flex justify-center items-center w-[80px] lg:w-[120px] text-sm lg:text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 ">
                 Search
               </div>
             </div>
           </div>
-          <div className="w-1/2 lg:flex relative hidden rightdiv">
+          <div className="lg:w-1/2 lg:flex relative hidden">
             <img
               className="w-full h-full object-cover "
               src={hero1}
@@ -113,16 +113,36 @@ export default function Home() {
 
         <div className="w-full flex flex-col px-[5%] mt-16">
           <div className="flex justify-between mb-8">
-            <h1 className="text-black text-xl font-semibold">Most Demanding Categories</h1>
-            <h1 className="font-medium text-green-600 hover:cursor-pointer">Explore all fields &gt;</h1>
+            <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
+              Most Demanding Categories
+            </h1>
+            <h1 className="text-black text-lg inline-block lg:hidden font-semibold">
+              Popular Categories
+            </h1>
+            <h1 className="lg:inline-block hidden font-medium text-green-600 hover:cursor-pointer">
+              Explore all fields &gt;
+            </h1>
+            <h1 className="font-medium text-sm inline-block lg:hidden text-green-600 hover:cursor-pointer">
+              Explore &gt;
+            </h1>
           </div>
           <Categories />
         </div>
 
         <div className="w-full flex flex-col px-[5%] mt-24">
           <div className="flex justify-between mb-8">
-            <h1 className="text-black text-xl font-semibold">Recent Job Circulars</h1>
-            <h1 className="font-medium text-green-600 hover:cursor-pointer">Explore more &gt;</h1>
+            <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
+              Recent Job Circulars
+            </h1>
+            <h1 className="text-black text-lg inline-block lg:hidden font-semibold">
+            Recent Jobs
+            </h1>
+            <h1 className="font-medium lg:flex items-center hidden text-green-600 hover:cursor-pointer">
+              Explore more &gt;
+            </h1>
+            <h1 className="font-medium text-sm flex lg:hidden text-green-600 hover:cursor-pointer items-center">
+              Explore &gt;
+            </h1>
           </div>
           <JobListing />
         </div>
