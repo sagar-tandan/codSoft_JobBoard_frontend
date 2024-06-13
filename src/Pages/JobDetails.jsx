@@ -36,7 +36,7 @@ export default function JobDetails() {
   return (
     <div
       id="top"
-      className=" flex flex-col w-full max-w-screen-2xl pb-20 pt-16 px-[5%] font-poppins"
+      className=" flex flex-col w-full max-w-screen-2xl pb-20 pt-24 px-[5%] font-poppins mx-auto"
     >
       <div className="w-full bg-[#f2f2f2] flex gap-3 p-12">
         <div className="w-full flex gap-6 justify-start items-center">
