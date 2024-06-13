@@ -58,7 +58,7 @@ export default function JobDetails() {
             ${salary}
             <span className="font-medium text-sm text-[#616161]">/monthly</span>
           </h1>
-          <div className="flex flex-col gap-1 border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
+          <div className="flex flex-col justify-center items-center gap-1 border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
             Apply Now
           </div>
         </div>
