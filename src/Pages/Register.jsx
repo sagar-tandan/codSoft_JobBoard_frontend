@@ -74,11 +74,11 @@ export default function Register() {
     <div>
       <form
         onSubmit={registerUser}
-        className="relative w-full flex flex-row max-w-screen-2xl my-3 mt-20 px-[5%]"
+        className="relative w-full flex flex-row max-w-screen-2xl mt-3 md:mt-10 lg:mt-20 px-[5%] 2xl:px-[3%] mx-auto"
       >
-        <div className="absolute top-0 left-0 h-[100vh] w-[40%] blur">
+        <div className="hidden lg:inline-block absolute top-0 left-0 h-[100vh] w-[40%] blur">
           <img
-            className="h-[90vh]"
+            className="h-[90vh] object-cover"
             src="https://i.pinimg.com/564x/f1/d3/f8/f1d3f81bfd7b0b3dab51557e1ec430d1.jpg"
             alt=""
           />
@@ -88,21 +88,23 @@ export default function Register() {
           <img className="h-full object-cover w-full" src={back} alt="" />
         </div>
 
-        <div className="flex flex-row w-full h-[80vh] my-[5vh] z-[10] gap-4 shadow-[#545454f1] shadow-2xl">
-          <div className="w-[40%] ">
+        <div className="flex flex-row w-full h-[80vh] my-[5vh] z-[10] gap-4 lg:shadow-[#545454f1] lg:shadow-2xl">
+          <div className="w-[40%] hidden lg:inline-block">
             <img
-              className="w-full h-full"
+              className="w-full h-full object-cover"
               // src="https://i.pinimg.com/564x/f1/d3/f8/f1d3f81bfd7b0b3dab51557e1ec430d1.jpg"
-              src="https://i.pinimg.com/564x/e2/19/16/e2191675372d855ffd12addb695946b6.jpg"
+              // src="https://i.pinimg.com/564x/e2/19/16/e2191675372d855ffd12addb695946b6.jpg"
+              src="https://i.pinimg.com/564x/48/cc/24/48cc24070f83f56a25eb8b00862ef514.jpg"
               alt=""
             />
           </div>
 
-          <div className="flex flex-col w-[60%] my-[3vh] h-[80vh] pr-4">
+          <div className="flex flex-col w-full lg:w-[60%] my-[3vh] h-[80vh] pr-4">
             <div className="flex flex-col gap-2 w-full">
-              <h1 className="font-poppins font-semibold text-xl">
-                Company Registration
-              </h1>
+              <div className="font-poppins font-semibold text-xl flex flex-col">
+                <h1>Company Registration</h1>
+                <div className="border bg-green-600 w-[70px] h-[5px] mt-1 rounded-full"></div>
+              </div>
               <p>
                 Fill out the form below to create an account. Once you create an
                 account, log in to the system and post your vacancies online to
@@ -111,7 +113,7 @@ export default function Register() {
               <div className="border"></div>
 
               {/* for email */}
-              <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between mt-3">
+              <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between mt-1">
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Company Name</label>
                   <input
@@ -236,7 +238,7 @@ export default function Register() {
               Submit
             </button>
 
-            <div className="flex items-center justify-center mt-4 w-full font-medium gap-1">
+            <div className="flex items-center justify-center mt-4 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
               <span>Already have an account? </span>
               <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
                 {" "}
