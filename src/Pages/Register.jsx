@@ -1,126 +1,250 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import reg from "../assets/Asset!/reg.jpg";
+import back from "../assets/back.png";
+
+import { Country, State, City } from "country-state-city";
 
 export default function Register() {
   const navigate = useNavigate();
+  const [cities, setCities] = useState([]);
+  const [code, setCode] = useState("");
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
+    cpassword: "",
+    image: "",
+    selectedCity: "",
+    selectedCountry: "",
+    phone: "",
   });
+
+  const country = Country.getAllCountries();
+
+  const handleCountryChange = (event) => {
+    setData({ ...data, selectedCountry: event.target.value });
+  };
+
+  useEffect(() => {
+    const selectedCountry1 = country.find(
+      (count) => count.name === data.selectedCountry
+    );
+    if (selectedCountry1) {
+      setCode(selectedCountry1.isoCode);
+    }
+  }, [data.selectedCountry]);
+
+  useEffect(() => {
+    if (code) {
+      setCities(City.getCitiesOfCountry(code));
+    }
+  }, [code]);
+
+  const handleCityChange = (event) => {
+    setData({ ...data, selectedCity: event.target.value });
+  };
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const { name, email, password } = data;
-    try {
-      const { data } = await axios.post("/register", {
-        name,
-        email,
-        password,
-      });
-      if (data.error) {
-        toast.error(data.error);
-      } else {
-        setData("");
-        toast.success("Login Successful!!");
-        navigate("/login");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    // const { name, email, password } = data;
+    // try {
+    //   const { data } = await axios.post("/register", {
+    //     name,
+    //     email,
+    //     password,
+    //   });
+    //   if (data.error) {
+    //     toast.error(data.error);
+    //   } else {
+    //     setData("");
+    //     toast.success("Login Successful!!");
+    //     navigate("/login");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    console.log(data);
   };
   return (
     <div>
       <form
         onSubmit={registerUser}
-        className="flex border flex-col max-w-screen-md my-3 mx-auto mt-16"
+        className="relative w-full flex flex-row max-w-screen-2xl my-3 mt-20 px-[5%]"
       >
-        {/* <label className="font-medium mx-1 text-lg"> Name</label>
-
-        <div className="flex flex-col border-[2px] mt-1 rounded-xl border-blue-500">
-          <input
-            className="outline-none px-3 my-2"
-            type="text"
-            placeholder="Enter name...."
-            value={data.name}
-            onChange={(e) => setData({ ...data, name: e.target.value })}
+        <div className="absolute top-0 left-0 h-[100vh] w-[40%] blur">
+          <img
+            className="h-[90vh]"
+            src="https://i.pinimg.com/564x/f1/d3/f8/f1d3f81bfd7b0b3dab51557e1ec430d1.jpg"
+            alt=""
           />
         </div>
 
-        <label className="font-medium mx-1 text-lg mt-4"> Email</label>
-
-        <div className="flex flex-col border-[2px] mt-1 rounded-xl border-blue-500">
-          <input
-            className="outline-none px-3 my-2"
-            type="email"
-            placeholder="Enter email...."
-            value={data.email}
-            onChange={(e) => setData({ ...data, email: e.target.value })}
-          />
+        <div className="absolute top-0 right-0 h-[100%] w-[60%] blur">
+          <img className="h-full object-cover w-full" src={back} alt="" />
         </div>
 
-        <label className="font-medium mx-1 text-lg mt-4"> Password</label>
-
-        <div className="flex flex-col border-[2px] mt-1 rounded-xl border-blue-500">
-          <input
-            className="outline-none px-3 my-2"
-            type="password"
-            placeholder="Enter password...."
-            value={data.password}
-            onChange={(e) => setData({ ...data, password: e.target.value })}
-          />
-        </div> */}
-
-        <div className="flex flex-col gap-2 w-[70%] mx-auto mt-4">
-          <h1 className="font-poppins font-medium text-xl">
-            Company Registration
-          </h1>
-          <p>
-            Fill out the form below to create an account. Once you create an
-            account, log in to the system and post your vacancies online to
-            reach out the active users who are looking for a new job.
-          </p>
-          <div className="border"></div>
-
-          <h1 className="font-medium text-xl font-poppins mt-3 mb-2">
-            Login Information
-          </h1>
-          {/* for email */}
-          <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between">
-            <div className="flex flex-col gap-1 w-full">
-              <label className="font-medium">Email Address</label>
-              <input
-                className="border-[1px] border-[#c1c1c1] rounded p-2"
-                type="email"
-                value={data.email}
-                onChange={(e) => setData({ ...data, email: e.target.value })}
-              />
-            </div>
-
-            <div className="flex flex-col gap-1 w-full">
-              <label className="font-medium">Password</label>
-              <input
-                className="border-[1px] border-[#c1c1c1] rounded p-2"
-                type="password"
-                value={data.password}
-                onChange={(e) => setData({ ...data, password: e.target.value })}
-              />
-            </div>
+        <div className="flex flex-row w-full h-[80vh] my-[5vh] z-[10] gap-4 shadow-[#545454f1] shadow-2xl">
+          <div className="w-[40%] ">
+            <img
+              className="w-full h-full"
+              // src="https://i.pinimg.com/564x/f1/d3/f8/f1d3f81bfd7b0b3dab51557e1ec430d1.jpg"
+              src="https://i.pinimg.com/564x/e2/19/16/e2191675372d855ffd12addb695946b6.jpg"
+              alt=""
+            />
           </div>
 
-          <div className="border"></div>
-          
-        </div>
+          <div className="flex flex-col w-[60%] my-[3vh] h-[80vh] pr-4">
+            <div className="flex flex-col gap-2 w-full">
+              <h1 className="font-poppins font-semibold text-xl">
+                Company Registration
+              </h1>
+              <p>
+                Fill out the form below to create an account. Once you create an
+                account, log in to the system and post your vacancies online to
+                reach out the active users who are looking for a new job.
+              </p>
+              <div className="border"></div>
 
-        <button
-          className="mt-4 bg-blue-500 p-3 rounded-full w-1/2 mx-auto hover:brightness-95 transition-all ease-in-out duration-300 font-medium"
-          type="submit"
-        >
-          Submit
-        </button>
+              {/* for email */}
+              <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between mt-3">
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">Company Name</label>
+                  <input
+                    className="border-[1px] border-[#c1c1c1] rounded p-2"
+                    type="text"
+                    placeholder="Enter Company name"
+                    value={data.name}
+                    onChange={(e) => setData({ ...data, name: e.target.value })}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">Profile Link</label>
+                  <input
+                    className="border-[1px] border-[#c1c1c1] rounded p-2"
+                    type="text"
+                    placeholder="Enter image link"
+                    value={data.image}
+                    onChange={(e) =>
+                      setData({ ...data, image: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between">
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">Email Address</label>
+                  <input
+                    className="border-[1px] border-[#c1c1c1] rounded p-2"
+                    type="email"
+                    placeholder="Enter email address"
+                    value={data.email}
+                    onChange={(e) =>
+                      setData({ ...data, email: e.target.value })
+                    }
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">Phone</label>
+                  <input
+                    className="border-[1px] border-[#c1c1c1] rounded p-2"
+                    type="text"
+                    placeholder="Enter phone number"
+                    value={data.phone}
+                    onChange={(e) =>
+                      setData({ ...data, phone: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+
+              <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between">
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">Country</label>
+
+                  <select
+                    className="py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
+                    value={data.selectedCountry}
+                    onChange={handleCountryChange}
+                  >
+                    <option value="">Select Country</option>
+                    {country.map((cou) => (
+                      <option value={cou.countryCode}>{cou.name}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">City</label>
+
+                  <select
+                    className="py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
+                    value={data.selectedCity}
+                    onChange={handleCityChange}
+                  >
+                    <option value="">Select city</option>
+                    {cities.length > 0 &&
+                      cities.map((cou) => (
+                        <option value={cou.name}>{cou.name}</option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between">
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">Password</label>
+                  <input
+                    className="border-[1px] border-[#c1c1c1] rounded p-2"
+                    type="password"
+                    placeholder="Enter password"
+                    value={data.password}
+                    onChange={(e) =>
+                      setData({ ...data, password: e.target.value })
+                    }
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1 w-full">
+                  <label className="font-medium">Confirm Password</label>
+                  <input
+                    className="border-[1px] border-[#c1c1c1] rounded p-2"
+                    type="password"
+                    placeholder="Enter password again"
+                    value={data.cpassword}
+                    onChange={(e) =>
+                      setData({ ...data, cpassword: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={(e) => {
+                // console.log(data);
+              }}
+              className="mt-3 shadow-green-300 shadow-lg bg-green-600 font-medium p-3 text-white rounded-full w-1/2 mx-auto hover:bg-green-700 transition-all ease-in-out duration-300"
+              type="submit"
+            >
+              Submit
+            </button>
+
+            <div className="flex items-center justify-center mt-4 w-full font-medium gap-1">
+              <span>Already have an account? </span>
+              <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
+                {" "}
+                Login
+              </span>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   );
