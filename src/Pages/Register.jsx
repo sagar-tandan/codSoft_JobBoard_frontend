@@ -36,9 +36,9 @@ export default function Register() {
     <div>
       <form
         onSubmit={registerUser}
-        className="flex flex-col max-w-screen-md my-3 mx-auto mt-16"
+        className="flex border flex-col max-w-screen-md my-3 mx-auto mt-16"
       >
-        <label className="font-medium mx-1 text-lg"> Name</label>
+        {/* <label className="font-medium mx-1 text-lg"> Name</label>
 
         <div className="flex flex-col border-[2px] mt-1 rounded-xl border-blue-500">
           <input
@@ -72,6 +72,47 @@ export default function Register() {
             value={data.password}
             onChange={(e) => setData({ ...data, password: e.target.value })}
           />
+        </div> */}
+
+        <div className="flex flex-col gap-2 w-[70%] mx-auto mt-4">
+          <h1 className="font-poppins font-medium text-xl">
+            Company Registration
+          </h1>
+          <p>
+            Fill out the form below to create an account. Once you create an
+            account, log in to the system and post your vacancies online to
+            reach out the active users who are looking for a new job.
+          </p>
+          <div className="border"></div>
+
+          <h1 className="font-medium text-xl font-poppins mt-3 mb-2">
+            Login Information
+          </h1>
+          {/* for email */}
+          <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between">
+            <div className="flex flex-col gap-1 w-full">
+              <label className="font-medium">Email Address</label>
+              <input
+                className="border-[1px] border-[#c1c1c1] rounded p-2"
+                type="email"
+                value={data.email}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
+              />
+            </div>
+
+            <div className="flex flex-col gap-1 w-full">
+              <label className="font-medium">Password</label>
+              <input
+                className="border-[1px] border-[#c1c1c1] rounded p-2"
+                type="password"
+                value={data.password}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <div className="border"></div>
+          
         </div>
 
         <button
