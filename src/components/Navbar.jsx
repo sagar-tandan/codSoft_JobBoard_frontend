@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { toast } from "react-hot-toast";
 import hamburger from "../assets/Asset!/hamburger.png";
 import profile from "../assets/Asset!/profile.png";
+import logo from "../assets/jobLogo.png";
 
 export default function Navbar() {
   const [userName, setUserName] = useState();
@@ -50,9 +51,10 @@ export default function Navbar() {
       <div className="bg-white w-full flex text-black px-6 fixed top-0 z-50">
         <div className="w-full max-w-screen-2xl h-full flex justify-between mx-auto items-center">
           <Link to="/">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600">
-              JobBoard
-            </h1>
+            <div className="text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600 flex gap-1">
+              <img className="w-8 h-8 lg:w-9 lg:h-9" src={logo} alt="" />
+              <h1 className="py-1">JobBoard</h1>
+            </div>
           </Link>
           <div className="flex gap-2 lg:gap-4 py-3 items-center font-medium lg:font-semibold">
             {userName ? (
