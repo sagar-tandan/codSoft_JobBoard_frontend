@@ -65,7 +65,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden mt-16 md:mt-6">
+      <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden pt-10 lg:mt-0">
         <div className="flex h-[60vh] w-full">
           <div className=" w-[100%] lg:w-1/2 flex justify-center items-center lg:ml-[5%] flex-col pt-16 px-[10%] lg:px-[0%]">
             <h1 className="lg:text-4xl text-2xl font-bold w-full text-center lg:text-left">
