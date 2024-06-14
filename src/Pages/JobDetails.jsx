@@ -89,7 +89,7 @@ export default function JobDetails() {
                     /monthly
                   </span>
                 </h1>
-                <div className="flex flex-col justify-center items-center text-sm md:text-lg border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
+                <div className="flex flex-col justify-center items-center text-sm border-green-500 bg-green-500 rounded-lg text-white px-2 py-2 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
                   Apply Now
                 </div>
               </div>
@@ -121,8 +121,8 @@ export default function JobDetails() {
                 </div>
 
                 <div className="w-full flex flex-col items-end">
-                  <div className="w-full flex justify-end text-sm md:text-lg  text-white font-medium ">
-                    <h1 className="border-green-500 bg-green-500 px-3 py-1 rounded-lg hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
+                  <div className="w-full flex justify-end text-sm text-white font-medium ">
+                    <h1 className="border-green-500 bg-green-500 px-3 py-2 rounded-lg hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
                       Apply Now
                     </h1>
                   </div>
@@ -138,18 +138,18 @@ export default function JobDetails() {
         <div className="lg:w-[65%] w-full">
           {/* description */}
           <div className="w-full flex flex-col gap-2 mt-14">
-            <h1 className="text-xl font-semibold">Description</h1>
+            <h1 className="text-lg font-semibold">Description</h1>
             <div
-              className=" text-[#666666] text-sm sm:text-lg"
+              className=" text-[#666666] text-sm"
               dangerouslySetInnerHTML={{ __html: desc }}
             />
           </div>
 
           <div className="w-full flex flex-col gap-4 mt-14">
-            <h1 className="text-xl font-semibold">Responsibilities</h1>
+            <h1 className="text-lg font-semibold">Responsibilities</h1>
             <div className=" text-[#666666] flex flex-col gap-2 ">
               {responsibility.map((res) => (
-                <div className="w-full flex gap-2 text-sm sm:text-lg">
+                <div className="w-full flex gap-2 text-sm ">
                   <h1> ✔</h1>
                   <h1>{res.content}</h1>
                 </div>
@@ -158,8 +158,8 @@ export default function JobDetails() {
           </div>
 
           <div className="w-full flex flex-col gap-4 mt-14">
-            <h1 className="text-xl font-semibold">Requirements</h1>
-            <div className=" text-[#666666] flex flex-col gap-2 text-sm sm:text-lg">
+            <h1 className="text-lg font-semibold">Requirements</h1>
+            <div className=" text-[#666666] flex flex-col gap-2 text-sm">
               {requirements.map((res) => (
                 <div className="w-full flex gap-2">
                   <h1> ✔</h1>
@@ -170,8 +170,8 @@ export default function JobDetails() {
           </div>
 
           <div className="w-full flex flex-col gap-4 mt-14">
-            <h1 className="text-xl font-semibold">Benefits</h1>
-            <div className=" text-[#666666] flex flex-col gap-2 text-sm sm:text-lg">
+            <h1 className="text-lg font-semibold">Benefits</h1>
+            <div className=" text-[#666666] flex flex-col gap-2 text-sm">
               {benefit.map((res) => (
                 <div className="w-full flex gap-2">
                   <h1> ✔</h1>
@@ -183,7 +183,7 @@ export default function JobDetails() {
         </div>
 
         {/* summary */}
-        <div className="lg:w-[35%] w-full mt-[72px] text-sm sm:text-lg">
+        <div className="lg:w-[35%] w-full mt-[72px] text-sm">
           <div className="flex flex-col bg-[#f2f2f2] p-4 py-10">
             <h1 className="text-xl font-semibold text-black">Summary</h1>
             <div className="bg-green-500 h-[2px] w-[50px] mt-1"></div>

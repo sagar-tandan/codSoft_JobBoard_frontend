@@ -36,7 +36,7 @@ export default function Register() {
     <div>
       <form
         onSubmit={registerUser}
-        className="flex flex-col max-w-screen-md my-3 mx-auto "
+        className="flex flex-col max-w-screen-md my-3 mx-auto mt-16"
       >
         <label className="font-medium mx-1 text-lg"> Name</label>
 
