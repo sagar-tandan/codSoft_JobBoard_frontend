@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import reg from "../assets/Asset!/reg.jpg";
+import loader from "../assets/Asset!/loader.gif";
 import back from "../assets/back.png";
 
 import { Country, State, City } from "country-state-city";
@@ -12,6 +13,7 @@ export default function Register() {
   const navigate = useNavigate();
   const [cities, setCities] = useState([]);
   const [code, setCode] = useState("");
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -50,25 +52,50 @@ export default function Register() {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    // const { name, email, password } = data;
-    // try {
-    //   const { data } = await axios.post("/register", {
-    //     name,
-    //     email,
-    //     password,
-    //   });
-    //   if (data.error) {
-    //     toast.error(data.error);
-    //   } else {
-    //     setData("");
-    //     toast.success("Login Successful!!");
-    //     navigate("/login");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    const {
+      name,
+      email,
+      password,
+      cpassword,
+      image,
+      selectedCity,
+      selectedCountry,
+      phone,
+    } = data;
 
-    console.log(data);
+    if (password != cpassword) {
+      toast.error("Password didn't match!");
+    } else if (password.length < 6) {
+      toast.error("Password should have at least 6 letters!");
+    } else {
+      try {
+        setLoading(true);
+        const { data } = await axios.post("/register", {
+          name,
+          email,
+          password,
+          image,
+          selectedCity,
+          selectedCountry,
+          phone,
+        });
+        if (data.error) {
+          toast.error(data.error);
+          setLoading(false);
+        } else {
+          setData("");
+          setLoading(false);
+          toast.success("Registration completed!");
+          navigate("/login");
+        }
+      } catch (error) {
+        // console.log(error);
+        toast.error(error.message);
+        setLoading(false);
+      }
+    }
+
+    // console.log(data);
   };
   return (
     <div>
@@ -117,6 +144,7 @@ export default function Register() {
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Company Name</label>
                   <input
+                    required
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="text"
                     placeholder="Enter Company name"
@@ -128,6 +156,7 @@ export default function Register() {
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Profile Link</label>
                   <input
+                    required
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="text"
                     placeholder="Enter image link"
@@ -143,6 +172,7 @@ export default function Register() {
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Email Address</label>
                   <input
+                    required
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="email"
                     placeholder="Enter email address"
@@ -156,6 +186,7 @@ export default function Register() {
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Phone</label>
                   <input
+                    required
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="text"
                     placeholder="Enter phone number"
@@ -174,6 +205,7 @@ export default function Register() {
                   <select
                     className="py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
                     value={data.selectedCountry}
+                    required
                     onChange={handleCountryChange}
                   >
                     <option value="">Select Country</option>
@@ -190,6 +222,7 @@ export default function Register() {
                     className="py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
                     value={data.selectedCity}
                     onChange={handleCityChange}
+                    required
                   >
                     <option value="">Select city</option>
                     {cities.length > 0 &&
@@ -204,6 +237,7 @@ export default function Register() {
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Password</label>
                   <input
+                    required
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="password"
                     placeholder="Enter password"
@@ -217,7 +251,8 @@ export default function Register() {
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Confirm Password</label>
                   <input
-                    className="border-[1px] border-[#c1c1c1] rounded p-2"
+                    required
+                    className="border-[1px] border-[#c1c1c1] rounded p-2 "
                     type="password"
                     placeholder="Enter password again"
                     value={data.cpassword}
@@ -229,13 +264,19 @@ export default function Register() {
               </div>
             </div>
             <button
-              onClick={(e) => {
-                // console.log(data);
-              }}
-              className="mt-3 shadow-green-300 shadow-lg bg-green-600 font-medium p-3 text-white rounded-full w-1/2 mx-auto hover:bg-green-700 transition-all ease-in-out duration-300"
+              className="mt-3 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
               type="submit"
             >
-              Submit
+              <div className="w-full flex p-3 justify-center gap-4">
+                <img
+                  className={`${
+                    loading ? "inline-block" : "hidden"
+                  } w-6 h-6 object-center`}
+                  src={loader}
+                  alt=""
+                />
+                <h1 className={`${loading ? "hidden" : "inline"}`}>Submit</h1>
+              </div>
             </button>
 
             <div className="flex items-center justify-center mt-4 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
