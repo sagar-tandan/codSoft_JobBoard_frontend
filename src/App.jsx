@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 import "./App.css";
 import Home from "./Pages/Home";
@@ -16,12 +17,14 @@ axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
 
 function App() {
+  const [data, setData] = useState([]);
+
   return (
   <>
-  <Navbar/>
+  <Navbar setData={setData}/>
   <Toaster position="bottom-right" toastOptions={{duration: 2000}}/>
   <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home data={data} />} />
       <Route path="/company" element={<CompanyPage />} />
       <Route path="/registercompany" element={<Register />} />
       <Route path="/registeruser" element={<JobSeekerRegister />} />

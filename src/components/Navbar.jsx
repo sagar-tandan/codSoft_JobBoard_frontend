@@ -7,7 +7,7 @@ import hamburger from "../assets/Asset!/hamburger.png";
 import profile from "../assets/Asset!/profile.png";
 import logo from "../assets/jobLogo.png";
 
-export default function Navbar() {
+export default function Navbar({setData}) {
   const [userName, setUserName] = useState();
   const [register, setRegister] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
@@ -16,19 +16,12 @@ export default function Navbar() {
   useEffect(() => {
     if (userName) {
       console.log(userName);
+      setData(userName);
     }
   }, [userName]);
 
   useEffect(() => {
-    // const sendRequest = async () => {
-    //   const res = await axios.get("/user", {
-    //     withCredentials: true,
-    //   });
-    //   const data = await res.data;
-    //   setUser(data.user);
-    //   // console.log(data.user);
-    // };
-    // sendRequest();
+
     const verifyCookie = async () => {
       if (!cookies.token) {
         // navigate("/login");
@@ -38,14 +31,14 @@ export default function Navbar() {
       const { status, user } = data;
       setUserName(user);
       return status ? "" : removeCookie("token");
-      // return status ? "" : (removeCookie("token"), navigate("/login"));
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
 
   const Logout = () => {
     removeCookie("token");
-    navigate("/login");
+    setData('')
+    navigate("/");
   };
 
   const toggleButton = () => {

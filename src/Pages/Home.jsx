@@ -13,32 +13,14 @@ import Categories from "../components/Categories";
 import JobListing from "../components/JobListing";
 import HomeCandidate from "../components/HomeCandidate";
 
-export default function Home() {
+export default function Home({ data }) {
   const [userName, setUserName] = useState([]);
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const verifyCookie = async () => {
-      if (!cookies.token) {
-        // navigate("/login");
-        // console.log("cookie not found")
-      }
-      const { data } = await axios.post("/", {}, { withCredentials: true });
-      const { status, user } = data;
-      if (user) {
-        setUserName(user);
-      }
-      return status ? "" : removeCookie("token");
-    };
-    verifyCookie();
-  }, [cookies, navigate, removeCookie]);
-
-  useEffect(() => {
-    if (userName) {
-      console.log(userName.Username);
-    }
-  }, [userName]);
+    setUserName(data);
+  }, [data]);
 
   return (
     <>
@@ -52,18 +34,11 @@ export default function Home() {
         />
       )}
 
-      {userName.length ===0 && (
-        <HomeCandidate />
+      {userName.length === 0 && <HomeCandidate />}
+
+      {userName && userName.type == "company" && (
+        <div className="mt-16"> Company Dashboard</div>
       )}
-      {/* {userName && (
-        <div>
-          <h4>
-            {" "}
-            Welcome <span>{userName}</span>
-          </h4>
-          <button onClick={Logout}>LOGOUT</button>
-        </div>
-      )} */}
     </>
   );
 }
