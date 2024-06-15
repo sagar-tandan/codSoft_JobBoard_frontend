@@ -15,30 +15,30 @@ export default function JobSeekerRegister() {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    cpassword: "",
-    image: "",
-    selectedCity: "",
-    selectedCountry: "",
-    phone: "",
+    Username: "",
+    Useremail: "",
+    Userpassword: "",
+    Usercpassword: "",
+    Userimage: "",
+    UserselectedCity: "",
+    UserselectedCountry: "",
+    Userphone: "",
   });
 
   const country = Country.getAllCountries();
 
   const handleCountryChange = (event) => {
-    setData({ ...data, selectedCountry: event.target.value });
+    setData({ ...data,   UserselectedCountry: event.target.value });
   };
 
   useEffect(() => {
     const selectedCountry1 = country.find(
-      (count) => count.name === data.selectedCountry
+      (count) => count.name === data.  UserselectedCountry
     );
     if (selectedCountry1) {
       setCode(selectedCountry1.isoCode);
     }
-  }, [data.selectedCountry]);
+  }, [data.  UserselectedCountry]);
 
   useEffect(() => {
     if (code) {
@@ -47,54 +47,54 @@ export default function JobSeekerRegister() {
   }, [code]);
 
   const handleCityChange = (event) => {
-    setData({ ...data, selectedCity: event.target.value });
+    setData({ ...data,   UserselectedCity: event.target.value });
   };
 
   const registerUser = async (e) => {
     e.preventDefault();
-    // const {
-    //   name,
-    //   email,
-    //   password,
-    //   cpassword,
-    //   image,
-    //   selectedCity,
-    //   selectedCountry,
-    //   phone,
-    // } = data;
+    const {
+        Username,
+        Useremail,
+        Userpassword,
+        Usercpassword,
+        Userimage,
+        UserselectedCity,
+        UserselectedCountry,
+        Userphone,
+    } = data;
 
-    // if (password != cpassword) {
-    //   toast.error("Password didn't match!");
-    // } else if (password.length < 6) {
-    //   toast.error("Password should have at least 6 letters!");
-    // } else {
-    //   try {
-    //     setLoading(true);
-    //     const { data } = await axios.post("/register", {
-    //       name,
-    //       email,
-    //       password,
-    //       image,
-    //       selectedCity,
-    //       selectedCountry,
-    //       phone,
-    //     });
-    //     if (data.error) {
-    //       toast.error(data.error);
-    //       setLoading(false);
-    //     } else {
-    //       setData("");
-    //       // console.log(data);
-    //       setLoading(false);
-    //       toast.success("Registration completed!");
-    //       navigate("/login");
-    //     }
-    //   } catch (error) {
-    //     // console.log(error);
-    //     toast.error(error.message);
-    //     setLoading(false);
-    //   }
-    // }
+    if (Userpassword != Usercpassword) {
+      toast.error("Password didn't match!");
+    } else if (Userpassword.length < 6) {
+      toast.error("Password should have at least 6 letters!");
+    } else {
+      try {
+        setLoading(true);
+        const { data } = await axios.post("/registerUser", {
+            Username,
+            Useremail,
+            Userpassword,
+            Userimage,
+            UserselectedCity,
+            UserselectedCountry,
+            Userphone,
+        });
+        if (data.error) {
+          toast.error(data.error);
+          setLoading(false);
+        } else {
+          setData("");
+          // console.log(data);
+          setLoading(false);
+          toast.success("Registration completed!");
+          navigate("/login");
+        }
+      } catch (error) {
+        // console.log(error);
+        toast.error(error.message);
+        setLoading(false);
+      }
+    }
 
     // console.log(data);
   };
@@ -117,12 +117,12 @@ export default function JobSeekerRegister() {
         </div>
 
         <div className="flex flex-row w-full h-[80vh] my-[5vh] z-[10] gap-4 lg:shadow-[#545454f1] lg:shadow-2xl">
-          <div className="w-[40%] hidden lg:inline-block">
+          <div className="w-[41%] hidden lg:inline-block">
             <img
               className="w-full h-full object-cover"
               // src="https://i.pinimg.com/564x/f1/d3/f8/f1d3f81bfd7b0b3dab51557e1ec430d1.jpg"
               // src="https://i.pinimg.com/564x/e2/19/16/e2191675372d855ffd12addb695946b6.jpg"
-              src="https://i.pinimg.com/564x/48/cc/24/48cc24070f83f56a25eb8b00862ef514.jpg"
+              src="https://i.pinimg.com/564x/70/fa/f4/70faf4fd62cfbfe6e53c44cd0afee403.jpg"
               alt=""
             />
           </div>
@@ -149,14 +149,10 @@ export default function JobSeekerRegister() {
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="text"
                     placeholder="Enter full name"
-                    value={data.name}
-                    onChange={(e) =>
-                      setData({ ...data, name: e.target.value })
-                    }
+                    value={data.Username}
+                    onChange={(e) => setData({ ...data, Username: e.target.value })}
                   />
                 </div>
-
-                
 
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Profile Link</label>
@@ -165,9 +161,9 @@ export default function JobSeekerRegister() {
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="text"
                     placeholder="Enter image link"
-                    value={data.image}
+                    value={data.Userimage}
                     onChange={(e) =>
-                      setData({ ...data, image: e.target.value })
+                      setData({ ...data, Userimage: e.target.value })
                     }
                   />
                 </div>
@@ -181,9 +177,9 @@ export default function JobSeekerRegister() {
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="email"
                     placeholder="Enter email address"
-                    value={data.email}
+                    value={data.Useremail}
                     onChange={(e) =>
-                      setData({ ...data, email: e.target.value })
+                      setData({ ...data, Useremail: e.target.value })
                     }
                   />
                 </div>
@@ -195,9 +191,9 @@ export default function JobSeekerRegister() {
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="number"
                     placeholder="Enter phone number"
-                    value={data.phone}
+                    value={data.Userphone}
                     onChange={(e) =>
-                      setData({ ...data, phone: e.target.value })
+                      setData({ ...data, Userphone: e.target.value })
                     }
                   />
                 </div>
@@ -209,7 +205,7 @@ export default function JobSeekerRegister() {
 
                   <select
                     className="py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                    value={data.selectedCountry}
+                    value={data.UserselectedCountry}
                     required
                     onChange={handleCountryChange}
                   >
@@ -225,7 +221,7 @@ export default function JobSeekerRegister() {
 
                   <select
                     className="py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                    value={data.selectedCity}
+                    value={data.UserselectedCity}
                     onChange={handleCityChange}
                     required
                   >
@@ -246,9 +242,9 @@ export default function JobSeekerRegister() {
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="password"
                     placeholder="Enter password"
-                    value={data.password}
+                    value={data.Userpassword}
                     onChange={(e) =>
-                      setData({ ...data, password: e.target.value })
+                      setData({ ...data, Userpassword: e.target.value })
                     }
                   />
                 </div>
@@ -260,9 +256,9 @@ export default function JobSeekerRegister() {
                     className="border-[1px] border-[#c1c1c1] rounded p-2 "
                     type="password"
                     placeholder="Enter password again"
-                    value={data.cpassword}
+                    value={data.Usercpassword}
                     onChange={(e) =>
-                      setData({ ...data, cpassword: e.target.value })
+                      setData({ ...data, Usercpassword: e.target.value })
                     }
                   />
                 </div>
