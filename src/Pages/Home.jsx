@@ -26,7 +26,9 @@ export default function Home() {
       }
       const { data } = await axios.post("/", {}, { withCredentials: true });
       const { status, user } = data;
-      setUserName(user);
+      if (user) {
+        setUserName(user);
+      }
       return status ? "" : removeCookie("token");
     };
     verifyCookie();
@@ -40,15 +42,18 @@ export default function Home() {
 
   return (
     <>
-      {!userName || userName.type == "candidate" ? (
-        <HomeCandidate name={userName.Username || null}
-        emails= {userName.Useremail || null}
-        phones= {userName.Userphone || null}
-        cities = {userName.UserselectedCity || null}
-        countries = {userName.UserselectedCountry || null}
-         />
-      ) : (
-        <div></div>
+      {userName && userName.type == "candidate" && (
+        <HomeCandidate
+          name={userName.Username || null}
+          emails={userName.Useremail || null}
+          phones={userName.Userphone || null}
+          cities={userName.UserselectedCity || null}
+          countries={userName.UserselectedCountry || null}
+        />
+      )}
+
+      {userName.length ===0 && (
+        <HomeCandidate />
       )}
       {/* {userName && (
         <div>
