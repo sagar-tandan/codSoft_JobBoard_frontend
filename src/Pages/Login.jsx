@@ -2,11 +2,14 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import back from "../assets/loginBack.gif";
+import loader from "../assets/Asset!/loader.gif";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,13 +20,16 @@ export default function Login() {
     // axios.get('/')
     const { email, password } = data;
     try {
+      setLoading(true);
       const { data } = await axios.post("/login", {
         email,
         password,
       });
       if (data.error) {
         toast.error(data.error);
+        setLoading(false);
       } else {
+        setLoading(false);
         setData({});
         toast.success(data.message);
         navigate("/");
@@ -31,6 +37,7 @@ export default function Login() {
     } catch (error) {
       console.error(error);
       toast.error(error.message);
+      setLoading(false);
     }
   };
   return (
@@ -55,7 +62,7 @@ export default function Login() {
 
             <input
               required
-              className="px-3 py-3 my-2 border"
+              className="px-3 py-3 my-2 border rounded"
               type="email"
               placeholder="Enter your email"
               value={data.email}
@@ -68,7 +75,7 @@ export default function Login() {
 
             <input
               required
-              className="py-3 px-3 my-2 border"
+              className="py-3 px-3 my-2 border rounded"
               type="password"
               placeholder="Enter your password"
               value={data.password}
@@ -85,11 +92,30 @@ export default function Login() {
             </div>
 
             <button
-              className="my-4 bg-green-600 text-white hover:bg-green-700 text-lg p-3 rounded-full w-1/2 mx-auto hover:brightness-95 transition-all ease-in-out duration-300 font-medium shadow-lg shadow-green-400"
+              className="mt-3 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
               type="submit"
             >
-              Login
+              <div className="w-full flex p-3 justify-center gap-4">
+                <img
+                  className={`${
+                    loading ? "inline-block" : "hidden"
+                  } w-6 h-6 object-center`}
+                  src={loader}
+                  alt=""
+                />
+                <h1 className={`${loading ? "hidden" : "inline"}`}>Login</h1>
+              </div>
             </button>
+
+            <div className="flex items-center justify-center mt-6 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
+              <span>Don't have an account? </span>
+              <Link to="/registeruser">
+                <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
+                  {" "}
+                  Register Now
+                </span>
+              </Link>
+            </div>
           </form>
         </div>
       </div>

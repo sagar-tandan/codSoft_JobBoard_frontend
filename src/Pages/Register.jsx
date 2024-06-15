@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import reg from "../assets/Asset!/reg.jpg";
 import loader from "../assets/Asset!/loader.gif";
 import back from "../assets/back.png";
@@ -265,7 +265,7 @@ export default function Register() {
               </div>
             </div>
             <button
-              className="mt-3 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
+              className="mt-5 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
               type="submit"
             >
               <div className="w-full flex p-3 justify-center gap-4">
@@ -280,12 +280,14 @@ export default function Register() {
               </div>
             </button>
 
-            <div className="flex items-center justify-center mt-4 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
+            <div className="flex items-center justify-center mt-6 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
               <span>Already have an account? </span>
-              <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
-                {" "}
-                Login
-              </span>
+              <Link to ='/login'>
+                <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
+                  {" "}
+                  Login
+                </span>
+              </Link>
             </div>
           </div>
         </div>

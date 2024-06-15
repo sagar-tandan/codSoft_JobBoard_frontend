@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import reg from "../assets/Asset!/reg.jpg";
 import loader from "../assets/Asset!/loader.gif";
 import back from "../assets/back.png";
@@ -28,17 +28,17 @@ export default function JobSeekerRegister() {
   const country = Country.getAllCountries();
 
   const handleCountryChange = (event) => {
-    setData({ ...data,   UserselectedCountry: event.target.value });
+    setData({ ...data, UserselectedCountry: event.target.value });
   };
 
   useEffect(() => {
     const selectedCountry1 = country.find(
-      (count) => count.name === data.  UserselectedCountry
+      (count) => count.name === data.UserselectedCountry
     );
     if (selectedCountry1) {
       setCode(selectedCountry1.isoCode);
     }
-  }, [data.  UserselectedCountry]);
+  }, [data.UserselectedCountry]);
 
   useEffect(() => {
     if (code) {
@@ -47,20 +47,20 @@ export default function JobSeekerRegister() {
   }, [code]);
 
   const handleCityChange = (event) => {
-    setData({ ...data,   UserselectedCity: event.target.value });
+    setData({ ...data, UserselectedCity: event.target.value });
   };
 
   const registerUser = async (e) => {
     e.preventDefault();
     const {
-        Username,
-        Useremail,
-        Userpassword,
-        Usercpassword,
-        Userimage,
-        UserselectedCity,
-        UserselectedCountry,
-        Userphone,
+      Username,
+      Useremail,
+      Userpassword,
+      Usercpassword,
+      Userimage,
+      UserselectedCity,
+      UserselectedCountry,
+      Userphone,
     } = data;
 
     if (Userpassword != Usercpassword) {
@@ -71,13 +71,13 @@ export default function JobSeekerRegister() {
       try {
         setLoading(true);
         const { data } = await axios.post("/registerUser", {
-            Username,
-            Useremail,
-            Userpassword,
-            Userimage,
-            UserselectedCity,
-            UserselectedCountry,
-            Userphone,
+          Username,
+          Useremail,
+          Userpassword,
+          Userimage,
+          UserselectedCity,
+          UserselectedCountry,
+          Userphone,
         });
         if (data.error) {
           toast.error(data.error);
@@ -150,7 +150,9 @@ export default function JobSeekerRegister() {
                     type="text"
                     placeholder="Enter full name"
                     value={data.Username}
-                    onChange={(e) => setData({ ...data, Username: e.target.value })}
+                    onChange={(e) =>
+                      setData({ ...data, Username: e.target.value })
+                    }
                   />
                 </div>
 
@@ -265,7 +267,7 @@ export default function JobSeekerRegister() {
               </div>
             </div>
             <button
-              className="mt-3 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
+              className="mt-5 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
               type="submit"
             >
               <div className="w-full flex p-3 justify-center gap-4">
@@ -280,12 +282,14 @@ export default function JobSeekerRegister() {
               </div>
             </button>
 
-            <div className="flex items-center justify-center mt-4 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
+            <div className="flex items-center justify-center mt-6 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
               <span>Already have an account? </span>
-              <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
-                {" "}
-                Login
-              </span>
+              <Link to="/login">
+                <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
+                  {" "}
+                  Login
+                </span>
+              </Link>
             </div>
           </div>
         </div>
