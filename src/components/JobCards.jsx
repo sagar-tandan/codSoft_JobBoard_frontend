@@ -21,6 +21,11 @@ export default function JobCards({
   level,
   AppEnd,
   date,
+  username,
+  emails,
+  phones,
+  cities,
+  countries,
 }) {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -28,6 +33,10 @@ export default function JobCards({
 
   const navigateToNext = (e) => {
     e.preventDefault();
+
+    
+
+
     navigate(`/job/jobdetails/${id}`, {
       state: {
         id: id,
@@ -49,6 +58,11 @@ export default function JobCards({
         time: time,
         date: date,
         skills: skills,
+        username: username,
+        emails : emails,
+        phones : phones,
+        cities : cities,
+        countries : countries,
       },
     });
   };
@@ -69,7 +83,25 @@ export default function JobCards({
   return (
     <div>
       <div
-        className={`${width > 200 && width <= 300 && "w-[270px]"}  ${width > 300 && width <= 350 && "w-[300px]"} ${width > 350 && width < 450 && "w-[350px]"} ${width > 450 && width < 550 && "w-[450px]"} ${width > 550 && width < 680 && "w-[550px]"} ${width >= 680 && width <= 750 && "w-[300px]"} ${width >= 750 && width <= 800 && "w-[330px]"} ${width >= 801 && width <= 902 && "w-[350px]"} ${width >= 903 && width <= 1023 && "w-[400px]"} ${width >= 1024 && width <= 1070 && "w-[440px]"} ${width >= 1071 && width <= 1100 && "w-[300px]"} ${width >= 1101 && width <= 1200 && "w-[310px]"} ${width >= 1201 && width <= 1300 && "w-[340px]"} ${width >= 1301 && width <= 1429 && "w-[370px]"} ${width >= 1430 && width <= 1479 && "w-[300px]"} ${width >= 1480 && width <= 1528 && "w-[307px]"} ${width > 1529 && 'w-[320px]'} flex flex-col px-4 py-6 gap-6 shadow-lg bg-[#f2f2f2] font-poppins`}
+        className={`${width > 200 && width <= 300 && "w-[270px]"}  ${
+          width > 300 && width <= 350 && "w-[300px]"
+        } ${width > 350 && width < 450 && "w-[350px]"} ${
+          width > 450 && width < 550 && "w-[450px]"
+        } ${width > 550 && width < 680 && "w-[550px]"} ${
+          width >= 680 && width <= 750 && "w-[300px]"
+        } ${width >= 750 && width <= 800 && "w-[330px]"} ${
+          width >= 801 && width <= 902 && "w-[350px]"
+        } ${width >= 903 && width <= 1023 && "w-[400px]"} ${
+          width >= 1024 && width <= 1070 && "w-[440px]"
+        } ${width >= 1071 && width <= 1100 && "w-[300px]"} ${
+          width >= 1101 && width <= 1200 && "w-[310px]"
+        } ${width >= 1201 && width <= 1300 && "w-[340px]"} ${
+          width >= 1301 && width <= 1429 && "w-[370px]"
+        } ${width >= 1430 && width <= 1479 && "w-[300px]"} ${
+          width >= 1480 && width <= 1528 && "w-[307px]"
+        } ${
+          width > 1529 && "w-[320px]"
+        } flex flex-col px-4 py-6 gap-6 shadow-lg bg-[#f2f2f2] font-poppins`}
       >
         <div className="w-full flex gap-3">
           <img className="w-10 h-10 rounded-full" src={image} alt="" />

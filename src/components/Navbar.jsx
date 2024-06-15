@@ -14,7 +14,9 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(userName);
+    if (userName) {
+      console.log(userName);
+    }
   }, [userName]);
 
   useEffect(() => {

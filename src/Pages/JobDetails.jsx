@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function JobDetails() {
   const location = useLocation();
   const {
+    id,
     name,
     image,
     loc,
@@ -22,9 +23,15 @@ export default function JobDetails() {
     time,
     date,
     skills,
+    username,
+    emails,
+    phones,
+    cities,
+    countries,
   } = location.state;
   //   console.log(responsibility);
 
+  const navigate = useNavigate();
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -47,6 +54,23 @@ export default function JobDetails() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleClick = (e) => {
+    if (username == null) {
+      navigate("/login");
+      console.log(username)
+    } else {
+      navigate(`/job/jobdetails/${id}/apply`, {
+        state: {
+          username: username,
+          emails: emails,
+          phones: phones,
+          cities: cities,
+          countries: countries,
+        },
+      });
+    }
+  };
 
   return (
     <div
@@ -89,7 +113,12 @@ export default function JobDetails() {
                     /monthly
                   </span>
                 </h1>
-                <div className="flex flex-col justify-center items-center text-sm border-green-500 bg-green-500 rounded-lg text-white px-2 py-2 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
+                <div
+                  onClick={(e) => {
+                    handleClick(e);
+                  }}
+                  className="flex flex-col justify-center items-center text-sm border-green-500 bg-green-500 rounded-lg text-white px-2 py-2 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300"
+                >
                   Apply Now
                 </div>
               </div>
@@ -122,7 +151,12 @@ export default function JobDetails() {
 
                 <div className="w-full flex flex-col items-end">
                   <div className="w-full flex justify-end text-sm text-white font-medium ">
-                    <h1 className="border-green-500 bg-green-500 px-3 py-2 rounded-lg hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">
+                    <h1
+                      onClick={(e) => {
+                        handleClick(e);
+                      }}
+                      className="border-green-500 bg-green-500 px-3 py-2 rounded-lg hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300"
+                    >
                       Apply Now
                     </h1>
                   </div>

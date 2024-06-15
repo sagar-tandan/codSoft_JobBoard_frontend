@@ -2,7 +2,7 @@ import React from "react";
 import JobCards from "./JobCards.jsx";
 import { Link } from "react-router-dom";
 
-export default function JobListing() {
+export default function JobListing({name,emails,phones,cities,countries}) {
   const jobs = [
     {
       id: 1,
@@ -305,6 +305,11 @@ export default function JobListing() {
               level={job.level}
               AppEnd={job.AppEnd}
               date= {job.date}
+              username = {name}
+              emails = {emails}
+              phones = {phones}
+              cities = {cities}
+              countries = {countries}
             />
           </div>
         ))}
