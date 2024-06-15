@@ -90,13 +90,15 @@ export default function Navbar() {
                 {/* </Link> */}
                 {register && (
                   <div className="dropdownAnimation flex flex-col gap-2 py-2 absolute top-10 justify-center items-center bg-[#f2f2f2] shadow-md w-full">
-                    <h1
-                      onClick={() => toggleButton()}
-                      className="hover:cursor-pointer hover:text-green-600"
-                    >
-                      Register JobSeeker
-                    </h1>
-                    <Link to="/register">
+                    <Link to="/registeruser">
+                      <h1
+                        onClick={() => toggleButton()}
+                        className="hover:cursor-pointer hover:text-green-600"
+                      >
+                        Register JobSeeker
+                      </h1>
+                    </Link>
+                    <Link to="/registercompany">
                       <h1
                         onClick={() => toggleButton()}
                         className="hover:cursor-pointer hover:text-green-600"

@@ -9,7 +9,7 @@ import back from "../assets/back.png";
 
 import { Country, State, City } from "country-state-city";
 
-export default function Register() {
+export default function JobSeekerRegister() {
   const navigate = useNavigate();
   const [cities, setCities] = useState([]);
   const [code, setCode] = useState("");
@@ -52,49 +52,49 @@ export default function Register() {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const {
-      name,
-      email,
-      password,
-      cpassword,
-      image,
-      selectedCity,
-      selectedCountry,
-      phone,
-    } = data;
+    // const {
+    //   name,
+    //   email,
+    //   password,
+    //   cpassword,
+    //   image,
+    //   selectedCity,
+    //   selectedCountry,
+    //   phone,
+    // } = data;
 
-    if (password != cpassword) {
-      toast.error("Password didn't match!");
-    } else if (password.length < 6) {
-      toast.error("Password should have at least 6 letters!");
-    } else {
-      try {
-        setLoading(true);
-        const { data } = await axios.post("/register", {
-          name,
-          email,
-          password,
-          image,
-          selectedCity,
-          selectedCountry,
-          phone,
-        });
-        if (data.error) {
-          toast.error(data.error);
-          setLoading(false);
-        } else {
-          setData("");
-          // console.log(data);
-          setLoading(false);
-          toast.success("Registration completed!");
-          navigate("/login");
-        }
-      } catch (error) {
-        // console.log(error);
-        toast.error(error.message);
-        setLoading(false);
-      }
-    }
+    // if (password != cpassword) {
+    //   toast.error("Password didn't match!");
+    // } else if (password.length < 6) {
+    //   toast.error("Password should have at least 6 letters!");
+    // } else {
+    //   try {
+    //     setLoading(true);
+    //     const { data } = await axios.post("/register", {
+    //       name,
+    //       email,
+    //       password,
+    //       image,
+    //       selectedCity,
+    //       selectedCountry,
+    //       phone,
+    //     });
+    //     if (data.error) {
+    //       toast.error(data.error);
+    //       setLoading(false);
+    //     } else {
+    //       setData("");
+    //       // console.log(data);
+    //       setLoading(false);
+    //       toast.success("Registration completed!");
+    //       navigate("/login");
+    //     }
+    //   } catch (error) {
+    //     // console.log(error);
+    //     toast.error(error.message);
+    //     setLoading(false);
+    //   }
+    // }
 
     // console.log(data);
   };
@@ -130,29 +130,33 @@ export default function Register() {
           <div className="flex flex-col w-full lg:w-[60%] my-[3vh] h-[80vh] pr-4">
             <div className="flex flex-col gap-2 w-full">
               <div className="font-poppins font-semibold text-xl flex flex-col">
-                <h1>Company Registration</h1>
+                <h1>Candidate Registration</h1>
                 <div className="border bg-green-600 w-[70px] h-[5px] mt-1 rounded-full"></div>
               </div>
               <p>
                 Fill out the form below to create an account. Once you create an
-                account, log in to the system and post your vacancies online to
-                reach out the active users who are looking for a new job.
+                account, log in to the system and create your profile to start
+                applying the jobs that you are looking for.
               </p>
               <div className="border"></div>
 
               {/* for email */}
               <div className="flex md:flex-row flex-col gap-4 md:gap-8 justify-between mt-1">
                 <div className="flex flex-col gap-1 w-full">
-                  <label className="font-medium">Company Name</label>
+                  <label className="font-medium">Full Name</label>
                   <input
                     required
                     className="border-[1px] border-[#c1c1c1] rounded p-2"
                     type="text"
-                    placeholder="Enter Company name"
+                    placeholder="Enter full name"
                     value={data.name}
-                    onChange={(e) => setData({ ...data, name: e.target.value })}
+                    onChange={(e) =>
+                      setData({ ...data, name: e.target.value })
+                    }
                   />
                 </div>
+
+                
 
                 <div className="flex flex-col gap-1 w-full">
                   <label className="font-medium">Profile Link</label>
