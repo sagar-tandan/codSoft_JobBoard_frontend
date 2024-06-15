@@ -14,6 +14,10 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(userName);
+  }, [userName]);
+
+  useEffect(() => {
     // const sendRequest = async () => {
     //   const res = await axios.get("/user", {
     //     withCredentials: true,
