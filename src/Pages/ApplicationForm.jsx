@@ -199,7 +199,7 @@ export default function ApplicationForm() {
             <label className="font-poppins font-semibold w-full uppercase text-md">
               Share Experiences
             </label>
-            <p>
+            <p className="w-full">
               Although it is not a requirement, we would love to know about some
               of the projects you have done. Or, give us short overview on why
               this role speaks to you.
