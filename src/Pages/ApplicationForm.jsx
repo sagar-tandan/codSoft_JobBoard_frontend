@@ -66,7 +66,7 @@ export default function ApplicationForm() {
             />
           </div>
 
-          <div className="flex gap-4 justify-between">
+          <div className="flex sm:flex-row flex-col gap-4 justify-between">
             <div className="flex flex-col gap-2 items-center w-full">
               <label className="font-poppins font-medium w-full">
                 Full Name <span className="text-red-600">*</span>
@@ -99,7 +99,7 @@ export default function ApplicationForm() {
             </div>
           </div>
 
-          <div className="flex gap-4 justify-between">
+          <div className="flex sm:flex-row flex-col gap-4 justify-between">
             <div className="flex flex-col gap-2 items-center w-full">
               <label className="font-poppins font-medium w-full">
                 Phone <span className="text-red-600">*</span>
@@ -133,7 +133,7 @@ export default function ApplicationForm() {
           </div>
           <h1 className="mt-2 font-medium text-lg font-poppins">LINKS</h1>
 
-          <div className="flex gap-4 justify-between">
+          <div className="flex sm:flex-row flex-col gap-4 justify-between">
             <div className="flex flex-col gap-2 items-center w-full">
               <label className="font-poppins font-medium w-full">
                 Facebook URL
@@ -164,7 +164,7 @@ export default function ApplicationForm() {
             </div>
           </div>
 
-          <div className="flex gap-4 justify-between">
+          <div className="flex sm:flex-row flex-col gap-4 justify-between">
             <div className="flex flex-col gap-2 items-center w-full">
               <label className="font-poppins font-medium w-full">
                 Github URL
@@ -243,7 +243,9 @@ export default function ApplicationForm() {
                 src={loader}
                 alt=""
               /> */}
-              <h1>Submit Application</h1>
+              <h1 className="sm:inline-block hidden">Submit Application</h1>
+              <h1 className="inline-block sm:hidden">Submit</h1>
+
             </div>
           </button>
         </form>
