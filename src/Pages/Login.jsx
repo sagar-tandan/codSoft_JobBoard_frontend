@@ -108,11 +108,21 @@ export default function Login() {
             </button>
 
             <div className="flex items-center justify-center mt-6 w-full font-medium gap-1 pb-20 md:pb-0 flex-wrap">
-              <span>Don't have an account? </span>
+              <span className="w-full flex justify-center">
+                Don't have an account? Register as{" "}
+              </span>
               <Link to="/registeruser">
                 <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
                   {" "}
-                  Register Now
+                  Candidate
+                </span>
+              </Link>
+
+              <span className="text-green-600 ">/</span>
+              <Link to="/registercompany">
+                <span className="text-green-600 hover:text-blue-500 hover:cursor-pointer transition-all ease-in-out duration-300">
+                  {" "}
+                  Company
                 </span>
               </Link>
             </div>
