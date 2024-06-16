@@ -67,6 +67,10 @@ export default function JobDetails() {
           phones: phones,
           cities: cities,
           countries: countries,
+          jobname: pos,
+          companyname: name,
+          companyloc: loc,
+          jobtype:time,
         },
       });
     }
