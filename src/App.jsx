@@ -12,12 +12,14 @@ import JobDetails from "./Pages/JobDetails";
 import JobSeekerRegister from "./Pages/JobSeekerRegister";
 import CompanyPage from "./Pages/CompanyPage";
 import ApplicationForm from "./Pages/ApplicationForm";
+import PostJob from "./Pages/PostJob";
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
 
 function App() {
   const [data, setData] = useState([]);
+  // console.log(data.type)
 
   return (
   <>
@@ -25,12 +27,13 @@ function App() {
   <Toaster position="bottom-right" toastOptions={{duration: 2000}}/>
   <Routes>
       <Route path="/" element={<Home data={data} />} />
-      <Route path="/company" element={<CompanyPage />} />
+      {/* <Route path="/company" element={<CompanyPage />} /> */}
       <Route path="/registercompany" element={<Register />} />
       <Route path="/registeruser" element={<JobSeekerRegister />} />
       <Route path="/login" element={<Login />} />
       <Route path="/job/jobdetails/:id" element={<JobDetails />} />
       <Route path="/job/jobdetails/:ids/apply" element={<ApplicationForm />} />
+      <Route path="/postjob" element={data.type == "company" ? (<PostJob />):(<Login/>)} />
     </Routes>
 
 

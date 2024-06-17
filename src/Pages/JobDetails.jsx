@@ -58,7 +58,7 @@ export default function JobDetails() {
   const handleClick = (e) => {
     if (username == null) {
       navigate("/login");
-      console.log(username)
+      // console.log(username)
     } else {
       navigate(`/job/jobdetails/${id}/apply`, {
         state: {

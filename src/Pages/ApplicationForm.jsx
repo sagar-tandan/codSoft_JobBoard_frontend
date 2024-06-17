@@ -16,6 +16,7 @@ export default function ApplicationForm() {
     companyloc,
     jobtype,
   } = location.state;
+  
   const [data, setData] = useState({
     name: username,
     email: emails,

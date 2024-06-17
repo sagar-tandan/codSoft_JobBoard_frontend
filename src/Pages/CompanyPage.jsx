@@ -6,6 +6,7 @@ import plus from "../assets/Company/plus.png";
 import edit from "../assets/Company/edit.png";
 import del from "../assets/Company/delete.png";
 import view from "../assets/Company/view.png";
+import { Link } from "react-router-dom";
 
 export default function CompanyPage({ id }) {
   const [jobs, setJob] = useState([]);
@@ -40,9 +41,15 @@ export default function CompanyPage({ id }) {
               Total Posted Vacancies
             </h1>
           </div>
-          <h1 className="font-poppins text-xl font-medium text-green-600 w-full px-[68px]">
-            100 Vacancies
-          </h1>
+          {jobs.length == 0 || jobs.length == 1 ? (
+            <h1 className="font-poppins text-xl font-medium text-green-600 w-full px-[68px]">
+              {jobs.length} Vacancy
+            </h1>
+          ) : (
+            <h1 className="font-poppins text-xl font-medium text-green-600 w-full px-[68px]">
+              {jobs.length} Vacancies
+            </h1>
+          )}
         </div>
 
         <div className="flex flex-col border border-white shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
@@ -60,16 +67,18 @@ export default function CompanyPage({ id }) {
             100 Applications
           </h1>
         </div>
+        <Link className="w-full sm:w-[50%] lg:w-[30%] mx-3 my-2 p-5 rounded-lg  bg-green-600 shadow-black shadow-lg hover:cursor-pointer hover:bg-green-700 active:scale-[98%] transition-all ease-in-out duration-300" to="/postjob">
+          <div className="flex flex-col text-white w-full ">
+            <div className="w-full flex gap-5 items-center">
+              <img className="w-10 h-10 p-1 rounded-full" src={plus} alt="" />
+              <h1 className="font-poppins text-xl font-semibold">Post a job</h1>
+            </div>
 
-        <div className="flex flex-col bg-green-600 text-white shadow-green-400 shadow-lg mx-3 my-2 w-full sm:w-[50%] lg:w-[30%] p-5 rounded-lg hover:cursor-pointer hover:bg-green-700 active:scale-[98%] transition-all ease-in-out duration-300">
-          <div className="w-full flex gap-5 items-center">
-            <img className="w-10 h-10 p-1 rounded-full" src={plus} alt="" />
-            <h1 className="font-poppins text-xl font-semibold">Post a job</h1>
+            <h1 className="font-poppins font-medium text-white w-full px-[64px]">
+              Click here to post job vacancy
+            </h1>
           </div>
-          <h1 className="font-poppins font-medium text-white w-full px-[64px]">
-            Click here to post job vacancy
-          </h1>
-        </div>
+        </Link>
       </div>
       {/* For recent Applications */}
       <div></div>
@@ -97,19 +106,14 @@ export default function CompanyPage({ id }) {
                 </div>
 
                 <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
-                    <img
-                      className="w-10 h-10 cursor-pointer "
-                      src={view}
-                      alt=""
-                    />
+                  <img
+                    className="w-10 h-10 cursor-pointer "
+                    src={view}
+                    alt=""
+                  />
 
+                  <img className="w-8 h-7 cursor-pointer " src={edit} alt="" />
 
-                    <img
-                      className="w-8 h-7 cursor-pointer "
-                      src={edit}
-                      alt=""
-                    />
-                    
                   <img
                     className="w-8 h-8 hover:cursor-pointer"
                     src={del}
