@@ -129,7 +129,22 @@ export default function PostJob({ datas }) {
       }
       toast.success(response.data.message);
       setLoading(false);
-      setData({});
+
+      setData({
+        position: "",
+        des: "",
+        jobtype: "",
+        category: "",
+        skills: "",
+        salary: "",
+        experience: "",
+        gender: "",
+        qual: "",
+        level: "",
+        responsibilities: [],
+        requirements: [],
+        benefits: [],
+      });
     } catch (error) {
       console.log(error);
       toast.success("Something went wrong!");
@@ -484,10 +499,14 @@ export default function PostJob({ datas }) {
                 src={loader}
                 alt=""
               />
-              <h1 className={`${loading ? "hidden" : "hidden sm:inline-block"}`}>
+              <h1
+                className={`${loading ? "hidden" : "hidden sm:inline-block"}`}
+              >
                 Submit Application
               </h1>
-              <h1 className={`${loading ? "hidden" : "inline-block sm:hidden"}`}>
+              <h1
+                className={`${loading ? "hidden" : "inline-block sm:hidden"}`}
+              >
                 Submit
               </h1>
             </div>
