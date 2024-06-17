@@ -129,46 +129,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-
-      {/* <form
-        onSubmit={loginUser}
-        className="flex flex-col max-w-screen-md my-3 mx-auto "
-      >
-        <label className="font-medium mx-1 text-lg"> Email</label>
-
-        <div className="flex flex-col border-[2px] mt-1 rounded-xl border-blue-500">
-          <input
-            className="outline-none px-3 my-2"
-            type="email"
-            placeholder="Enter email...."
-            value={data.email}
-            onChange={(e) => {
-              setData({ ...data, email: e.target.value });
-            }}
-          />
-        </div>
-
-        <label className="mt-4 font-medium mx-1 text-lg"> Password</label>
-
-        <div className="flex flex-col border-[2px] mt-1 rounded-xl border-blue-500">
-          <input
-            className="outline-none px-3 my-2"
-            type="password"
-            placeholder="Enter password...."
-            value={data.password}
-            onChange={(e) => {
-              setData({ ...data, password: e.target.value });
-            }}
-          />
-        </div>
-
-        <button
-          className="mt-4 bg-blue-500 p-3 rounded-full w-1/2 mx-auto hover:brightness-95 transition-all ease-in-out duration-300 font-medium"
-          type="submit"
-        >
-          Login
-        </button>
-      </form> */}
     </div>
   );
 }

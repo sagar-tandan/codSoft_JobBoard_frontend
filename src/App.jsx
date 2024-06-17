@@ -33,7 +33,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/job/jobdetails/:id" element={<JobDetails />} />
       <Route path="/job/jobdetails/:ids/apply" element={<ApplicationForm />} />
-      <Route path="/postjob" element={data.type == "company" ? (<PostJob />):(<Login/>)} />
+      <Route path="/postjob" element={data.type == "company" ? (<PostJob datas = {data} />):(<Login/>)} />
     </Routes>
 
 
