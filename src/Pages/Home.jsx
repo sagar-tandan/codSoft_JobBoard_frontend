@@ -12,6 +12,7 @@ import video from "../assets/video.mp4";
 import Categories from "../components/Categories";
 import JobListing from "../components/JobListing";
 import HomeCandidate from "../components/HomeCandidate";
+import CompanyPage from "./CompanyPage";
 
 export default function Home({ data }) {
   const [userName, setUserName] = useState([]);
@@ -37,7 +38,10 @@ export default function Home({ data }) {
       {userName.length === 0 && <HomeCandidate />}
 
       {userName && userName.type == "company" && (
-        <div className="mt-16"> Company Dashboard</div>
+        <div className="mt-16">
+          <CompanyPage 
+          id= {userName._id} />
+        </div>
       )}
     </>
   );

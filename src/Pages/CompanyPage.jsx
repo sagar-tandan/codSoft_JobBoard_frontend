@@ -1,10 +1,25 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import application from "../assets/Company/application.png";
 import vacancy from "../assets/Company/vacancy.png";
 import plus from "../assets/Company/plus.png";
 
-export default function CompanyPage() {
+export default function CompanyPage({ id }) {
+  const [jobs, setJob] = useState([]);
+
+  useEffect(() => {
+    const getJobs = async () => {
+      const response = await axios.get("/getCompanyJobs", {
+        params: {id} ,
+      });
+      if(response.data.error == "No Company Found!!"){
+        setJob('');
+      }
+      setJob(response.data.findAllJobs);
+      console.log(jobs)
+    };
+    getJobs();
+  }, []);
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
       <div className="w-full flex flex-row gap-4">
@@ -51,15 +66,13 @@ export default function CompanyPage() {
         </div>
       </div>
       {/* For recent Applications */}
-      <div>
-
-      </div>
+      <div></div>
 
       {/* For the company created Vacancies */}
       <div className="w-full flex flex-col">
-        <h1 className="w-full text-xl font-medium mx-2 mt-10">Your Job Vacancies</h1>
-
-
+        <h1 className="w-full text-xl font-medium mx-2 mt-10">
+          Your Job Vacancies
+        </h1>
       </div>
     </div>
   );
