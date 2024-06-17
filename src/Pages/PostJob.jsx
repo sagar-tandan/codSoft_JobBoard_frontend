@@ -3,16 +3,20 @@ import toast from "react-hot-toast";
 
 export default function PostJob() {
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    location: "",
-    resume: "",
-    fb: "",
-    linkedin: "",
-    github: "",
-    portfolio: "",
+    // id: "",
+    // cName: "",
+    // cLoc: "",
+    // cPhone: "",
+    position: "",
+    des: "",
+    jobtype: "",
+    category: "",
+    skills: "",
+    salary: "",
     experience: "",
+    gender: "",
+    qual: "",
+    level: "",
     responsibilities: [],
     requirements: [],
     benefits: [],
@@ -93,9 +97,9 @@ export default function PostJob() {
                 className="w-full py-2 px-3 border-[1px] border-[#c1c1c1] rounded"
                 type="text"
                 placeholder="E.g. Frontend Developer"
-                value={data.name}
+                value={data.position}
                 onChange={(e) => {
-                  setData({ ...data, name: e.target.value });
+                  setData({ ...data, position: e.target.value });
                 }}
               />
             </div>
@@ -106,9 +110,9 @@ export default function PostJob() {
               <select
                 required
                 className="w-full py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                value={data.jobtype}
+                value={data.level}
                 onChange={(e) => {
-                  setData({ ...data, jobtype: e.target.value });
+                  setData({ ...data, level: e.target.value });
                 }}
               >
                 <option value="">Select Level</option>
@@ -122,17 +126,17 @@ export default function PostJob() {
           <div className="flex sm:flex-row flex-col gap-4 justify-between">
             <div className="flex flex-col gap-2 items-center w-full">
               <label className="font-poppins font-medium w-full">
-                Catagory <span className="text-red-600">*</span>
+                Category <span className="text-red-600">*</span>
               </label>
               <select
                 className="w-full py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                value={data.jobtype}
+                value={data.category}
                 required
                 onChange={(e) => {
-                  setData({ ...data, jobtype: e.target.value });
+                  setData({ ...data, category: e.target.value });
                 }}
               >
-                <option value="">Select Catagory</option>
+                <option value="">Select Category</option>
                 <option value="">Full Time</option>
                 <option value="">Part Time</option>
               </select>
@@ -161,9 +165,9 @@ export default function PostJob() {
               <label className="font-poppins font-medium w-full">Salary</label>
               <select
                 className="w-full py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                value={data.jobtype}
+                value={data.salary}
                 onChange={(e) => {
-                  setData({ ...data, jobtype: e.target.value });
+                  setData({ ...data, salary: e.target.value });
                 }}
               >
                 <option value="">Select Monthly Salary</option>
@@ -183,9 +187,9 @@ export default function PostJob() {
               <select
                 required
                 className="w-full py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                value={data.jobtype}
+                value={data.experience}
                 onChange={(e) => {
-                  setData({ ...data, jobtype: e.target.value });
+                  setData({ ...data, experience: e.target.value });
                 }}
               >
                 <option value="">Select experience in years</option>
@@ -214,9 +218,9 @@ export default function PostJob() {
               <select
                 required
                 className="w-full py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                value={data.jobtype}
+                value={data.gender}
                 onChange={(e) => {
-                  setData({ ...data, jobtype: e.target.value });
+                  setData({ ...data, gender: e.target.value });
                 }}
               >
                 <option value="">Select Gender</option>
@@ -232,9 +236,9 @@ export default function PostJob() {
               <select
                 required
                 className="w-full py-2 px-2 border-[1px] border-[#c1c1c1] rounded"
-                value={data.jobtype}
+                value={data.qual}
                 onChange={(e) => {
-                  setData({ ...data, jobtype: e.target.value });
+                  setData({ ...data, qual: e.target.value });
                 }}
               >
                 <option value="">Select Qualification</option>
@@ -258,9 +262,9 @@ export default function PostJob() {
               className="w-full py-2 px-3 border-[1px] border-[#c1c1c1] rounded"
               type="text"
               placeholder="E.g. HTML, CSS, Js"
-              value={data.location}
+              value={data.skills}
               onChange={(e) => {
-                setData({ ...data, location: e.target.value });
+                setData({ ...data, skills: e.target.value });
               }}
             />
           </div>
@@ -275,9 +279,9 @@ export default function PostJob() {
               id="message"
               rows="6"
               class="mt-2 block p-2.5 w-full text-sm text-gray-900  rounded-lg border-[1px] border-[#c1c1c1] "
-              value={data.experience}
+              value={data.des}
               onChange={(e) => {
-                setData({ ...data, experience: e.target.value });
+                setData({ ...data, des: e.target.value });
               }}
             ></textarea>
           </div>
