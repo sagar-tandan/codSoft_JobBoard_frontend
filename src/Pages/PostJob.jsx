@@ -32,11 +32,11 @@ export default function PostJob() {
     }
   };
 
-  const addRequiirement = () => {
+  const addRequirement = () => {
     if (requirementInput.trim() !== "") {
       setData({
         ...data,
-        requirements: [...data.requirements, responsibilityInput],
+        requirements: [...data.requirements, requirementInput],
       });
       setRequirementInput("");
     }
@@ -74,7 +74,7 @@ export default function PostJob() {
       id="top"
       className=" h-[100vh] text-black w-full flex flex-col max-w-screen-2xl pt-24 px-[5%] font-poppins mx-auto"
     >
-      <div className="flex flex-col mt-12 ">
+      <div className="flex flex-col">
         <h1 className="uppercase text-md font-poppins font-medium">
           Post a new Job Vacancy
         </h1>
@@ -294,31 +294,33 @@ export default function PostJob() {
                   key={index}
                   className="flex justify-between items-center border-b py-2"
                 >
-                  <span>{responsibility}</span>
-                  <button
-                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  <span>✔ {responsibility}</span>
+                  <div
+                    className="bg-red-500 text-white px-2 py-1 rounded cursor-pointer"
                     onClick={() => deleteResponsibility(index)}
                   >
                     Delete
-                  </button>
+                  </div>
                 </li>
               ))}
             </ul>
-            <input
-              required
-              className="w-full p-2 border-[1px] border-[#c1c1c1] rounded"
-              type="text"
-              id="todo-input"
-              placeholder="Add new responsibility"
-              value={responsibilityInput}
-              onChange={(e) => setResponsibilityInput(e.target.value)}
-            />
-            <div
-              className="mt-2 bg-gray-500 p-2 rounded-full px-4 font-medium active:scale-95 hover:cursor-pointer text-white hover:bg-gray-700 transition-all ease-in-out duration-300"
-              id="add-btn"
-              onClick={addResponsibility}
-            >
-              + Add more
+            <div className="w-full flex gap-2 items-center">
+              <input
+                required
+                className="w-full p-2 border-[1px] border-[#c1c1c1] rounded"
+                type="text"
+                id="todo-input"
+                placeholder="Add new responsibility"
+                value={responsibilityInput}
+                onChange={(e) => setResponsibilityInput(e.target.value)}
+              />
+              <div
+                className="bg-gray-500 p-2 rounded-lg px-4 sm:font-medium active:scale-95 hover:cursor-pointer text-white hover:bg-gray-700 transition-all ease-in-out duration-300"
+                id="add-btn"
+                onClick={addResponsibility}
+              >
+                +
+              </div>
             </div>
           </div>
           {/* Requirement */}
@@ -333,31 +335,33 @@ export default function PostJob() {
                   key={index}
                   className="flex justify-between items-center border-b py-2"
                 >
-                  <span>{requirement}</span>
-                  <button
-                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  <span>✔ {requirement}</span>
+                  <div
+                    className="bg-red-500 text-white px-2 py-1 rounded cursor-pointer"
                     onClick={() => deleteRequirement(index)}
                   >
                     Delete
-                  </button>
+                  </div>
                 </li>
               ))}
             </ul>
-            <input
-              required
-              className="w-full p-2 border-[1px] border-[#c1c1c1] rounded"
-              type="text"
-              id="todo-input"
-              placeholder="Add new requirement"
-              value={requirementInput}
-              onChange={(e) => setRequirementInput(e.target.value)}
-            />
-            <div
-              className="mt-2 bg-gray-500 p-2 rounded-full px-4 font-medium active:scale-95 hover:cursor-pointer text-white hover:bg-gray-700 transition-all ease-in-out duration-300"
-              id="add-btn"
-              onClick={addRequiirement}
-            >
-              + Add more
+            <div className="w-full flex gap-2 items-center">
+              <input
+                required
+                className="w-full p-2 border-[1px] border-[#c1c1c1] rounded"
+                type="text"
+                id="todo-input"
+                placeholder="Add new requirement"
+                value={requirementInput}
+                onChange={(e) => setRequirementInput(e.target.value)}
+              />
+              <div
+                className="bg-gray-500 p-2 rounded-lg px-4 sm:font-medium active:scale-95 hover:cursor-pointer text-white hover:bg-gray-700 transition-all ease-in-out duration-300"
+                id="add-btn"
+                onClick={addRequirement}
+              >
+                +
+              </div>
             </div>
           </div>
 
@@ -367,38 +371,39 @@ export default function PostJob() {
             <label className="font-poppins font-semibold w-full uppercase text-md">
               Benefits <span className="text-red-600">*</span>
             </label>
-
             <ul className="w-full">
               {data.benefits.map((benefit, index) => (
                 <li
                   key={index}
                   className="flex justify-between items-center border-b py-2"
                 >
-                  <span>{benefit}</span>
-                  <button
-                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  <span>✔ {benefit}</span>
+                  <div
+                    className="bg-red-500 text-white px-2 py-1 rounded cursor-pointer"
                     onClick={() => deleteBenefit(index)}
                   >
                     Delete
-                  </button>
+                  </div>
                 </li>
               ))}
-            </ul>
-            <input
-              required
-              className="w-full p-2 border-[1px] border-[#c1c1c1] rounded"
-              type="text"
-              id="todo-input"
-              placeholder="Add new benefit"
-              value={benefitInput}
-              onChange={(e) => setBenefitInput(e.target.value)}
-            />
-            <div
-              className="mt-2 bg-gray-500 p-2 rounded-full px-4 font-medium active:scale-95 hover:cursor-pointer text-white hover:bg-gray-700 transition-all ease-in-out duration-300"
-              id="add-btn"
-              onClick={addBenefit}
-            >
-              + Add more
+            </ul>{" "}
+            <div className="w-full flex gap-2 items-center">
+              <input
+                required
+                className="w-full p-2 border-[1px] border-[#c1c1c1] rounded"
+                type="text"
+                id="todo-input"
+                placeholder="Add new benefit"
+                value={benefitInput}
+                onChange={(e) => setBenefitInput(e.target.value)}
+              />
+              <div
+                className="bg-gray-500 p-2 rounded-lg px-4 sm:font-medium active:scale-95 hover:cursor-pointer text-white hover:bg-gray-700 transition-all ease-in-out duration-300"
+                id="add-btn"
+                onClick={addBenefit}
+              >
+                +
+              </div>
             </div>
           </div>
 
