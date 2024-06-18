@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function JobDetails() {
   const location = useLocation();
+
   const {
     id,
     name,
@@ -70,7 +71,7 @@ export default function JobDetails() {
           jobname: pos,
           companyname: name,
           companyloc: loc,
-          jobtype:time,
+          jobtype: time,
         },
       });
     }

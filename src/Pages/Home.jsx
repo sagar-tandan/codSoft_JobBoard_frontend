@@ -20,7 +20,9 @@ export default function Home({ data }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setUserName(data);
+    if (data) {
+      setUserName(data);
+    }
   }, [data]);
 
   return (
@@ -38,10 +40,7 @@ export default function Home({ data }) {
       {userName.length === 0 && <HomeCandidate />}
 
       {userName && userName.type == "company" && (
-        <div className="mt-16">
-          <CompanyPage 
-          id= {userName._id} />
-        </div>
+        <div className="mt-16">{<CompanyPage id={userName._id} />}</div>
       )}
     </>
   );

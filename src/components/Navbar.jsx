@@ -7,18 +7,18 @@ import hamburger from "../assets/Asset!/hamburger.png";
 import profile from "../assets/Asset!/profile.png";
 import logo from "../assets/jobLogo.png";
 
-export default function Navbar({setData}) {
+export default function Navbar() {
   const [userName, setUserName] = useState();
   const [register, setRegister] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (userName) {
-      console.log(userName);
-      setData(userName);
-    }
-  }, [userName]);
+  // useEffect(() => {
+  //   if (userName) {
+  //     console.log(userName);
+  //     setData(userName);
+  //   }
+  // }, [userName]);
 
   useEffect(() => {
 

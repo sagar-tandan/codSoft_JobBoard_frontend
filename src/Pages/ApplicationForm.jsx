@@ -1,10 +1,27 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import back from "../assets/loginBack.gif";
 import loader from "../assets/Asset!/loader.gif";
 
 export default function ApplicationForm() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (location.state === null) {
+      navigate("/login");
+    }
+    else {
+      setIsLoading(false);
+    }
+  }, [location.state, navigate]);
+
+  if (isLoading) {
+    // return <div>Loading...</div>; // or you can return null
+    return null;
+  }
+
   const {
     username,
     emails,
@@ -16,7 +33,7 @@ export default function ApplicationForm() {
     companyloc,
     jobtype,
   } = location.state;
-  
+
   const [data, setData] = useState({
     name: username,
     email: emails,
@@ -39,7 +56,8 @@ export default function ApplicationForm() {
       <div className="w-full flex flex-col text-black gap-3">
         <h1 className="text-2xl font-medium font-poppins">{jobname}</h1>
         <h1 className="font-semibold text-[#575757]">
-          {companyname}/ {companyloc}/ <span className="text-red-600 uppercase">{jobtype}</span>
+          {companyname}/ {companyloc}/{" "}
+          <span className="text-red-600 uppercase">{jobtype}</span>
         </h1>
       </div>
       <div className="flex flex-col mt-12 ">
@@ -246,7 +264,6 @@ export default function ApplicationForm() {
               /> */}
               <h1 className="sm:inline-block hidden">Submit Application</h1>
               <h1 className="inline-block sm:hidden">Submit</h1>
-
             </div>
           </button>
         </form>
