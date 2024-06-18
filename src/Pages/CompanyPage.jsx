@@ -12,6 +12,8 @@ import toast from "react-hot-toast";
 export default function CompanyPage({ id }) {
   const [jobs, setJob] = useState([]);
   const [deleted, setDeleted] = useState(false);
+  const [dialogBox, setDialogBox] = useState(false);
+  const [jobid, setJobId] = useState();
 
   useEffect(() => {
     const getJobs = async () => {
@@ -30,7 +32,6 @@ export default function CompanyPage({ id }) {
   // console.log(jobs);
 
   const deleteJob = async (cid, jid) => {
-    
     const { data } = await axios.delete("/deleteJobs", {
       data: {
         cid,
@@ -38,6 +39,7 @@ export default function CompanyPage({ id }) {
       },
     });
     setDeleted((prevValue) => !prevValue);
+    setDialogBox(false);
   };
 
   return (
@@ -55,11 +57,11 @@ export default function CompanyPage({ id }) {
             </h1>
           </div>
           {jobs.length == 0 || jobs.length == 1 ? (
-            <h1 className="font-poppins text-xl font-medium text-green-600 w-full px-[68px]">
+            <h1 className="font-poppins text-xl font-medium text-green-600 w-full pl-[68px]">
               {jobs.length} Vacancy
             </h1>
           ) : (
-            <h1 className="font-poppins text-xl font-medium text-green-600 w-full px-[68px]">
+            <h1 className="font-poppins text-xl font-medium text-green-600 w-full pl-[68px]">
               {jobs.length} Vacancies
             </h1>
           )}
@@ -76,7 +78,7 @@ export default function CompanyPage({ id }) {
               Total Applications
             </h1>
           </div>
-          <h1 className="font-poppins text-xl font-medium text-green-600 w-full px-[68px]">
+          <h1 className="font-poppins text-xl font-medium text-green-600 w-full pl-[68px]">
             100 Applications
           </h1>
         </div>
@@ -90,7 +92,7 @@ export default function CompanyPage({ id }) {
               <h1 className="font-poppins text-xl font-semibold">Post a job</h1>
             </div>
 
-            <h1 className="font-poppins font-medium text-white w-full px-[64px]">
+            <h1 className="font-poppins font-medium text-white w-full pl-[60px]">
               Click here to post job vacancy
             </h1>
           </div>
@@ -132,7 +134,8 @@ export default function CompanyPage({ id }) {
 
                   <img
                     onClick={() => {
-                      deleteJob(id, job._id);
+                      setDialogBox(true);
+                      setJobId(job._id);
                     }}
                     className="w-8 h-8 hover:cursor-pointer"
                     src={del}
@@ -143,6 +146,37 @@ export default function CompanyPage({ id }) {
             ))}
         </div>
       </div>
+
+      {dialogBox && (
+        <div className="w-full relative">
+          <div className="fixed top-0 bottom-0 left-0 right-0 items-center z-40 w-full flex justify-center px-4 bg-[#c1c1c1] opacity-80"></div>
+
+          <div className="absolute bottom-0 mb-20 left-0 right-0 flex w-[280px] sm:w-[400px] mx-auto bg-white rounded-lg p-10 shadow-xl shadow-black z-50 ">
+            <div className="flex flex-col gap-3">
+              <p className="text-gray-700 mb-4">
+                Are you sure you want to delete this item?
+              </p>
+
+              <div className="flex justify-end">
+                <button
+                  onClick={() => {
+                    deleteJob(id, jobid);
+                  }}
+                  className="bg-red-500 text-white px-4 py-2 rounded mr-2"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => setDialogBox(false)}
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
