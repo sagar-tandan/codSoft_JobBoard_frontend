@@ -7,9 +7,11 @@ import edit from "../assets/Company/edit.png";
 import del from "../assets/Company/delete.png";
 import view from "../assets/Company/view.png";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function CompanyPage({ id }) {
   const [jobs, setJob] = useState([]);
+  const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
     const getJobs = async () => {
@@ -23,9 +25,20 @@ export default function CompanyPage({ id }) {
       setJob(response.data.findAllJobs);
     };
     getJobs();
-  }, []);
+  }, [deleted]);
 
   // console.log(jobs);
+
+  const deleteJob = async (cid, jid) => {
+    
+    const { data } = await axios.delete("/deleteJobs", {
+      data: {
+        cid,
+        jid,
+      },
+    });
+    setDeleted((prevValue) => !prevValue);
+  };
 
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
@@ -67,7 +80,10 @@ export default function CompanyPage({ id }) {
             100 Applications
           </h1>
         </div>
-        <Link className="w-full sm:w-[50%] lg:w-[30%] mx-3 my-2 p-5 rounded-lg  bg-green-600 shadow-black shadow-lg hover:cursor-pointer hover:bg-green-700 active:scale-[98%] transition-all ease-in-out duration-300" to="/postjob">
+        <Link
+          className="w-full sm:w-[50%] lg:w-[30%] mx-3 my-2 p-5 rounded-lg  bg-green-600 shadow-black shadow-lg hover:cursor-pointer hover:bg-green-700 active:scale-[98%] transition-all ease-in-out duration-300"
+          to="/postjob"
+        >
           <div className="flex flex-col text-white w-full ">
             <div className="w-full flex gap-5 items-center">
               <img className="w-10 h-10 p-1 rounded-full" src={plus} alt="" />
@@ -115,6 +131,9 @@ export default function CompanyPage({ id }) {
                   <img className="w-8 h-7 cursor-pointer " src={edit} alt="" />
 
                   <img
+                    onClick={() => {
+                      deleteJob(id, job._id);
+                    }}
                     className="w-8 h-8 hover:cursor-pointer"
                     src={del}
                     alt=""

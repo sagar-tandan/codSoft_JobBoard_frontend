@@ -131,6 +131,10 @@ export default function PostJob({ datas }) {
       setLoading(false);
 
       setData({
+        id: datas._id,
+        cName: datas.name,
+        cLoc: datas.selectedCity + ", " + datas.selectedCountry,
+        cPhone: datas.phone,
         position: "",
         des: "",
         jobtype: "",
