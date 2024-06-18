@@ -32,6 +32,7 @@ function App() {
       if (!cookies.token) {
         // navigate("/login");
         // console.log("cookie not found")
+        setLoading(false);
       }
       const { data } = await axios.post(
         "http://localhost:8000/",
@@ -71,7 +72,11 @@ function App() {
         <Route
           path="/postjob"
           element={
-            data && data.type == "company" ? <PostJob datas={data} /> : <Login />
+            data && data.type == "company" ? (
+              <PostJob datas={data} />
+            ) : (
+              <Login />
+            )
           }
         />
       </Routes>
