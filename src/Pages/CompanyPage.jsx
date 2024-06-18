@@ -6,7 +6,7 @@ import plus from "../assets/Company/plus.png";
 import edit from "../assets/Company/edit.png";
 import del from "../assets/Company/delete.png";
 import view from "../assets/Company/view.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function CompanyPage({ id }) {
@@ -14,6 +14,8 @@ export default function CompanyPage({ id }) {
   const [deleted, setDeleted] = useState(false);
   const [dialogBox, setDialogBox] = useState(false);
   const [jobid, setJobId] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getJobs = async () => {
@@ -29,8 +31,6 @@ export default function CompanyPage({ id }) {
     getJobs();
   }, [deleted]);
 
-  // console.log(jobs);
-
   const deleteJob = async (cid, jid) => {
     const { data } = await axios.delete("/deleteJobs", {
       data: {
@@ -40,6 +40,7 @@ export default function CompanyPage({ id }) {
     });
     setDeleted((prevValue) => !prevValue);
     setDialogBox(false);
+    toast.success(data.message);
   };
 
   return (
@@ -130,7 +131,12 @@ export default function CompanyPage({ id }) {
                     alt=""
                   />
 
-                  <img className="w-8 h-7 cursor-pointer " src={edit} alt="" />
+                  {/* <img
+                    onClick={() => gotoPostaJob(e)}
+                    className="w-8 h-7 cursor-pointer "
+                    src={edit}
+                    alt=""
+                  /> */}
 
                   <img
                     onClick={() => {
