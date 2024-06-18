@@ -8,8 +8,7 @@ import hero1 from "../assets/Asset!/hero1.webp";
 import video from "../assets/video.mp4";
 
 import Categories from "./Categories";
-import JobListing from "./JobListing";
-
+import JobCards from "./JobCards";
 import React from "react";
 
 export default function HomeCandidate({
@@ -19,6 +18,16 @@ export default function HomeCandidate({
   cities,
   countries,
 }) {
+  const [JobListing, setJobListing] = useState([]);
+
+  useEffect(() => {
+    const jobslist = async () => {
+      const jobs = await axios.get("/getAllJobs");
+      setJobListing(jobs.data.findJobs);
+    };
+    jobslist();
+  }, []);
+  const topJObs = JobListing.slice(0, 6);
 
   return (
     <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden lg:mt-0">
@@ -96,13 +105,39 @@ export default function HomeCandidate({
             Explore &gt;
           </h1>
         </div>
-        <JobListing
-          name={name}
-          emails={emails}
-          phones={phones}
-          cities={cities}
-          countries={countries}
-        />
+        <div className="w-full flex gap-4 md:gap-6 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center lg:justify-start">
+          {topJObs.map((job) => (
+            <div key={job._id}>
+              <JobCards
+                id={job._id}
+                name={job.CompanyName}
+                image={job.image}
+                location={job.CompanyLocation}
+                position={job.Position}
+                time={job.Type}
+                skills={job.Skills}
+                salary={job.Salary}
+                desc={job.Desc}
+                responsibility={job.Responsibility}
+                requirements={job.Requirement}
+                benefit={job.Benefits}
+                category={job.Category}
+                Gender={job.Gender}
+                Experience={job.Experience}
+                Qualification={job.Qualification}
+                level={job.Level}
+                AppEnd={job.AppEnd}
+                date={job.date}
+                username={name}
+                emails={emails}
+                phones={phones}
+                cities={cities}
+                countries={countries}
+                companyPhone = {job.CompanyPhone}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

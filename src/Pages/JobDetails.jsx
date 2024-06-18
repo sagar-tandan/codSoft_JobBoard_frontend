@@ -29,6 +29,7 @@ export default function JobDetails() {
     phones,
     cities,
     countries,
+    companyPhone,
   } = location.state;
   //   console.log(responsibility);
 
@@ -107,17 +108,26 @@ export default function JobDetails() {
                   } text-sm text-[#666666] font-medium flex-wrap`}
                 >
                   <div>{loc}</div>
-                  <div>9860788076</div>
+                  <div>{companyPhone}</div>
                 </div>
               </div>
 
               <div className="flex flex-col gap-5 ">
-                <h1 className="text-black font-medium md:font-semibold text-sm sm:text-lg md:text-xl">
-                  ${salary}
-                  <span className="font-medium text-sm text-[#616161]">
-                    /monthly
-                  </span>
-                </h1>
+                {salary != null && (
+                  <h1 className="text-black font-medium md:font-semibold text-sm sm:text-lg md:text-xl">
+                    {salary}
+                    <span className="font-medium text-sm text-[#616161]">
+                      /monthly
+                    </span>
+                  </h1>
+                )}
+
+                {salary == null && (
+                  <h1 className="text-black font-medium md:font-semibold text-sm sm:text-lg md:text-xl">
+                    Negotiable
+                  </h1>
+                )}
+
                 <div
                   onClick={(e) => {
                     handleClick(e);
@@ -151,7 +161,7 @@ export default function JobDetails() {
                   } text-sm text-[#666666] font-medium flex-wrap`}
                 >
                   <div>{loc}</div>
-                  <div>9860788076</div>
+                  <div>{companyPhone}</div>
                 </div>
 
                 <div className="w-full flex flex-col items-end">
@@ -266,9 +276,12 @@ export default function JobDetails() {
                 </li>
 
                 <li>{date}</li>
-                <li>
-                  {"$"} {salary} / Monthly
-                </li>
+                {salary != null ? (
+                  <li>{salary} / Monthly</li>
+                ) : (
+                  <li>Negotiable</li>
+                )}
+
                 <li>{Experience}</li>
                 <li>{Gender}</li>
                 <li>{Qualification}</li>

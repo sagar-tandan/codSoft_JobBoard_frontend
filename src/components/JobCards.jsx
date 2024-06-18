@@ -26,6 +26,7 @@ export default function JobCards({
   phones,
   cities,
   countries,
+  companyPhone,
 }) {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -33,9 +34,6 @@ export default function JobCards({
 
   const navigateToNext = (e) => {
     e.preventDefault();
-
-    
-
 
     navigate(`/job/jobdetails/${id}`, {
       state: {
@@ -59,10 +57,11 @@ export default function JobCards({
         date: date,
         skills: skills,
         username: username,
-        emails : emails,
-        phones : phones,
-        cities : cities,
-        countries : countries,
+        emails: emails,
+        phones: phones,
+        cities: cities,
+        countries: countries,
+        companyPhone: companyPhone,
       },
     });
   };
@@ -119,13 +118,17 @@ export default function JobCards({
         <h1 className="text-sm truncate w-full">{skills}</h1>
 
         <div className="w-full flex justify-between py-1">
-          <h1 className="text-black font-semibold">
-            ${salary}
-            <span className="font-medium text-sm text-[#616161]">
-              {" "}
-              /monthly
-            </span>
-          </h1>
+          {salary != null ? (
+            <h1 className="text-black font-semibold">
+              {salary}
+              <span className="font-medium text-sm text-[#616161]">
+                {" "}
+                /month
+              </span>
+            </h1>
+          ) : (
+            <h1 className="text-black font-semibold">Negotiable</h1>
+          )}
 
           <div
             onClick={(e) => navigateToNext(e)}
