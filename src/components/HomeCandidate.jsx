@@ -111,7 +111,7 @@ export default function HomeCandidate({
               <JobCards
                 id={job._id}
                 name={job.CompanyName}
-                image={job.image}
+                image={job.companyImage}
                 location={job.CompanyLocation}
                 position={job.Position}
                 time={job.Type}
@@ -126,14 +126,14 @@ export default function HomeCandidate({
                 Experience={job.Experience}
                 Qualification={job.Qualification}
                 level={job.Level}
-                AppEnd={job.AppEnd}
-                date={job.date}
+                AppEnd={job.ExpiryDate}
+                date={job.PublishedDate}
                 username={name}
                 emails={emails}
                 phones={phones}
                 cities={cities}
                 countries={countries}
-                companyPhone = {job.CompanyPhone}
+                companyPhone={job.CompanyPhone}
               />
             </div>
           ))}

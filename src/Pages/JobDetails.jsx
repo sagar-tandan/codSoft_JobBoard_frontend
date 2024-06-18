@@ -200,7 +200,7 @@ export default function JobDetails() {
               {responsibility.map((res) => (
                 <div className="w-full flex gap-2 text-sm ">
                   <h1> ✔</h1>
-                  <h1>{res.content}</h1>
+                  <h1>{res}</h1>
                 </div>
               ))}
             </div>
@@ -212,7 +212,7 @@ export default function JobDetails() {
               {requirements.map((res) => (
                 <div className="w-full flex gap-2">
                   <h1> ✔</h1>
-                  <h1>{res.content}</h1>
+                  <h1>{res}</h1>
                 </div>
               ))}
             </div>
@@ -224,7 +224,7 @@ export default function JobDetails() {
               {benefit.map((res) => (
                 <div className="w-full flex gap-2">
                   <h1> ✔</h1>
-                  <h1>{res.content}</h1>
+                  <h1>{res}</h1>
                 </div>
               ))}
             </div>
@@ -282,7 +282,7 @@ export default function JobDetails() {
                   <li>Negotiable</li>
                 )}
 
-                <li>{Experience}</li>
+                <li>{Experience} years</li>
                 <li>{Gender}</li>
                 <li>{Qualification}</li>
                 <li>{level}</li>

@@ -26,6 +26,8 @@ export default function PostJob({ datas }) {
     responsibilities: [],
     requirements: [],
     benefits: [],
+    published: "",
+    end: "",
   });
 
   const [responsibilityInput, setResponsibilityInput] = useState("");
@@ -104,6 +106,8 @@ export default function PostJob({ datas }) {
       responsibilities,
       requirements,
       benefits,
+      published,
+      end,
     } = data;
 
     try {
@@ -128,6 +132,8 @@ export default function PostJob({ datas }) {
         responsibilities,
         requirements,
         benefits,
+        published,
+        end,
       });
       if (response.data.error) {
         toast.error(response.data.error);
@@ -156,6 +162,8 @@ export default function PostJob({ datas }) {
         responsibilities: [],
         requirements: [],
         benefits: [],
+        published: "",
+        end: "",
       });
     } catch (error) {
       console.log(error);
@@ -338,6 +346,37 @@ export default function PostJob({ datas }) {
                 <option value="PhD">PhD</option>
                 <option value="Others">Others</option>
               </select>
+            </div>
+          </div>
+
+          <div className="flex sm:flex-row flex-col gap-4 justify-between">
+            <div className="flex flex-col gap-2 items-center w-full">
+              <label className="font-poppins font-medium w-full">
+                Publised Date <span className="text-red-600">*</span>
+              </label>
+              <input
+                required
+                className="w-full py-2 px-3 border-[1px] border-[#c1c1c1] rounded"
+                type="date"
+                value={data.published}
+                onChange={(e) => {
+                  setData({ ...data, published: e.target.value });
+                }}
+              />
+            </div>
+            <div className="flex flex-col gap-2 items-center w-full">
+            <label className="font-poppins font-medium w-full">
+                Expiry Date <span className="text-red-600">*</span>
+              </label>
+              <input
+                required
+                className="w-full py-2 px-3 border-[1px] border-[#c1c1c1] rounded"
+                type="date"
+                value={data.end}
+                onChange={(e) => {
+                  setData({ ...data, end: e.target.value });
+                }}
+              />
             </div>
           </div>
 
