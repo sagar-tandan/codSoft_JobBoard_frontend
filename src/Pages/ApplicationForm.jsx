@@ -1,11 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { storage } from "../config.jsx";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import axios from "axios";
 
 export default function ApplicationForm() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+
+  // Function to Upload images and Pdf files
+  async function UploadFiles(folder, file) {
+    const storageRef = ref(storage, `${folder}/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    return new Promise((resolve, reject) => {
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          // console.log("Progress:", progress);
+        },
+        (error) => {
+          reject(error); // Reject promise with error
+        },
+        async () => {
+          // When upload is completed
+          try {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            resolve(downloadURL);
+
+            // Resolve promise with downloadURL
+          } catch (error) {
+            // Reject promise with error if getting downloadURL fails
+            reject(error);
+          }
+        }
+      );
+    });
+  }
 
   useEffect(() => {
     if (location.state === null) {
@@ -56,84 +91,28 @@ export default function ApplicationForm() {
       experience,
       cover,
     } = data;
-    // const {
-    //   lastModified,
-    //   lastModifiedDate,
-    //   name,
-    //   size,
-    //   type,
-    //   webkitRelativePath,
-    // } = resume;
 
-    console.log(data);
+    const downloadURL = await UploadFiles("Application", resume);
+    // console.log("URL:", downloadURL);
 
-    // await axios.post("/submitApplication", {
-    //   Cname,
-    //   email,
-    //   lastModified,
-    //   lastModifiedDate,
-    //   name,
-    //   size,
-    //   type,
-    //   webkitRelativePath,
-    // });
+    const response = await axios.post("/submitApplication", {
+      Cname,
+      email,
+      phone,
+      location,
+      downloadURL,
+      fb,
+      linkedin,
+      portfolio,
+      experience,
+      cover,
+    });
 
-    // const response = await axios.post("/submitApplication", {
-    //   name,
-    //   email,
-    //   phone,
-    //   location,
-    //   resume,
-    //   fb,
-    //   linkedin,
-    //   portfolio,
-    //   experience,
-    //   cover,
-    // });
+    console.log(response);
 
-    // const reader = new FileReader();
-    // reader.readAsDataURL(resume);
-
-    // reader.addEventListener("load", () => {
-    //   console.log(reader.result);
-    //   sendData(reader.result);
-    // });
-
-    // console.log(reader)
+    
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const formData = new FormData();
-  //   formData.append("name", data.name);
-  //   formData.append("email", data.email);
-  //   formData.append("phone", data.phone);
-  //   formData.append("location", data.location);
-  //   formData.append("resume", data.resume);
-  //   formData.append("fb", data.fb);
-  //   formData.append("linkedin", data.linkedin);
-  //   formData.append("github", data.github);
-  //   formData.append("portfolio", data.portfolio);
-  //   formData.append("experience", data.experience);
-  //   formData.append("cover", data.cover);
-
-  //   try {
-  //     const response = await axios.post('/submitApplication', formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     });
-  //     console.log(response)
-
-  //     if (response.status === 200) {
-  //       alert("Application submitted successfully");
-  //     }
-  //   } catch (error) {
-  //     alert("Failed to submit application");
-  //     console.log(error);
-  //   }
-  // };
-
+  
   if (isLoading) {
     return null;
   }
