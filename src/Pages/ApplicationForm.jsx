@@ -3,11 +3,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { storage } from "../config.jsx";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import axios from "axios";
+import toast from "react-hot-toast";
+import loader from "../assets/Asset!/loader.gif";
 
 export default function ApplicationForm() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Function to Upload images and Pdf files
   async function UploadFiles(folder, file) {
@@ -21,7 +24,7 @@ export default function ApplicationForm() {
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-          // console.log("Progress:", progress);
+          console.log("Progress:", progress);
         },
         (error) => {
           reject(error); // Reject promise with error
@@ -60,6 +63,7 @@ export default function ApplicationForm() {
     companyname,
     companyloc,
     jobtype,
+    jobid,
   } = location.state;
 
   const [data, setData] = useState({
@@ -78,6 +82,7 @@ export default function ApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const {
       Cname,
@@ -106,13 +111,13 @@ export default function ApplicationForm() {
       portfolio,
       experience,
       cover,
+      jobid,
+      companyname,
     });
-
-    console.log(response);
-
-    
+    toast.success(response.data.message);
+    setLoading(false);
   };
-  
+
   if (isLoading) {
     return null;
   }
@@ -315,13 +320,37 @@ export default function ApplicationForm() {
             ></textarea>
           </div>
 
-          <button
+          {/* <button
             className="mt-3 mb-20 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
             type="submit"
           >
             <div className="w-full flex p-3 justify-center gap-4 ">
               <h1 className="sm:inline-block hidden">Submit Application</h1>
               <h1 className="inline-block sm:hidden">Submit</h1>
+            </div>
+          </button> */}
+
+          <button
+            className="mt-3 mb-20 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
+            type="submit"
+          >
+            <div className="w-full flex p-3 justify-center gap-4 ">
+              <img
+                className={`${loading ? "inline-block" : "hidden"}
+                w-6 h-6 object-center`}
+                src={loader}
+                alt=""
+              />
+              <h1
+                className={`${loading ? "hidden" : "hidden sm:inline-block"}`}
+              >
+                Submit Application
+              </h1>
+              <h1
+                className={`${loading ? "hidden" : "inline-block sm:hidden"}`}
+              >
+                Submit
+              </h1>
             </div>
           </button>
         </form>

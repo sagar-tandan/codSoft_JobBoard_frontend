@@ -73,6 +73,7 @@ export default function JobDetails() {
           companyname: name,
           companyloc: loc,
           jobtype: time,
+          jobid: id,
         },
       });
     }

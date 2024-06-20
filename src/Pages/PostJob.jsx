@@ -553,12 +553,12 @@ export default function PostJob({ datas }) {
               <h1
                 className={`${loading ? "hidden" : "hidden sm:inline-block"}`}
               >
-                Submit Application
+                Post a Job
               </h1>
               <h1
                 className={`${loading ? "hidden" : "inline-block sm:hidden"}`}
               >
-                Submit
+                Post
               </h1>
             </div>
           </button>
