@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import back from "../assets/loginBack.gif";
-import loader from "../assets/Asset!/loader.gif";
+import axios from "axios";
 
 export default function ApplicationForm() {
   const location = useLocation();
@@ -11,16 +10,10 @@ export default function ApplicationForm() {
   useEffect(() => {
     if (location.state === null) {
       navigate("/login");
-    }
-    else {
+    } else {
       setIsLoading(false);
     }
   }, [location.state, navigate]);
-
-  if (isLoading) {
-    // return <div>Loading...</div>; // or you can return null
-    return null;
-  }
 
   const {
     username,
@@ -35,7 +28,7 @@ export default function ApplicationForm() {
   } = location.state;
 
   const [data, setData] = useState({
-    name: username,
+    Cname: username,
     email: emails,
     phone: phones,
     location: cities + "," + " " + countries,
@@ -48,10 +41,107 @@ export default function ApplicationForm() {
     cover: "",
   });
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const {
+      Cname,
+      email,
+      phone,
+      location,
+      resume,
+      fb,
+      linkedin,
+      portfolio,
+      experience,
+      cover,
+    } = data;
+    // const {
+    //   lastModified,
+    //   lastModifiedDate,
+    //   name,
+    //   size,
+    //   type,
+    //   webkitRelativePath,
+    // } = resume;
+
+    console.log(data);
+
+    // await axios.post("/submitApplication", {
+    //   Cname,
+    //   email,
+    //   lastModified,
+    //   lastModifiedDate,
+    //   name,
+    //   size,
+    //   type,
+    //   webkitRelativePath,
+    // });
+
+    // const response = await axios.post("/submitApplication", {
+    //   name,
+    //   email,
+    //   phone,
+    //   location,
+    //   resume,
+    //   fb,
+    //   linkedin,
+    //   portfolio,
+    //   experience,
+    //   cover,
+    // });
+
+    // const reader = new FileReader();
+    // reader.readAsDataURL(resume);
+
+    // reader.addEventListener("load", () => {
+    //   console.log(reader.result);
+    //   sendData(reader.result);
+    // });
+
+    // console.log(reader)
+  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const formData = new FormData();
+  //   formData.append("name", data.name);
+  //   formData.append("email", data.email);
+  //   formData.append("phone", data.phone);
+  //   formData.append("location", data.location);
+  //   formData.append("resume", data.resume);
+  //   formData.append("fb", data.fb);
+  //   formData.append("linkedin", data.linkedin);
+  //   formData.append("github", data.github);
+  //   formData.append("portfolio", data.portfolio);
+  //   formData.append("experience", data.experience);
+  //   formData.append("cover", data.cover);
+
+  //   try {
+  //     const response = await axios.post('/submitApplication', formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
+  //     console.log(response)
+
+  //     if (response.status === 200) {
+  //       alert("Application submitted successfully");
+  //     }
+  //   } catch (error) {
+  //     alert("Failed to submit application");
+  //     console.log(error);
+  //   }
+  // };
+
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <div
       id="top"
-      className=" h-[100vh] text-black w-full flex flex-col max-w-screen-2xl pt-24 px-[5%] font-poppins mx-auto"
+      className="h-[100vh] text-black w-full flex flex-col max-w-screen-2xl pt-24 px-[5%] font-poppins mx-auto"
     >
       <div className="w-full flex flex-col text-black gap-3">
         <h1 className="text-2xl font-medium font-poppins">{jobname}</h1>
@@ -65,22 +155,18 @@ export default function ApplicationForm() {
           Submit your application
         </h1>
 
-        <form
-          // onSubmit={loginUser}
-          className="flex flex-col gap-6 mt-8 "
-        >
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 mt-8">
           <div className="flex flex-col gap-2 items-center w-full">
             <label className="font-poppins font-medium w-full">
               Resume/CV <span className="text-red-600">*</span>
             </label>
             <input
               required
-              class="w-full block text-lg rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 placeholder-gray-400"
+              className="w-full block text-lg rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 placeholder-gray-400"
               id="large_size"
               type="file"
-              value={data.resume}
               onChange={(e) => {
-                setData({ ...data, resume: e.target.value });
+                setData({ ...data, resume: e.target.files[0] });
               }}
             />
           </div>
@@ -95,9 +181,9 @@ export default function ApplicationForm() {
                 className="w-full py-2 px-3 border rounded"
                 type="text"
                 placeholder="Enter your name"
-                value={data.name}
+                value={data.Cname}
                 onChange={(e) => {
-                  setData({ ...data, name: e.target.value });
+                  setData({ ...data, Cname: e.target.value });
                 }}
               />
             </div>
@@ -226,7 +312,7 @@ export default function ApplicationForm() {
             <textarea
               id="message"
               rows="6"
-              class="mt-2 block p-2.5 w-full text-sm text-gray-900  rounded-lg border  "
+              className="mt-2 block p-2.5 w-full text-sm text-gray-900 rounded-lg border"
               value={data.experience}
               onChange={(e) => {
                 setData({ ...data, experience: e.target.value });
@@ -242,7 +328,7 @@ export default function ApplicationForm() {
             <textarea
               id="message"
               rows="6"
-              class="mt-2 block p-2.5 w-full text-sm text-gray-900  rounded-lg border  "
+              className="mt-2 block p-2.5 w-full text-sm text-gray-900 rounded-lg border"
               value={data.cover}
               onChange={(e) => {
                 setData({ ...data, cover: e.target.value });
@@ -255,13 +341,6 @@ export default function ApplicationForm() {
             type="submit"
           >
             <div className="w-full flex p-3 justify-center gap-4 ">
-              {/* <img
-                className={`
-                
-                  w-6 h-6 object-center`}
-                src={loader}
-                alt=""
-              /> */}
               <h1 className="sm:inline-block hidden">Submit Application</h1>
               <h1 className="inline-block sm:hidden">Submit</h1>
             </div>
