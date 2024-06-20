@@ -130,7 +130,7 @@ export default function ApplicationForm() {
       <div className="w-full flex flex-col text-black gap-3">
         <h1 className="text-2xl font-medium font-poppins">{jobname}</h1>
         <h1 className="font-semibold text-[#575757]">
-          {companyname}/ {companyloc}/{" "}
+          <span className="text-green-600">{companyname}</span>/ {companyloc}/{" "}
           <span className="text-red-600 uppercase">{jobtype}</span>
         </h1>
       </div>
