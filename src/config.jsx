@@ -13,14 +13,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
   measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 
-  // apiKey: "AIzaSyC_LVSeCE0rfJSP8XhJDhcKEkdbhzN-w18",
-  // authDomain: "npm-project-d3999.firebaseapp.com",
-  // projectId: "npm-project-d3999",
-  // storageBucket: "npm-project-d3999.appspot.com",
-  // messagingSenderId: "406497186944",
-  // // appId: "1:406497186944:web:d4fa1c9d67aac8d4834265",
-  // // measurementId: "G-TVBT35JW40",
-
 };
 
 // Initialize Firebase
