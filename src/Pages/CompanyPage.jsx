@@ -14,6 +14,7 @@ export default function CompanyPage({ id }) {
   const [deleted, setDeleted] = useState(false);
   const [dialogBox, setDialogBox] = useState(false);
   const [jobid, setJobId] = useState();
+  const [allApplications, setAllApplications] = useState([]);
 
   const navigate = useNavigate();
 
@@ -42,6 +43,19 @@ export default function CompanyPage({ id }) {
     setDialogBox(false);
     toast.success(data.message);
   };
+
+  useEffect (()=>{
+    const getApplications = async()=>{
+      const application = jobs.map((job)=>(
+        setAllApplications(job.Applications)
+      ))
+      // console.log(allApplications);
+    }
+    getApplications();
+
+  },[jobs])
+
+
 
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
@@ -79,9 +93,15 @@ export default function CompanyPage({ id }) {
               Total Applications
             </h1>
           </div>
-          <h1 className="font-poppins text-xl font-medium text-green-600 w-full pl-[68px]">
-            100 Applications
-          </h1>
+          {allApplications.length == 0 || allApplications.length == 1 ? (
+            <h1 className="font-poppins text-xl font-medium text-green-600 w-full pl-[68px]">
+              {allApplications.length} Application
+            </h1>
+          ) : (
+            <h1 className="font-poppins text-xl font-medium text-green-600 w-full pl-[68px]">
+              {allApplications.length} Applications
+            </h1>
+          )}
         </div>
         <Link
           className="w-full sm:w-[50%] lg:w-[30%] mx-3 my-2 p-5 rounded-lg  bg-green-600 shadow-black shadow-lg hover:cursor-pointer hover:bg-green-700 active:scale-[98%] transition-all ease-in-out duration-300"
@@ -99,8 +119,58 @@ export default function CompanyPage({ id }) {
           </div>
         </Link>
       </div>
+      
       {/* For recent Applications */}
-      <div></div>
+      <div className="w-full flex flex-col mb-10">
+        <h1 className="w-full text-xl font-medium mx-2 mt-10">
+          Recent Applications
+        </h1>
+        <div className="w-full flex flex-col gap-5 mt-3 px-3">
+          {allApplications &&
+            allApplications.map((app) => (
+              <div
+                key={app._id}
+                className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl"
+              >
+                <div className="w-full flex flex-col">
+                  <h1 className="font-medium text-xl">{app.name}</h1>
+                  <h1 className="font-medium">
+                    Phone : <span className="text-green-600">{app.phone}</span>
+                  </h1>
+                  <h1 className="font-medium">
+                    Location : <span className="text-green-600">{app.location}</span>
+                  </h1>
+                </div>
+
+                <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
+                  <h1 className="text-green-600 font-medium flex items-center cursor-pointer hover:underline">More details &gt;</h1>
+                  {/* <img
+                    className="w-10 h-10 cursor-pointer "
+                    src={view}
+                    alt=""
+                  /> */}
+
+                  {/* <img
+                    onClick={() => gotoPostaJob(e)}
+                    className="w-8 h-7 cursor-pointer "
+                    src={edit}
+                    alt=""
+                  /> */}
+
+                  {/* <img
+                    onClick={() => {
+                      setDialogBox(true);
+                      setJobId(job._id);
+                    }}
+                    className="w-8 h-8 hover:cursor-pointer"
+                    src={del}
+                    alt=""
+                  /> */}
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
 
       {/* For the company created Vacancies */}
       <div className="w-full flex flex-col mb-20">
