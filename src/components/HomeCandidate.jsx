@@ -18,16 +18,28 @@ export default function HomeCandidate({
   cities,
   countries,
 }) {
-  const [JobListing, setJobListing] = useState([]);
+  // const [JobListing, setJobListing] = useState([]);
+  const [reversedJob, setReversedjob] = useState([]);
 
   useEffect(() => {
     const jobslist = async () => {
       const jobs = await axios.get("/getAllJobs");
-      setJobListing(jobs.data.findJobs);
+      // setJobListing(jobs.data.findJobs);
+      // for (let index = JobListing.length; index > 0; index--) {
+      //   console.log("index:" ,index);
+      //   setReversedjob({...reversedJob,reversedJob => JobListing[index-1]});
+      // }
+      let reversed = [];
+      for (let i = jobs.data.findJobs.length - 1; i >= 0; i--) {
+        reversed.push(jobs.data.findJobs[i]);
+      }
+      setReversedjob(reversed);
     };
     jobslist();
   }, []);
-  const topJObs = JobListing.slice(0, 6);
+  // const jobListings = JobListing.length;
+  const topJObs = reversedJob.slice(0, 6);
+  // console.log(reversedJob);
 
   return (
     <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden lg:mt-0">

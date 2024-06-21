@@ -27,7 +27,11 @@ export default function CompanyPage({ id }) {
         setJob("");
         console.log(response.data.error);
       }
-      setJob(response.data.findAllJobs);
+      let reversed = [];
+      for (let i = response.data.findAllJobs.length - 1; i >= 0; i--) {
+        reversed.push(response.data.findAllJobs[i]);
+      }
+      setJob(reversed);
     };
     getJobs();
   }, [deleted]);
@@ -46,10 +50,17 @@ export default function CompanyPage({ id }) {
 
   useEffect(() => {
     const getApplications = async () => {
-      const application = jobs.map((job) =>
-        setAllApplications(job.Applications)
-      );
+      // Using reduce to collect all applications into a single array
+      const allApplications = jobs.reduce((acc, job) => {
+        return acc.concat(job.Applications);
+      }, []);
+
       // console.log(allApplications);
+      let reversed = [];
+      for (let i = allApplications.length - 1; i >= 0; i--) {
+        reversed.push(allApplications[i]);
+      }
+      setAllApplications(reversed);
     };
     getApplications();
   }, [jobs]);
