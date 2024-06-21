@@ -87,9 +87,15 @@ export default function JobDetails() {
       {width > 500 ? (
         <div className="w-full bg-[#f2f2f2] flex gap-3 p-4 lg:p-12 mx-auto">
           <div className="w-full flex gap-3 sm:gap-6 justify-start items-center">
-            <div className={`${width > 500 ? "inline-block" : "hidden"}`}>
+            <div
+              className={`${
+                width > 500
+                  ? "inline-block rounded-full overflow-hidden "
+                  : "hidden"
+              }`}
+            >
               <img
-                className={`w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full`}
+                className={`w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20  object-cover`}
                 src={image}
                 alt={name}
               />

@@ -3,7 +3,7 @@ import axios from "axios";
 import application from "../assets/Company/application.png";
 import vacancy from "../assets/Company/vacancy.png";
 import plus from "../assets/Company/plus.png";
-import edit from "../assets/Company/edit.png";
+// import edit from "../assets/Company/edit.png";
 import del from "../assets/Company/delete.png";
 import view from "../assets/Company/view.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -44,21 +44,17 @@ export default function CompanyPage({ id }) {
     toast.success(data.message);
   };
 
-  useEffect (()=>{
-    const getApplications = async()=>{
-      const application = jobs.map((job)=>(
+  useEffect(() => {
+    const getApplications = async () => {
+      const application = jobs.map((job) =>
         setAllApplications(job.Applications)
-      ))
+      );
       // console.log(allApplications);
-      
-    }
+    };
     getApplications();
+  }, [jobs]);
 
-  },[jobs])
-
-  const recentApp = allApplications.slice(0,6);
-
-
+  const recentApp = allApplications.slice(0, 6);
 
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
@@ -122,14 +118,18 @@ export default function CompanyPage({ id }) {
           </div>
         </Link>
       </div>
-      
+
       {/* For recent Applications */}
       <div className="w-full flex flex-col mb-10">
-        <h1 className="w-full text-xl font-medium mx-2 mt-10">
-          Recent Applications
-        </h1>
+        {allApplications && allApplications.length > 0 && (
+          <h1 className="w-full text-xl font-medium mx-2 mt-10">
+            Recent Applications
+          </h1>
+        )}
+
         <div className="w-full flex flex-col gap-5 mt-3 px-3">
           {allApplications &&
+            allApplications.length > 0 &&
             recentApp.map((app) => (
               <div
                 key={app._id}
@@ -138,15 +138,18 @@ export default function CompanyPage({ id }) {
                 <div className="w-full flex flex-col">
                   <h1 className="font-medium text-xl">{app.name}</h1>
                   <h1 className="font-medium">
-                    Position : <span className="text-green-600">{app.jobname}</span>
+                    Position :{" "}
+                    <span className="text-green-600">{app.jobname}</span>
                   </h1>
                   <h1 className="font-medium">
-                  Phone : <span className="text-green-600">{app.phone}</span>
+                    Phone : <span className="text-green-600">{app.phone}</span>
                   </h1>
                 </div>
 
                 <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
-                  <h1 className="text-green-600 font-medium flex items-center cursor-pointer hover:underline">More details &gt;</h1>
+                  <h1 className="text-green-600 font-medium flex items-center cursor-pointer hover:underline">
+                    More details &gt;
+                  </h1>
                   {/* <img
                     className="w-10 h-10 cursor-pointer "
                     src={view}
@@ -172,16 +175,29 @@ export default function CompanyPage({ id }) {
                 </div>
               </div>
             ))}
+
+          {jobs.length > 0 &&
+            allApplications &&
+            allApplications.length == 0 && (
+              <div className="w-full flex">
+                <h1 className="w-full font-medium text-lg flex justify-center mt-10">
+                  No Applications found till now!
+                </h1>
+              </div>
+            )}
         </div>
       </div>
 
       {/* For the company created Vacancies */}
       <div className="w-full flex flex-col mb-20">
-        <h1 className="w-full text-xl font-medium mx-2 mt-10">
-          Your Job Vacancies
-        </h1>
+        {jobs && jobs.length > 0 && (
+          <h1 className="w-full text-xl font-medium mx-2 mt-10">
+            Your Job Vacancies
+          </h1>
+        )}
+
         <div className="w-full flex flex-col gap-5 mt-3 px-3">
-          {jobs &&
+          {jobs && jobs.length > 0 ? (
             jobs.map((job) => (
               <div
                 key={job._id}
@@ -193,7 +209,10 @@ export default function CompanyPage({ id }) {
                     Level : <span className="text-green-600">{job.Level}</span>
                   </h1>
                   <h1 className="font-medium">
-                    Applicants : <span className="text-green-600">{job.Applications.length}</span>
+                    Applicants :{" "}
+                    <span className="text-green-600">
+                      {job.Applications.length}
+                    </span>
                   </h1>
                 </div>
 
@@ -222,7 +241,14 @@ export default function CompanyPage({ id }) {
                   />
                 </div>
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="w-full ">
+              <h1 className="font-medium text-lg flex items-center justify-center">
+                No Jobs posted yet!
+              </h1>
+            </div>
+          )}
         </div>
       </div>
 
