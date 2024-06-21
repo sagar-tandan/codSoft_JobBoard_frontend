@@ -50,10 +50,13 @@ export default function CompanyPage({ id }) {
         setAllApplications(job.Applications)
       ))
       // console.log(allApplications);
+      
     }
     getApplications();
 
   },[jobs])
+
+  const recentApp = allApplications.slice(0,6);
 
 
 
@@ -127,7 +130,7 @@ export default function CompanyPage({ id }) {
         </h1>
         <div className="w-full flex flex-col gap-5 mt-3 px-3">
           {allApplications &&
-            allApplications.map((app) => (
+            recentApp.map((app) => (
               <div
                 key={app._id}
                 className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl"
@@ -135,10 +138,10 @@ export default function CompanyPage({ id }) {
                 <div className="w-full flex flex-col">
                   <h1 className="font-medium text-xl">{app.name}</h1>
                   <h1 className="font-medium">
-                    Phone : <span className="text-green-600">{app.phone}</span>
+                    Position : <span className="text-green-600">{app.jobname}</span>
                   </h1>
                   <h1 className="font-medium">
-                    Location : <span className="text-green-600">{app.location}</span>
+                  Phone : <span className="text-green-600">{app.phone}</span>
                   </h1>
                 </div>
 
@@ -190,7 +193,7 @@ export default function CompanyPage({ id }) {
                     Level : <span className="text-green-600">{job.Level}</span>
                   </h1>
                   <h1 className="font-medium">
-                    Applicants : <span className="text-green-600">10</span>
+                    Applicants : <span className="text-green-600">{job.Applications.length}</span>
                   </h1>
                 </div>
 
