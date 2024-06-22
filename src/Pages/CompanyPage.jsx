@@ -67,6 +67,27 @@ export default function CompanyPage({ id }) {
 
   const recentApp = allApplications.slice(0, 6);
 
+  const gotoJobApplication = (
+    e,
+    id,
+    position,
+    level,
+    pDate,
+    eDate,
+    application
+  ) => {
+    e.preventDefault();
+    navigate(`/${id}`, {
+      state: {
+        pos: position,
+        level: level,
+        pDate: pDate,
+        eDate: eDate,
+        application: application,
+      },
+    });
+  };
+
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
       <div className="w-full flex flex-row gap-4 flex-wrap">
@@ -229,6 +250,17 @@ export default function CompanyPage({ id }) {
 
                 <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
                   <img
+                    onClick={(e) => {
+                      gotoJobApplication(
+                        e,
+                        job._id,
+                        job.Position,
+                        job.Level,
+                        job.PublishedDate,
+                        job.ExpiryDate,
+                        job.Applications
+                      );
+                    }}
                     className="w-10 h-10 cursor-pointer "
                     src={view}
                     alt=""
