@@ -37,28 +37,44 @@ export default function ApplicationDetails() {
               Application for:{" "}
               <span className="text-green-600">{app.jobname}</span>
             </h1>
-            <div className="w-full flex gap-3">
-              <img
-                className="w-7 h-7 rounded-full "
-                src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
-                alt=""
-              />
-              <img
-                className="w-7 h-7 rounded-full"
-                src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
-                alt=""
-              />
-              <img
-                className="w-7 h-7 rounded-full"
-                src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
-                alt=""
-              />
+            <div className="w-full flex gap-6">
+              {app && app.fb && (
+                <a href={app.fb} target="_blank">
+                  <img
+                    className="w-7 h-7 rounded-full hover:cursor-pointer"
+                    src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
+                    alt="fb"
+                  />
+                </a>
+              )}
+              {app && app.linkedin && (
+                <a href={app.linkedin} target="_blank">
+                  <img
+                    className="w-7 h-7 rounded-full hover:cursor-pointer"
+                    src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
+                    alt="linkedin"
+                  />
+                </a>
+              )}
+              {app && app.github && (
+                <a href={app.github} target="_blank">
+                  <img
+                    className="w-7 h-7 rounded-full hover:cursor-pointer"
+                    src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                    alt="git"
+                  />
+                </a>
+              )}
 
-              <img
-                className="w-7 h-7 rounded-full"
-                src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
-                alt=""
-              />
+              {app && app.portfolio && (
+                <a href={app.portfolio} target="_blank">
+                  <img
+                    className="w-7 h-7 rounded-full hover:cursor-pointer"
+                    src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
+                    alt="port"
+                  />
+                </a>
+              )}
             </div>
           </div>
         </div>
