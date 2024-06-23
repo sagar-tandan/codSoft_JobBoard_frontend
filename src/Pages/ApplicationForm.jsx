@@ -158,6 +158,7 @@ export default function ApplicationForm() {
               className="w-full block text-lg rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 placeholder-gray-400"
               id="large_size"
               type="file"
+              accept=".pdf"
               onChange={(e) => {
                 setData({ ...data, resume: e.target.files[0] });
               }}
