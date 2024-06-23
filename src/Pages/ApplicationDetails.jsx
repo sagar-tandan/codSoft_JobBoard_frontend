@@ -39,6 +39,15 @@ export default function ApplicationDetails() {
             </h1>
           </div>
         </div>
+
+        <div className="w-full flex gap-6 justify-end">
+          <h1 className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg">
+            Accept
+          </h1>
+          <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg">
+            Reject
+          </h1>
+        </div>
       </div>
     </div>
   );
