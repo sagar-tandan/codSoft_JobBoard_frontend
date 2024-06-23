@@ -49,6 +49,55 @@ export default function ApplicationDetails() {
           </h1>
         </div>
       </div>
+      {/* Contact Details */}
+      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
+        Contact Details
+      </h1>
+      <div className="w-full flex justify-between flex-wrap">
+        <div className="w-[30%] flex gap-1 font-poppins font-medium text-lg">
+          <img
+            className="w-6 h-6"
+            src="https://cdn-icons-png.flaticon.com/128/546/546394.png"
+            alt=""
+          />
+          <span>Email: </span>
+          <a href={`mailto:${app.email}`}>
+            <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
+              {app.email}
+            </span>
+          </a>
+        </div>
+
+        <div className="w-[30%] flex gap-1 font-poppins font-medium text-lg">
+          <img
+            className="w-6 h-6"
+            src="https://cdn-icons-png.flaticon.com/128/1034/1034131.png"
+            alt=""
+          />
+
+          <span>Phone: </span>
+          <a href={`tel:${app.phone}`}>
+            <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
+              {app.phone}
+            </span>
+          </a>
+        </div>
+
+        <div className="w-[30%] flex gap-1 font-poppins font-medium text-lg">
+          <img
+            className="w-6 h-6"
+            src="https://cdn-icons-png.flaticon.com/128/819/819865.png"
+            alt=""
+          />
+
+          <span>Location: </span>
+          <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(app.location)}`} target="_blank">
+          <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
+            {app.location}
+          </span>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
