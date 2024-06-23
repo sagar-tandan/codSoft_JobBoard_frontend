@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import PDFViewer from "../components/PDFViewer";
+import { Worker } from "@react-pdf-viewer/core";
+import { Viewer } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 
 export default function ApplicationDetails() {
   const location = useLocation();
   const { app } = location.state;
 
-  const Download = (url) => {
-    console.log(url);
-    fetch(url)
-      .then((res) => res.blob())
-      .then((file) => {
-        console.log(file);
-      });
+  //   const Download = (url) => {
+  //     console.log(url);
+  //     fetch(url, { mode: "cors" })
+  //       .then((res) => res.blob())
+  //       .then((file) => {
+  //         console.log(file);
+  //       });
+  //   };
+
+  const scrollToResume = (e) => {
+    document.getElementById("resume").scrollIntoView();
   };
 
   return (
@@ -91,7 +97,10 @@ export default function ApplicationDetails() {
 
         <div className="w-full flex flex-col gap-3">
           <div className="w-full flex items-center justify-end ">
-            <h1 className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+            <h1
+              onClick={(e) => scrollToResume(e)}
+              className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+            >
               View Resume
             </h1>
           </div>
@@ -175,21 +184,30 @@ export default function ApplicationDetails() {
       </h1>
 
       <div
-        className="w-full mb-20"
+        className="w-full"
         dangerouslySetInnerHTML={{ __html: app.cover }}
       ></div>
 
-      {/* <div className="w-full flex items-center justify-center mb-20">
-        <h1 className=" mt-5 text-xl font-poppins font-medium px-4 py-2 rounded-md bg-green-600 hover:bg-green-700 text-white cursor-pointer transition-all duration-300">
-          Resume
-        </h1>
-      </div> */}
-
-      {/* <embed
-        className="w-[50%] h-[100vh]"
-        src={app.resume}
-        type="application/pdf"
-      /> */}
+      <div
+        id="resume"
+        className="w-full max-w-screen-2xl h-[100vh] mx-auto mb-20 mt-10"
+      >
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+          <div
+            style={{
+              border: "1px solid rgba(0, 0, 0, 0.3)",
+              height: "750px",
+            }}
+          >
+            <Viewer fileUrl={app.resume} />
+          </div>
+        </Worker>
+        {/* <embed
+          className="w-full h-full"
+          src={app.resume}
+          type="application/pdf"
+        /> */}
+      </div>
     </div>
   );
 }
