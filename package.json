@@ -19,8 +19,10 @@
     "react-cookie": "^7.1.4",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-pdf": "^9.0.0",
     "react-router-dom": "^6.23.1",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "tinymce": "^7.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

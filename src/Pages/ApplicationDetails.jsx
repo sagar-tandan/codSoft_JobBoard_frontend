@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import PDFViewer from "../components/PDFViewer";
 
 export default function ApplicationDetails() {
   const location = useLocation();
   const { app } = location.state;
-  //   console.log(app);
+
+  const Download = (url) => {
+    console.log(url);
+    fetch(url)
+      .then((res) => res.blob())
+      .then((file) => {
+        console.log(file);
+      });
+  };
+
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3 font-poppins">
       <div>
@@ -142,6 +152,42 @@ export default function ApplicationDetails() {
           </a>
         </div>
       </div>
+
+      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
+        Experience
+      </h1>
+
+      <div
+        className="w-full"
+        dangerouslySetInnerHTML={{ __html: app.experience }}
+      ></div>
+
+      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
+        Cover Letter
+      </h1>
+
+      <div
+        className="w-full"
+        dangerouslySetInnerHTML={{ __html: app.cover }}
+      ></div>
+
+      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
+        Resume
+      </h1>
+      {/* 
+      <a
+        onClick={() => {
+          Download(app.resume);
+        }}
+      >
+        Download PDF
+      </a> */}
+
+      <embed
+        className="w-[50%] h-[100vh]"
+        src={app.resume}
+        type="application/pdf"
+      />
     </div>
   );
 }
