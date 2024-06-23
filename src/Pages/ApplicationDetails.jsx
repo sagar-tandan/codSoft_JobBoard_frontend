@@ -37,6 +37,29 @@ export default function ApplicationDetails() {
               Application for:{" "}
               <span className="text-green-600">{app.jobname}</span>
             </h1>
+            <div className="w-full flex gap-3">
+              <img
+                className="w-7 h-7 rounded-full "
+                src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
+                alt=""
+              />
+              <img
+                className="w-7 h-7 rounded-full"
+                src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
+                alt=""
+              />
+              <img
+                className="w-7 h-7 rounded-full"
+                src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                alt=""
+              />
+
+              <img
+                className="w-7 h-7 rounded-full"
+                src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
+                alt=""
+              />
+            </div>
           </div>
         </div>
 
@@ -91,10 +114,15 @@ export default function ApplicationDetails() {
           />
 
           <span>Location: </span>
-          <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(app.location)}`} target="_blank">
-          <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
-            {app.location}
-          </span>
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              app.location
+            )}`}
+            target="_blank"
+          >
+            <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
+              {app.location}
+            </span>
           </a>
         </div>
       </div>
