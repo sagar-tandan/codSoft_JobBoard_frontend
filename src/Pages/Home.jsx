@@ -34,6 +34,7 @@ export default function Home({ data }) {
           phones={userName.Userphone || null}
           cities={userName.UserselectedCity || null}
           countries={userName.UserselectedCountry || null}
+          Userimage = {userName.Userimage || null}
         />
       )}
 

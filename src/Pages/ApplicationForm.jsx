@@ -64,6 +64,7 @@ export default function ApplicationForm() {
     companyloc,
     jobtype,
     jobid,
+    Userimage,
   } = location.state;
 
   const [data, setData] = useState({
@@ -72,6 +73,7 @@ export default function ApplicationForm() {
     phone: phones,
     location: cities + "," + " " + countries,
     jobname: jobname,
+    Userimage: Userimage,
     resume: "",
     fb: "",
     linkedin: "",
@@ -91,9 +93,11 @@ export default function ApplicationForm() {
       phone,
       location,
       jobname,
+      Userimage,
       resume,
       fb,
       linkedin,
+      github,
       portfolio,
       experience,
       cover,
@@ -108,9 +112,11 @@ export default function ApplicationForm() {
       phone,
       location,
       jobname,
+      Userimage,
       downloadURL,
       fb,
       linkedin,
+      github,
       portfolio,
       experience,
       cover,
@@ -299,7 +305,7 @@ export default function ApplicationForm() {
             <textarea
               id="message"
               rows="6"
-              className="mt-2 block p-2.5 w-full text-sm text-gray-900 rounded-lg border"
+              className="mt-2 block p-2.5 w-full text-gray-900 rounded-lg border"
               value={data.experience}
               onChange={(e) => {
                 setData({ ...data, experience: e.target.value });
@@ -315,7 +321,7 @@ export default function ApplicationForm() {
             <textarea
               id="message"
               rows="6"
-              className="mt-2 block p-2.5 w-full text-sm text-gray-900 rounded-lg border"
+              className="mt-2 block p-2.5 w-full text-gray-900 rounded-lg border"
               value={data.cover}
               onChange={(e) => {
                 setData({ ...data, cover: e.target.value });

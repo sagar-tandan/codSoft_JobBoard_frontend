@@ -88,6 +88,15 @@ export default function CompanyPage({ id }) {
     });
   };
 
+  const gotoApplicatioDetails = (e, id, pos, app) => {
+    e.preventDefault();
+    navigate(`/${pos}/${id}`, {
+      state: {
+        app: app,
+      },
+    });
+  };
+
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
       <div className="w-full flex flex-row gap-4 flex-wrap">
@@ -179,7 +188,12 @@ export default function CompanyPage({ id }) {
                 </div>
 
                 <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
-                  <h1 className="text-green-600 font-medium flex items-center cursor-pointer hover:underline">
+                  <h1
+                    onClick={(e) => {
+                      gotoApplicatioDetails(e, app._id, app.jobname, app);
+                    }}
+                    className="text-green-600 font-medium flex items-center cursor-pointer hover:underline"
+                  >
                     More details &gt;
                   </h1>
                   {/* <img

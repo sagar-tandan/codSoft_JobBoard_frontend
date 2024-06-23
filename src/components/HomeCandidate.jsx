@@ -17,6 +17,7 @@ export default function HomeCandidate({
   phones,
   cities,
   countries,
+  Userimage
 }) {
   // const [JobListing, setJobListing] = useState([]);
   const [reversedJob, setReversedjob] = useState([]);
@@ -146,6 +147,7 @@ export default function HomeCandidate({
                 cities={cities}
                 countries={countries}
                 companyPhone={job.CompanyPhone}
+                Userimage = {Userimage}
               />
             </div>
           ))}

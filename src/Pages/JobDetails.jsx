@@ -30,6 +30,7 @@ export default function JobDetails() {
     cities,
     countries,
     companyPhone,
+    Userimage,
   } = location.state;
   //   console.log(responsibility);
 
@@ -58,6 +59,7 @@ export default function JobDetails() {
   }, []);
 
   const handleClick = (e) => {
+    e.preventDefault();
     if (username == null) {
       navigate("/login");
       // console.log(username)
@@ -74,6 +76,7 @@ export default function JobDetails() {
           companyloc: loc,
           jobtype: time,
           jobid: id,
+          Userimage: Userimage,
         },
       });
     }

@@ -17,6 +17,7 @@ import PostJob from "./Pages/PostJob";
 import { useCookies } from "react-cookie";
 import Start from "./Pages/Start";
 import JobApplicationPage from "./Pages/JobApplicationPage";
+import ApplicationDetails from "./Pages/ApplicationDetails";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
@@ -84,9 +85,14 @@ function App() {
         <Route
           path="/:jobname"
           element={
-            // data && data.type == "company" ? 
-            <JobApplicationPage />
-            //  : <Login />
+            data && data.type == "company" ? <JobApplicationPage /> : <Login />
+          }
+        />
+
+        <Route
+          path="/:jobname/:applicatioid"
+          element={
+            data && data.type == "company" ? <ApplicationDetails /> : <Login />
           }
         />
       </Routes>

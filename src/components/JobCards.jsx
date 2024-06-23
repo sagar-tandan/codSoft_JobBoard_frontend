@@ -27,6 +27,7 @@ export default function JobCards({
   cities,
   countries,
   companyPhone,
+  Userimage,
 }) {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -62,6 +63,7 @@ export default function JobCards({
         cities: cities,
         countries: countries,
         companyPhone: companyPhone,
+        Userimage: Userimage,
       },
     });
   };
@@ -103,7 +105,11 @@ export default function JobCards({
         } flex flex-col px-4 py-6 gap-6 shadow-lg bg-[#f2f2f2] font-poppins`}
       >
         <div className="w-full flex gap-3">
-          <img className="w-10 h-10 rounded-full object-cover" src={image} alt="" />
+          <img
+            className="w-10 h-10 rounded-full object-cover"
+            src={image}
+            alt=""
+          />
           <div className="flex flex-col">
             <h1 className="text-black font-medium">{name}</h1>
             <h2 className="text-black text-sm">{location}</h2>
