@@ -18,9 +18,9 @@ export default function ApplicationDetails() {
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3 font-poppins">
       <div>
-        <h1 className="w-full font-medium text-xl flex items-center justify-center gap-2">
+        <h1 className="w-full font-semibold text-3xl flex items-center justify-center gap-2">
           Application details of
-          <span className="text-green-600 font-semibold text-xl">
+          <span className="text-green-600 font-semibold text-3xl">
             {" "}
             {app.name}
           </span>
@@ -89,15 +89,23 @@ export default function ApplicationDetails() {
           </div>
         </div>
 
-        <div className="w-full flex gap-6 justify-end">
-          <h1 className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300">
-            Accept
-          </h1>
-          <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
-            Reject
-          </h1>
+        <div className="w-full flex flex-col gap-3">
+          <div className="w-full flex items-center justify-end ">
+            <h1 className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+              View Resume
+            </h1>
+          </div>
+          <div className="w-full flex gap-6 justify-end">
+            <h1 className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+              Accept
+            </h1>
+            <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+              Reject
+            </h1>
+          </div>
         </div>
       </div>
+
       {/* Contact Details */}
       <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
         Contact Details
@@ -162,32 +170,26 @@ export default function ApplicationDetails() {
         dangerouslySetInnerHTML={{ __html: app.experience }}
       ></div>
 
-      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
+      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold ">
         Cover Letter
       </h1>
 
       <div
-        className="w-full"
+        className="w-full mb-20"
         dangerouslySetInnerHTML={{ __html: app.cover }}
       ></div>
 
-      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
-        Resume
-      </h1>
-      {/* 
-      <a
-        onClick={() => {
-          Download(app.resume);
-        }}
-      >
-        Download PDF
-      </a> */}
+      {/* <div className="w-full flex items-center justify-center mb-20">
+        <h1 className=" mt-5 text-xl font-poppins font-medium px-4 py-2 rounded-md bg-green-600 hover:bg-green-700 text-white cursor-pointer transition-all duration-300">
+          Resume
+        </h1>
+      </div> */}
 
-      <embed
+      {/* <embed
         className="w-[50%] h-[100vh]"
         src={app.resume}
         type="application/pdf"
-      />
+      /> */}
     </div>
   );
 }
