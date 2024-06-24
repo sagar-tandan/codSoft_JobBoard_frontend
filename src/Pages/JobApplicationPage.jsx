@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function JobApplicationPage({}) {
   const [status, setStatus] = useState("pending");
   const location = useLocation();
-  const { pos, level, pDate, eDate } = location.state;
+  const { pos, level, pDate, eDate, image } = location.state;
   const { application } = location.state;
   // console.log(application);
 
@@ -21,15 +21,35 @@ export default function JobApplicationPage({}) {
 
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
-      <h1 className="w-full text-xl font-semibold font-poppins">{pos}</h1>
-      <div className="flex justify-between font-poppins">
-        <h1 className="font-medium">
-          Published Date: <span className="text-green-600">{pDate}</span>
-        </h1>
-        <h1 className="font-medium">
-          Expiry Date: <span className="text-red-600">{eDate}</span>
-        </h1>
+      <div className="w-full flex gap-4">
+        {image ? (
+          <img
+            className="w-24 h-24 rounded-full object-cover"
+            src={image}
+            alt=""
+          />
+        ) : (
+          <img
+            className="w-24 h-24 rounded-full object-cover"
+            src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
+            alt=""
+          />
+        )}
+        <div className="w-full flex flex-col gap-1 justify-center">
+          <h1 className="w-full text-xl font-semibold">{pos}</h1>
+
+          <h1 className="font-medium">
+            Total Application :{" "}
+            <span className="text-green-600">{application.length}</span>
+          </h1>
+
+          <h1 className="font-medium">
+            Duration: <span className="text-green-600">{pDate}</span> {'-'} <span className="text-red-600">{eDate}</span>
+          </h1>
+         
+        </div>
       </div>
+
       {application && application.length > 0 ? (
         <div className="w-full flex flex-col gap-2">
           <h1 className="font-poppins font-medium w-full text-lg mt-6 mb-2">

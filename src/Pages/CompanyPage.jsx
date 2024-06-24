@@ -74,7 +74,8 @@ export default function CompanyPage({ id, image }) {
     level,
     pDate,
     eDate,
-    application
+    application,
+    image
   ) => {
     e.preventDefault();
     navigate(`/${id}`, {
@@ -84,6 +85,7 @@ export default function CompanyPage({ id, image }) {
         pDate: pDate,
         eDate: eDate,
         application: application,
+        image: image,
       },
     });
   };
@@ -100,7 +102,7 @@ export default function CompanyPage({ id, image }) {
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
       <div className="w-full flex flex-row gap-4 flex-wrap">
-        <div className="flex flex-col border border-white shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
+        <div className="flex flex-col border border-gray-200 bg-gray-200 shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
           <div className="w-full flex gap-5 items-center">
             <img
               className="w-12 h-12 p-1 rounded-full bg-green-500"
@@ -122,7 +124,7 @@ export default function CompanyPage({ id, image }) {
           )}
         </div>
 
-        <div className="flex flex-col border border-white shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
+        <div className="flex flex-col border border-gray-200 bg-gray-200 shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
           <div className="w-full flex gap-5 items-center">
             <img
               className="w-12 h-12 p-1 rounded-full bg-green-500"
@@ -163,7 +165,7 @@ export default function CompanyPage({ id, image }) {
       {/* For recent Applications */}
       <div className="w-full flex flex-col mb-10">
         {allApplications && allApplications.length > 0 && (
-          <h1 className="w-full text-xl font-medium mx-2 mt-10">
+          <h1 className="w-full text-xl font-semibold mx-2 mt-6">
             Recent Applications
           </h1>
         )}
@@ -298,7 +300,7 @@ export default function CompanyPage({ id, image }) {
       {/* For the company created Vacancies */}
       <div className="w-full flex flex-col mb-20">
         {jobs && jobs.length > 0 && (
-          <h1 className="w-full text-xl font-medium mx-2 mt-10">
+          <h1 className="w-full text-xl font-semibold mx-2 mt-6">
             Your Job Vacancies
           </h1>
         )}
@@ -351,7 +353,8 @@ export default function CompanyPage({ id, image }) {
                         job.Level,
                         job.PublishedDate,
                         job.ExpiryDate,
-                        job.Applications
+                        job.Applications,
+                        image
                       );
                     }}
                     className="w-10 h-10 cursor-pointer "
