@@ -24,13 +24,13 @@ export default function JobApplicationPage({}) {
       <div className="w-full flex gap-4">
         {image ? (
           <img
-            className="w-24 h-24 rounded-full object-cover"
+            className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
             src={image}
             alt=""
           />
         ) : (
           <img
-            className="w-24 h-24 rounded-full object-cover"
+            className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
             src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
             alt=""
           />
@@ -42,11 +42,10 @@ export default function JobApplicationPage({}) {
             Total Application :{" "}
             <span className="text-green-600">{application.length}</span>
           </h1>
-
-          <h1 className="font-medium">
-            Duration: <span className="text-green-600">{pDate}</span> {'-'} <span className="text-red-600">{eDate}</span>
+          <h1 className="font-medium flex flex-wrap gap-1">
+            Duration:  <span className="text-green-600">{pDate}</span> {"-"}{" "}
+            <span className="text-red-600">{eDate}</span>
           </h1>
-         
         </div>
       </div>
 
@@ -55,12 +54,12 @@ export default function JobApplicationPage({}) {
           <h1 className="font-poppins font-medium w-full text-lg mt-6 mb-2">
             Available Applications:{" "}
           </h1>
-          <div className="w-[98%] flex justify-between mx-auto">
+          <div className="w-[98%] flex justify-between mx-auto flex-row flex-wrap">
             <div
               onClick={(e) => {
                 setStatus("pending");
               }}
-              className="bg-gray-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-gray-600 active:scale-90 transition-all duration-300"
+              className="bg-gray-500 px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-gray-600 active:scale-90 transition-all duration-300"
             >
               Pendings
             </div>
@@ -68,7 +67,7 @@ export default function JobApplicationPage({}) {
               onClick={(e) => {
                 setStatus("accepted");
               }}
-              className="bg-green-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-green-600 active:scale-90 transition-all duration-300"
+              className="bg-green-500 px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-green-600 active:scale-90 transition-all duration-300"
             >
               Accepted
             </div>
@@ -76,7 +75,7 @@ export default function JobApplicationPage({}) {
               onClick={(e) => {
                 setStatus(rejected);
               }}
-              className="bg-red-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-red-600 active:scale-90 transition-all duration-300"
+              className="bg-red-500 px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-red-600 active:scale-90 transition-all duration-300"
             >
               Rejected
             </div>
@@ -94,7 +93,7 @@ export default function JobApplicationPage({}) {
               {app.status === status && (
                 <div
                   key={app._id}
-                  className={`w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl ${
+                  className={`w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl ${
                     app.status === "pending"
                       ? "bg-gray-200"
                       : app.status === "accepted"
@@ -120,13 +119,13 @@ export default function JobApplicationPage({}) {
                   <div className="w-full flex gap-4">
                     {app && app.Userimage ? (
                       <img
-                        className="w-24 h-24 rounded-full object-cover"
+                        className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
                         src={app.Userimage}
                         alt=""
                       />
                     ) : (
                       <img
-                        className="w-24 h-24 rounded-full object-cover"
+                        className="w-16 h-16 sm:w-24 sm:h-24  rounded-full object-cover"
                         src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
                         alt=""
                       />
@@ -135,11 +134,15 @@ export default function JobApplicationPage({}) {
                       <h1 className="w-full text-xl font-semibold">
                         {app.name}
                       </h1>
-                      <h1 className="text-lg font-medium">
-                        Application for:{" "}
+
+                      <h1 className="text-lg font-medium w-full">
+                        <span className="hidden md:inline-block">
+                          Application for:
+                        </span>
                         <span className="text-green-600">{app.jobname}</span>
                       </h1>
-                      <div className="w-full flex gap-6">
+
+                      <div className="w-full  gap-6 hidden sm:flex">
                         {app && app.fb && (
                           <a href={app.fb} target="_blank">
                             <img
@@ -181,29 +184,70 @@ export default function JobApplicationPage({}) {
                     </div>
                   </div>
 
-                  <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
-                    <h1
-                      onClick={(e) => {
-                        gotoApplicatioDetails(e, app._id, app.jobname, app);
-                      }}
-                      className="text-green-600 font-medium flex items-center cursor-pointer hover:underline text-lg"
-                    >
-                      More details &gt;
-                    </h1>
-                    {/* <img
+                  <div className="w-full flex flex-col gap-2 justify-center">
+                    <div className="w-[80%]  sm:hidden flex mt-3 mx-auto justify-around">
+                      {app && app.fb && (
+                        <a href={app.fb} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
+                            alt="fb"
+                          />
+                        </a>
+                      )}
+                      {app && app.linkedin && (
+                        <a href={app.linkedin} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
+                            alt="linkedin"
+                          />
+                        </a>
+                      )}
+                      {app && app.github && (
+                        <a href={app.github} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                            alt="git"
+                          />
+                        </a>
+                      )}
+
+                      {app && app.portfolio && (
+                        <a href={app.portfolio} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
+                            alt="port"
+                          />
+                        </a>
+                      )}
+                    </div>
+
+                    <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
+                      <h1
+                        onClick={(e) => {
+                          gotoApplicatioDetails(e, app._id, app.jobname, app);
+                        }}
+                        className="text-green-600 font-medium flex items-center cursor-pointer hover:underline text-lg"
+                      >
+                        More details &gt;
+                      </h1>
+                      {/* <img
                     className="w-10 h-10 cursor-pointer "
                     src={view}
                     alt=""
                   /> */}
 
-                    {/* <img
+                      {/* <img
                     onClick={() => gotoPostaJob(e)}
                     className="w-8 h-7 cursor-pointer "
                     src={edit}
                     alt=""
                   /> */}
 
-                    {/* <img
+                      {/* <img
                     onClick={() => {
                       setDialogBox(true);
                       setJobId(job._id);
@@ -212,6 +256,7 @@ export default function JobApplicationPage({}) {
                     src={del}
                     alt=""
                   /> */}
+                    </div>
                   </div>
                 </div>
               )}
