@@ -391,16 +391,6 @@ export default function ApplicationForm() {
             </div>
           </div>
 
-          {/* <button
-            className="mt-3 mb-20 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
-            type="submit"
-          >
-            <div className="w-full flex p-3 justify-center gap-4 ">
-              <h1 className="sm:inline-block hidden">Submit Application</h1>
-              <h1 className="inline-block sm:hidden">Submit</h1>
-            </div>
-          </button> */}
-
           <button
             className="mt-3 mb-20 shadow-green-300 shadow-lg bg-green-600 font-medium text-white rounded-full w-1/2 mx-auto hover:cursor-pointer flex items-center hover:bg-green-700 transition-all ease-in-out duration-300"
             type="submit"
