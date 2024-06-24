@@ -19,9 +19,22 @@ export default function JobApplicationPage({}) {
         </h1>
       </div>
       {application && application.length > 0 ? (
-        <h1 className="font-poppins font-medium text-lg mt-8">
-          All available Applications:{" "}
-        </h1>
+        <div className="w-full flex flex-col gap-2">
+          <h1 className="font-poppins font-medium w-full text-lg mt-8">
+            Available Applications:{" "}
+          </h1>
+          <div className="w-[98%] flex justify-between mx-auto">
+            <div className="bg-gray-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-gray-600 active:scale-90 transition-all duration-300">
+              Pendings
+            </div>
+            <div className="bg-green-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-green-600 active:scale-90 transition-all duration-300">
+              Accepted
+            </div>
+            <div className="bg-red-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-red-600 active:scale-90 transition-all duration-300">
+              Rejected
+            </div>
+          </div>
+        </div>
       ) : (
         <h1 className="font-poppins font-medium text-lg mt-8 flex justify-center items-center"></h1>
       )}
