@@ -336,7 +336,7 @@ export default function ApplicationForm() {
 
             <div className="w-full max-w-8xl mx-auto p-4">
               <Editor
-                apiKey="uj8y5173znc52ddnpfkntgutzhsbe4ra21ge6k3htlpxz9bh"
+                apiKey={import.meta.env.VITE_TINY_API}
                 initialValue={data.experience}
                 init={{
                   height: 500,
@@ -367,7 +367,7 @@ export default function ApplicationForm() {
 
             <div className="w-full max-w-8xl mx-auto p-4">
               <Editor
-                apiKey="uj8y5173znc52ddnpfkntgutzhsbe4ra21ge6k3htlpxz9bh"
+                apiKey={import.meta.env.VITE_TINY_API}
                 initialValue={data.cover}
                 init={{
                   height: 500,
