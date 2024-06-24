@@ -5,6 +5,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import axios from "axios";
 import toast from "react-hot-toast";
 import loader from "../assets/Asset!/loader.gif";
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function ApplicationForm() {
   const location = useLocation();
@@ -303,7 +304,7 @@ export default function ApplicationForm() {
               of the projects you have done. Or, give us short overview on why
               this role speaks to you.
             </p>
-            <textarea
+            {/* <textarea
               id="message"
               rows="6"
               className="mt-2 block p-2.5 w-full text-gray-900 rounded-lg border"
@@ -311,7 +312,52 @@ export default function ApplicationForm() {
               onChange={(e) => {
                 setData({ ...data, experience: e.target.value });
               }}
-            ></textarea>
+            ></textarea> */}
+
+            {/* <Editor
+              apiKey="uj8y5173znc52ddnpfkntgutzhsbe4ra21ge6k3htlpxz9bh"
+              initialValue={data.experience}
+              init={{
+                width: 1400,
+                height: 500,
+                menubar: false,
+                plugins: [
+                  "searchreplace visualblocks code",
+                  "insertdatetime table paste wordcount",
+                ],
+                toolbar:
+                  "undo redo | bold italic | \
+            alignleft aligncenter alignright ",
+              }}
+              onChange={(e) => {
+                setData({ ...data, experience: e.target.value });
+              }}
+            /> */}
+
+            <div className="w-full max-w-8xl mx-auto p-4">
+              <Editor
+                apiKey="uj8y5173znc52ddnpfkntgutzhsbe4ra21ge6k3htlpxz9bh"
+                initialValue={data.experience}
+                init={{
+                  height: 500,
+                  menubar: false,
+                  plugins: [
+                    "advlist autolink lists link image",
+                    "charmap print preview anchor help",
+                    "searchreplace visualblocks code",
+                    "insertdatetime media table paste wordcount",
+                  ],
+                  toolbar:
+                    "undo redo | formatselect | bold italic | \
+            alignleft aligncenter alignright | \
+            bullist numlist outdent indent | help",
+                }}
+                onChange={(e) => {
+                  setData({ ...data, experience: e.target.getContent() });
+                }}
+                className="w-full"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-2 items-center w-full">
@@ -319,15 +365,30 @@ export default function ApplicationForm() {
               Cover Letter
             </label>
 
-            <textarea
-              id="message"
-              rows="6"
-              className="mt-2 block p-2.5 w-full text-gray-900 rounded-lg border"
-              value={data.cover}
-              onChange={(e) => {
-                setData({ ...data, cover: e.target.value });
-              }}
-            ></textarea>
+            <div className="w-full max-w-8xl mx-auto p-4">
+              <Editor
+                apiKey="uj8y5173znc52ddnpfkntgutzhsbe4ra21ge6k3htlpxz9bh"
+                initialValue={data.cover}
+                init={{
+                  height: 500,
+                  menubar: false,
+                  plugins: [
+                    "advlist autolink lists link image",
+                    "charmap print preview anchor help",
+                    "searchreplace visualblocks code",
+                    "insertdatetime media table paste wordcount",
+                  ],
+                  toolbar:
+                    "undo redo | formatselect | bold italic | \
+            alignleft aligncenter alignright | \
+            bullist numlist outdent indent | help",
+                }}
+                onChange={(e) => {
+                  setData({ ...data, cover: e.target.getContent() });
+                }}
+                className="w-full"
+              />
+            </div>
           </div>
 
           {/* <button
