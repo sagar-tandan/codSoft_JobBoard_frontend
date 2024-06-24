@@ -13,16 +13,14 @@ export default function ApplicationDetails() {
     document.getElementById("resume").scrollIntoView();
   };
 
-  const changeStatus = (e,status)=>{
+  const changeStatus = (e, status) => {
     e.preventDefault();
-    
-
-  }
+  };
 
   return (
-    <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3 font-poppins">
+    <div className="mt-20 w-full max-w-screen-2xl px-2 sm:px-4 lg:mx-auto flex flex-col text-black gap-3 font-poppins">
       <div>
-        <h1 className="w-full font-semibold text-3xl flex items-center justify-center gap-2">
+        <h1 className="hidden sm:flex w-full font-semibold text-lg sm:text-3xl  items-center justify-center gap-2">
           Application details of
           <span className="text-green-600 font-semibold text-3xl">
             {" "}
@@ -30,71 +28,99 @@ export default function ApplicationDetails() {
           </span>
         </h1>
       </div>
-      <div className="w-full flex flex-row justify-between items-center bg-[#f2f2f2] px-3 py-6 rounded-lg">
-        <div className="w-full flex gap-4">
-          {app && app.Userimage ? (
-            <img
-              className="w-24 h-24 rounded-full object-cover"
-              src={app.Userimage}
-              alt=""
-            />
-          ) : (
-            <img
-              className="w-24 h-24 rounded-full object-cover"
-              src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
-              alt=""
-            />
-          )}
-          <div className="w-full flex flex-col gap-1 justify-center">
-            <h1 className="w-full text-xl font-semibold">{app.name}</h1>
-            <h1 className="text-lg font-medium">
-              Application for:{" "}
-              <span className="text-green-600">{app.jobname}</span>
-            </h1>
-            <div className="w-full flex gap-6">
-              {app && app.fb && (
-                <a href={app.fb} target="_blank">
-                  <img
-                    className="w-7 h-7 rounded-full hover:cursor-pointer"
-                    src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
-                    alt="fb"
-                  />
-                </a>
-              )}
-              {app && app.linkedin && (
-                <a href={app.linkedin} target="_blank">
-                  <img
-                    className="w-7 h-7 rounded-full hover:cursor-pointer"
-                    src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
-                    alt="linkedin"
-                  />
-                </a>
-              )}
-              {app && app.github && (
-                <a href={app.github} target="_blank">
-                  <img
-                    className="w-7 h-7 rounded-full hover:cursor-pointer"
-                    src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
-                    alt="git"
-                  />
-                </a>
-              )}
+      <div className="w-full gap-1 flex flex-col bg-[#f2f2f2]">
+        <div className="w-full flex flex-row justify-between items-center bg-[#f2f2f2] px-3 py-6 rounded-lg">
+          <div className="w-full flex gap-4">
+            {app && app.Userimage ? (
+              <img
+                className="w-24 h-24 rounded-full object-cover"
+                src={app.Userimage}
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-24 h-24 rounded-full object-cover"
+                src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
+                alt=""
+              />
+            )}
+            <div className="w-full flex flex-col gap-1 justify-center">
+              <h1 className="w-full text-xl font-semibold">{app.name}</h1>
+              <h1 className="text-lg font-medium">
+                <span className="hidden md:inline-block">
+                  Application for:{" "}
+                </span>
+                <span className="text-green-600"> {app.jobname}</span>
+              </h1>
+              <div className="w-full flex gap-6">
+                {app && app.fb && (
+                  <a href={app.fb} target="_blank">
+                    <img
+                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
+                      alt="fb"
+                    />
+                  </a>
+                )}
+                {app && app.linkedin && (
+                  <a href={app.linkedin} target="_blank">
+                    <img
+                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
+                      alt="linkedin"
+                    />
+                  </a>
+                )}
+                {app && app.github && (
+                  <a href={app.github} target="_blank">
+                    <img
+                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                      alt="git"
+                    />
+                  </a>
+                )}
 
-              {app && app.portfolio && (
-                <a href={app.portfolio} target="_blank">
-                  <img
-                    className="w-7 h-7 rounded-full hover:cursor-pointer"
-                    src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
-                    alt="port"
-                  />
-                </a>
-              )}
+                {app && app.portfolio && (
+                  <a href={app.portfolio} target="_blank">
+                    <img
+                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
+                      alt="port"
+                    />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full hidden flex-col gap-3 md:flex">
+            <div className="w-full flex items-center justify-end ">
+              <h1
+                onClick={(e) => scrollToResume(e)}
+                className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              >
+                View Resume
+              </h1>
+            </div>
+            <div className="w-full flex gap-6 justify-end">
+              <h1
+                onClick={(e) => {
+                  changeStatus(e, "Accept");
+                }}
+                className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              >
+                Accept
+              </h1>
+              <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+                Reject
+              </h1>
             </div>
           </div>
         </div>
 
-        <div className="w-full flex flex-col gap-3">
-          <div className="w-full flex items-center justify-end ">
+        <div className="w-full md:hidden flex-col gap-3 flex">
+          <div className="w-full flex items-center justify-center ">
             <h1
               onClick={(e) => scrollToResume(e)}
               className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
@@ -102,7 +128,7 @@ export default function ApplicationDetails() {
               View Resume
             </h1>
           </div>
-          <div className="w-full flex gap-6 justify-end">
+          <div className="w-full flex gap-6 justify-center">
             <h1
               onClick={(e) => {
                 changeStatus(e, "Accept");
@@ -116,6 +142,32 @@ export default function ApplicationDetails() {
             </h1>
           </div>
         </div>
+
+        {/* <div className="w-full sm:hidden flex-col gap-3 flex">
+          <div className="w-full flex items-center justify-center ">
+            <h1
+              onClick={(e) => scrollToResume(e)}
+              className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+            >
+              View Resume
+            </h1>
+          </div>
+          <div className="w-full flex gap-6 justify-center">
+            <h1
+              onClick={(e) => {
+                changeStatus(e, "Accept");
+              }}
+              className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+            >
+              Accept
+            </h1>
+            <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+              Reject
+            </h1>
+          </div>
+        </div> */}
+
+
       </div>
 
       {/* Contact Details */}
