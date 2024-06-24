@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function JobApplicationPage({}) {
+  const [status, setStatus] = useState("pending");
   const location = useLocation();
   const { pos, level, pDate, eDate } = location.state;
   const { application } = location.state;
@@ -24,13 +25,28 @@ export default function JobApplicationPage({}) {
             Available Applications:{" "}
           </h1>
           <div className="w-[98%] flex justify-between mx-auto">
-            <div className="bg-gray-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-gray-600 active:scale-90 transition-all duration-300">
+            <div
+              onClick={(e) => {
+                setStatus("pending");
+              }}
+              className="bg-gray-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-gray-600 active:scale-90 transition-all duration-300"
+            >
               Pendings
             </div>
-            <div className="bg-green-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-green-600 active:scale-90 transition-all duration-300">
+            <div
+              onClick={(e) => {
+                setStatus("accepted");
+              }}
+              className="bg-green-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-green-600 active:scale-90 transition-all duration-300"
+            >
               Accepted
             </div>
-            <div className="bg-red-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-red-600 active:scale-90 transition-all duration-300">
+            <div
+              onClick={(e) => {
+                setStatus(rejected);
+              }}
+              className="bg-red-500 px-3 py-2 text-lg text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-red-600 active:scale-90 transition-all duration-300"
+            >
               Rejected
             </div>
           </div>
@@ -43,39 +59,42 @@ export default function JobApplicationPage({}) {
         {application &&
           application.length > 0 &&
           application.map((app) => (
-            <div
-              key={app._id}
-              className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl"
-            >
-              <div className="w-full flex flex-col">
-                <h1 className="font-medium text-xl">{app.name}</h1>
-                <h1 className="font-medium">
-                  Position :{" "}
-                  <span className="text-green-600">{app.jobname}</span>
-                </h1>
-                <h1 className="font-medium">
-                  Phone : <span className="text-green-600">{app.phone}</span>
-                </h1>
-              </div>
+            <div className="w-full">
+              {app.status === status && (
+                <div
+                  key={app._id}
+                  className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl"
+                >
+                  <div className="w-full flex flex-col">
+                    <h1 className="font-medium text-xl">{app.name}</h1>
+                    <h1 className="font-medium">
+                      Position :{" "}
+                      <span className="text-green-600">{app.jobname}</span>
+                    </h1>
+                    <h1 className="font-medium">
+                      Phone :{" "}
+                      <span className="text-green-600">{app.phone}</span>
+                    </h1>
+                  </div>
 
-              <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
-                <h1 className="text-green-600 font-medium flex items-center cursor-pointer hover:underline">
-                  More details &gt;
-                </h1>
-                {/* <img
+                  <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
+                    <h1 className="text-green-600 font-medium flex items-center cursor-pointer hover:underline">
+                      More details &gt;
+                    </h1>
+                    {/* <img
                     className="w-10 h-10 cursor-pointer "
                     src={view}
                     alt=""
                   /> */}
 
-                {/* <img
+                    {/* <img
                     onClick={() => gotoPostaJob(e)}
                     className="w-8 h-7 cursor-pointer "
                     src={edit}
                     alt=""
                   /> */}
 
-                {/* <img
+                    {/* <img
                     onClick={() => {
                       setDialogBox(true);
                       setJobId(job._id);
@@ -84,7 +103,9 @@ export default function JobApplicationPage({}) {
                     src={del}
                     alt=""
                   /> */}
-              </div>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
 
