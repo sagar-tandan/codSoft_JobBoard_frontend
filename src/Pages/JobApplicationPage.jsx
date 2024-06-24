@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function JobApplicationPage({}) {
   const [status, setStatus] = useState("pending");
@@ -7,6 +7,17 @@ export default function JobApplicationPage({}) {
   const { pos, level, pDate, eDate } = location.state;
   const { application } = location.state;
   // console.log(application);
+
+  const navigate = useNavigate();
+
+  const gotoApplicatioDetails = (e, id, pos, app) => {
+    e.preventDefault();
+    navigate(`/${pos}/${id}`, {
+      state: {
+        app: app,
+      },
+    });
+  };
 
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
@@ -151,7 +162,12 @@ export default function JobApplicationPage({}) {
                   </div>
 
                   <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
-                    <h1 className="text-green-600 font-medium flex items-center cursor-pointer hover:underline text-lg">
+                    <h1
+                      onClick={(e) => {
+                        gotoApplicatioDetails(e, app._id, app.jobname, app);
+                      }}
+                      className="text-green-600 font-medium flex items-center cursor-pointer hover:underline text-lg"
+                    >
                       More details &gt;
                     </h1>
                     {/* <img
