@@ -3,23 +3,21 @@ import { useLocation } from "react-router-dom";
 import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+import axios from "axios";
 
 export default function ApplicationDetails() {
   const location = useLocation();
   const { app } = location.state;
 
-  //   const Download = (url) => {
-  //     console.log(url);
-  //     fetch(url, { mode: "cors" })
-  //       .then((res) => res.blob())
-  //       .then((file) => {
-  //         console.log(file);
-  //       });
-  //   };
-
   const scrollToResume = (e) => {
     document.getElementById("resume").scrollIntoView();
   };
+
+  const changeStatus = (e,status)=>{
+    e.preventDefault();
+    
+
+  }
 
   return (
     <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3 font-poppins">
@@ -105,7 +103,12 @@ export default function ApplicationDetails() {
             </h1>
           </div>
           <div className="w-full flex gap-6 justify-end">
-            <h1 className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+            <h1
+              onClick={(e) => {
+                changeStatus(e, "Accept");
+              }}
+              className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+            >
               Accept
             </h1>
             <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
