@@ -43,7 +43,7 @@ export default function JobApplicationPage({}) {
             <span className="text-green-600">{application.length}</span>
           </h1>
           <h1 className="font-medium flex flex-wrap gap-1">
-            Duration:  <span className="text-green-600">{pDate}</span> {"-"}{" "}
+            Duration: <span className="text-green-600">{pDate}</span> {"-"}{" "}
             <span className="text-red-600">{eDate}</span>
           </h1>
         </div>
@@ -51,7 +51,7 @@ export default function JobApplicationPage({}) {
 
       {application && application.length > 0 ? (
         <div className="w-full flex flex-col gap-2">
-          <h1 className="font-poppins font-medium w-full text-lg mt-6 mb-2">
+          <h1 className="font-poppins font-medium w-full text-lg mt-6 mb-2 px-1 sm:px-3">
             Available Applications:{" "}
           </h1>
           <div className="w-[98%] flex justify-between mx-auto flex-row flex-wrap">
@@ -93,7 +93,7 @@ export default function JobApplicationPage({}) {
               {app.status === status && (
                 <div
                   key={app._id}
-                  className={`w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl ${
+                  className={`w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl ${
                     app.status === "pending"
                       ? "bg-gray-200"
                       : app.status === "accepted"
@@ -101,21 +101,6 @@ export default function JobApplicationPage({}) {
                       : "bg-red-200"
                   }`}
                 >
-                  {/* <div className="flex w-full">
-                    <img className="w-24 h-24 rounded-full object-cover" src={app.Userimage} alt="" />
-                  </div>
-                  <div className="w-full flex flex-col">
-                    <h1 className="font-medium text-xl">{app.name}</h1>
-                    <h1 className="font-medium">
-                      Position :{" "}
-                      <span className="text-green-600">{app.jobname}</span>
-                    </h1>
-                    <h1 className="font-medium">
-                      Phone :{" "}
-                      <span className="text-green-600">{app.phone}</span>
-                    </h1>
-                  </div> */}
-
                   <div className="w-full flex gap-4">
                     {app && app.Userimage ? (
                       <img
