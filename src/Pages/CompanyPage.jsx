@@ -100,7 +100,7 @@ export default function CompanyPage({ id, image }) {
   };
 
   return (
-    <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
+    <div className="mt-20 w-full max-w-screen-2xl px-2 sm:px-4 lg:mx-auto flex flex-col text-black gap-3">
       <div className="w-full flex flex-row gap-4 flex-wrap">
         <div className="flex flex-col border border-gray-200 bg-gray-200 shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
           <div className="w-full flex gap-5 items-center">
@@ -176,7 +176,7 @@ export default function CompanyPage({ id, image }) {
             recentApp.map((app) => (
               <div
                 key={app._id}
-                className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl bg-gray-200"
+                className="w-full px-1 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl bg-gray-200"
               >
                 <div className="w-full flex gap-4">
                   {app && app.Userimage ? (
@@ -344,7 +344,7 @@ export default function CompanyPage({ id, image }) {
             jobs.map((job) => (
               <div
                 key={job._id}
-                className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl bg-gray-200"
+                className="w-full px-1 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl bg-gray-200"
               >
                 <div className="w-full flex gap-4">
                   {image ? (
