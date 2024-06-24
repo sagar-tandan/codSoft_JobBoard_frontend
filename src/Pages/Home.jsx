@@ -41,7 +41,7 @@ export default function Home({ data }) {
       {userName.length === 0 && <HomeCandidate />}
 
       {userName && userName.type == "company" && (
-        <div className="mt-16">{<CompanyPage id={userName._id} />}</div>
+        <div className="mt-16">{<CompanyPage id={userName._id} image= {userName.image} />}</div>
       )}
     </>
   );
