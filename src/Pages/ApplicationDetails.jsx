@@ -175,7 +175,7 @@ export default function ApplicationDetails() {
       </h1>
 
       <div
-        className="w-full"
+        className="w-full text-lg"
         dangerouslySetInnerHTML={{ __html: app.experience }}
       ></div>
 
@@ -184,7 +184,7 @@ export default function ApplicationDetails() {
       </h1>
 
       <div
-        className="w-full"
+        className="w-full text-lg"
         dangerouslySetInnerHTML={{ __html: app.cover }}
       ></div>
 

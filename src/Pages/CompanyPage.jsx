@@ -174,9 +174,9 @@ export default function CompanyPage({ id }) {
             recentApp.map((app) => (
               <div
                 key={app._id}
-                className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl"
+                className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl bg-gray-200"
               >
-                <div className="w-full flex flex-col">
+                {/* <div className="w-full flex flex-col">
                   <h1 className="font-medium text-xl">{app.name}</h1>
                   <h1 className="font-medium">
                     Position :{" "}
@@ -185,6 +185,67 @@ export default function CompanyPage({ id }) {
                   <h1 className="font-medium">
                     Phone : <span className="text-green-600">{app.phone}</span>
                   </h1>
+                </div> */}
+                <div className="w-full flex gap-4">
+                  {app && app.Userimage ? (
+                    <img
+                      className="w-24 h-24 rounded-full object-cover"
+                      src={app.Userimage}
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      className="w-24 h-24 rounded-full object-cover"
+                      src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
+                      alt=""
+                    />
+                  )}
+                  <div className="w-full flex flex-col gap-1 justify-center">
+                    <h1 className="w-full text-xl font-semibold">{app.name}</h1>
+                    <h1 className="text-lg font-medium">
+                      Application for:{" "}
+                      <span className="text-green-600">{app.jobname}</span>
+                    </h1>
+                    <div className="w-full flex gap-6">
+                      {app && app.fb && (
+                        <a href={app.fb} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
+                            alt="fb"
+                          />
+                        </a>
+                      )}
+                      {app && app.linkedin && (
+                        <a href={app.linkedin} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
+                            alt="linkedin"
+                          />
+                        </a>
+                      )}
+                      {app && app.github && (
+                        <a href={app.github} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                            alt="git"
+                          />
+                        </a>
+                      )}
+
+                      {app && app.portfolio && (
+                        <a href={app.portfolio} target="_blank">
+                          <img
+                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
+                            alt="port"
+                          />
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
@@ -192,7 +253,7 @@ export default function CompanyPage({ id }) {
                     onClick={(e) => {
                       gotoApplicatioDetails(e, app._id, app.jobname, app);
                     }}
-                    className="text-green-600 font-medium flex items-center cursor-pointer hover:underline"
+                    className="text-green-600 text-lg font-medium flex items-center cursor-pointer hover:underline"
                   >
                     More details &gt;
                   </h1>
@@ -247,7 +308,7 @@ export default function CompanyPage({ id }) {
             jobs.map((job) => (
               <div
                 key={job._id}
-                className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl"
+                className="w-full mx-1 flex flex-col sm:flex-row shadow-lg p-6 shadow-slate-400 rounded-xl bg-gray-200"
               >
                 <div className="w-full flex flex-col">
                   <h1 className="font-medium text-xl">{job.Position}</h1>
