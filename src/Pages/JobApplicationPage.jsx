@@ -20,7 +20,7 @@ export default function JobApplicationPage({}) {
   };
 
   return (
-    <div className="mt-20 w-full max-w-screen-2xl mx-auto flex flex-col text-black gap-3">
+    <div className="mt-20 w-full max-w-screen-2xl px-2 sm:px-4 lg:mx-auto flex flex-col text-black gap-3">
       <div className="w-full flex gap-4">
         {image ? (
           <img
