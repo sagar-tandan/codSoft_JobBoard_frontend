@@ -4,7 +4,7 @@ import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import axios from "axios";
-import '../../src/index.css'
+import "../../src/index.css";
 
 export default function ApplicationDetails() {
   const location = useLocation();
@@ -16,6 +16,9 @@ export default function ApplicationDetails() {
 
   const changeStatus = (e, status) => {
     e.preventDefault();
+    //Change the status in Db and
+    //send email to that defined user email from Applications Email
+    
   };
 
   return (
@@ -24,12 +27,11 @@ export default function ApplicationDetails() {
         <h1 className="hidden sm:flex w-full font-semibold text-lg sm:text-3xl  items-center justify-center gap-2">
           Application details of
           <span className="text-green-600 font-semibold text-3xl">
-            {" "}
             {app.name}
           </span>
         </h1>
       </div>
-      <div id="" className="w-full gap-1 flex flex-col bg-[#f2f2f2] rounded-md ">
+      <div className="w-full gap-1 flex flex-col bg-[#f2f2f2] rounded-md ">
         <div className="w-full flex flex-row justify-between items-center bg-[#f2f2f2] px-3 py-6 rounded-lg">
           <div className="w-full flex gap-4">
             {app && app.Userimage ? (
@@ -107,13 +109,18 @@ export default function ApplicationDetails() {
             <div className="w-full flex gap-6 justify-end">
               <h1
                 onClick={(e) => {
-                  changeStatus(e, "Accept");
+                  changeStatus(e, "accepted");
                 }}
                 className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
               >
                 Accept
               </h1>
-              <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+              <h1
+                onClick={(e) => {
+                  changeStatus(e, "rejected");
+                }}
+                className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              >
                 Reject
               </h1>
             </div>
@@ -132,13 +139,18 @@ export default function ApplicationDetails() {
           <div className="w-[90%] flex gap-[3%] justify-center ">
             <h1
               onClick={(e) => {
-                changeStatus(e, "Accept");
+                changeStatus(e, "accepted");
               }}
               className="w-[49%] flex justify-center bg-green-600 px-3 py-2  rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
               Accept
             </h1>
-            <h1 className="w-[49%] flex justify-center bg-red-600 px-3 py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+            <h1
+              onClick={(e) => {
+                changeStatus(e, "rejected");
+              }}
+              className="w-[49%] flex justify-center bg-red-600 px-3 py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+            >
               Reject
             </h1>
           </div>

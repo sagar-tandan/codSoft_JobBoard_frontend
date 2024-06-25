@@ -60,6 +60,7 @@ export default function Categories() {
           <h1 className="text-black text-sm">{category.name}</h1>
         </div>
       ))}
+
     </div>
   );
 }

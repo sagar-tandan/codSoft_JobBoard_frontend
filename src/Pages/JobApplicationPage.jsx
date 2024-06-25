@@ -231,28 +231,6 @@ export default function JobApplicationPage({}) {
                       >
                         More details &gt;
                       </h1>
-                      {/* <img
-                    className="w-10 h-10 cursor-pointer "
-                    src={view}
-                    alt=""
-                  /> */}
-
-                      {/* <img
-                    onClick={() => gotoPostaJob(e)}
-                    className="w-8 h-7 cursor-pointer "
-                    src={edit}
-                    alt=""
-                  /> */}
-
-                      {/* <img
-                    onClick={() => {
-                      setDialogBox(true);
-                      setJobId(job._id);
-                    }}
-                    className="w-8 h-8 hover:cursor-pointer"
-                    src={del}
-                    alt=""
-                  /> */}
                     </div>
                   </div>
                 </div>
