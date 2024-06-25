@@ -18,7 +18,7 @@ export default function ApplicationDetails() {
   };
 
   return (
-    <div className="mt-20 w-full max-w-screen-2xl px-2 sm:px-4 lg:mx-auto flex flex-col text-black gap-3 font-poppins">
+    <div className="mt-20 w-full max-w-screen-2xl px-2 sm:px-4 mx-0 lg:mx-auto flex flex-col text-black gap-3 font-poppins justify-center items-center">
       <div>
         <h1 className="hidden sm:flex w-full font-semibold text-lg sm:text-3xl  items-center justify-center gap-2">
           Application details of
@@ -33,13 +33,13 @@ export default function ApplicationDetails() {
           <div className="w-full flex gap-4">
             {app && app.Userimage ? (
               <img
-                className="w-24 h-24 rounded-full object-cover"
+                className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
                 src={app.Userimage}
                 alt=""
               />
             ) : (
               <img
-                className="w-24 h-24 rounded-full object-cover"
+                className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
                 src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
                 alt=""
               />
@@ -56,7 +56,7 @@ export default function ApplicationDetails() {
                 {app && app.fb && (
                   <a href={app.fb} target="_blank">
                     <img
-                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
                       src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
                       alt="fb"
                     />
@@ -65,7 +65,7 @@ export default function ApplicationDetails() {
                 {app && app.linkedin && (
                   <a href={app.linkedin} target="_blank">
                     <img
-                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
                       src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
                       alt="linkedin"
                     />
@@ -74,7 +74,7 @@ export default function ApplicationDetails() {
                 {app && app.github && (
                   <a href={app.github} target="_blank">
                     <img
-                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
                       src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
                       alt="git"
                     />
@@ -84,7 +84,7 @@ export default function ApplicationDetails() {
                 {app && app.portfolio && (
                   <a href={app.portfolio} target="_blank">
                     <img
-                      className="w-7 h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
                       src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
                       alt="port"
                     />
@@ -166,22 +166,20 @@ export default function ApplicationDetails() {
             </h1>
           </div>
         </div> */}
-
-
       </div>
 
       {/* Contact Details */}
       <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
         Contact Details
       </h1>
-      <div className="w-full flex justify-between flex-wrap">
-        <div className="w-[30%] flex gap-1 font-poppins font-medium text-lg">
+      <div className="w-full flex flex-col sm:flex-row gap-5 sm:justify-between ">
+        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg">
           <img
             className="w-6 h-6"
             src="https://cdn-icons-png.flaticon.com/128/546/546394.png"
             alt=""
           />
-          <span>Email: </span>
+          <span className="hidden lg:flex">Email: </span>
           <a href={`mailto:${app.email}`}>
             <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
               {app.email}
@@ -189,14 +187,14 @@ export default function ApplicationDetails() {
           </a>
         </div>
 
-        <div className="w-[30%] flex gap-1 font-poppins font-medium text-lg">
+        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg">
           <img
             className="w-6 h-6"
             src="https://cdn-icons-png.flaticon.com/128/1034/1034131.png"
             alt=""
           />
 
-          <span>Phone: </span>
+          <span className="hidden lg:flex">Phone: </span>
           <a href={`tel:${app.phone}`}>
             <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
               {app.phone}
@@ -204,14 +202,14 @@ export default function ApplicationDetails() {
           </a>
         </div>
 
-        <div className="w-[30%] flex gap-1 font-poppins font-medium text-lg">
+        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg">
           <img
             className="w-6 h-6"
             src="https://cdn-icons-png.flaticon.com/128/819/819865.png"
             alt=""
           />
 
-          <span>Location: </span>
+          <span className="hidden lg:flex">Location: </span>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               app.location
@@ -239,7 +237,7 @@ export default function ApplicationDetails() {
       </h1>
 
       <div
-        className="w-full text-lg"
+        className="w-full text-sm sm:text-lg flex flex-wrap"
         dangerouslySetInnerHTML={{ __html: app.cover }}
       ></div>
 
