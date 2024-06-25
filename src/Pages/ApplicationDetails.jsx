@@ -18,7 +18,7 @@ export default function ApplicationDetails() {
     e.preventDefault();
     //Change the status in Db and
     //send email to that defined user email from Applications Email
-    
+
   };
 
   return (
@@ -251,6 +251,8 @@ export default function ApplicationDetails() {
             <Viewer fileUrl={app.resume} />
           </div>
         </Worker>
+
+        {/* embed the file  links  */}
         {/* <embed
           className="w-full h-full"
           src={app.resume}
