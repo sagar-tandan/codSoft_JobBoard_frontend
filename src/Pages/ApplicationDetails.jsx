@@ -123,7 +123,7 @@ export default function ApplicationDetails() {
           <div className="w-full flex items-center justify-center ">
             <h1
               onClick={(e) => scrollToResume(e)}
-              className="w-[90%] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              className="w-[90%] flex justify-center bg-green-600 px-3 py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
               View Resume
             </h1>
@@ -133,39 +133,15 @@ export default function ApplicationDetails() {
               onClick={(e) => {
                 changeStatus(e, "Accept");
               }}
-              className="w-[48%] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              className="w-[49%] flex justify-center bg-green-600 px-3 py-2  rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
               Accept
             </h1>
-            <h1 className="w-[48%] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
+            <h1 className="w-[49%] flex justify-center bg-red-600 px-3 py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
               Reject
             </h1>
           </div>
         </div>
-
-        {/* <div className="w-full sm:hidden flex-col gap-3 flex">
-          <div className="w-full flex items-center justify-center ">
-            <h1
-              onClick={(e) => scrollToResume(e)}
-              className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
-            >
-              View Resume
-            </h1>
-          </div>
-          <div className="w-full flex gap-6 justify-center">
-            <h1
-              onClick={(e) => {
-                changeStatus(e, "Accept");
-              }}
-              className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
-            >
-              Accept
-            </h1>
-            <h1 className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300">
-              Reject
-            </h1>
-          </div>
-        </div> */}
       </div>
 
       {/* Contact Details */}
@@ -228,7 +204,7 @@ export default function ApplicationDetails() {
       </h1>
 
       <div
-        className="w-full text-lg"
+        className="w-full  text-sm  sm:text-lg"
         dangerouslySetInnerHTML={{ __html: app.experience }}
       ></div>
 
