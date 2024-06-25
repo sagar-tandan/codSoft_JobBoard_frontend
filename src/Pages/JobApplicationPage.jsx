@@ -127,11 +127,11 @@ export default function JobApplicationPage({}) {
                         <span className="text-green-600">{app.jobname}</span>
                       </h1>
 
-                      <div className="w-full  gap-6 hidden sm:flex">
+                      <div className="w-full  gap-6 hidden sm:flex mt-1">
                         {app && app.fb && (
                           <a href={app.fb} target="_blank">
                             <img
-                              className="w-7 h-7 rounded-full hover:cursor-pointer"
+                              className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                               src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
                               alt="fb"
                             />
@@ -140,7 +140,7 @@ export default function JobApplicationPage({}) {
                         {app && app.linkedin && (
                           <a href={app.linkedin} target="_blank">
                             <img
-                              className="w-7 h-7 rounded-full hover:cursor-pointer"
+                              className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                               src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
                               alt="linkedin"
                             />
@@ -149,7 +149,7 @@ export default function JobApplicationPage({}) {
                         {app && app.github && (
                           <a href={app.github} target="_blank">
                             <img
-                              className="w-7 h-7 rounded-full hover:cursor-pointer"
+                              className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                               src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
                               alt="git"
                             />
@@ -159,7 +159,7 @@ export default function JobApplicationPage({}) {
                         {app && app.portfolio && (
                           <a href={app.portfolio} target="_blank">
                             <img
-                              className="w-7 h-7 rounded-full hover:cursor-pointer"
+                              className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                               src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
                               alt="port"
                             />
@@ -169,12 +169,12 @@ export default function JobApplicationPage({}) {
                     </div>
                   </div>
 
-                  <div className="w-full flex flex-col gap-2 justify-center">
+                  <div className="w-full flex flex-col gap-2 justify-center mt-1">
                     <div className="w-[80%]  sm:hidden flex mt-3 mx-auto justify-around">
                       {app && app.fb && (
                         <a href={app.fb} target="_blank">
                           <img
-                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                             src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
                             alt="fb"
                           />
@@ -183,7 +183,7 @@ export default function JobApplicationPage({}) {
                       {app && app.linkedin && (
                         <a href={app.linkedin} target="_blank">
                           <img
-                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                             src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
                             alt="linkedin"
                           />
@@ -192,7 +192,7 @@ export default function JobApplicationPage({}) {
                       {app && app.github && (
                         <a href={app.github} target="_blank">
                           <img
-                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                             src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
                             alt="git"
                           />
@@ -202,7 +202,7 @@ export default function JobApplicationPage({}) {
                       {app && app.portfolio && (
                         <a href={app.portfolio} target="_blank">
                           <img
-                            className="w-7 h-7 rounded-full hover:cursor-pointer"
+                            className="w-7 h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                             src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
                             alt="port"
                           />

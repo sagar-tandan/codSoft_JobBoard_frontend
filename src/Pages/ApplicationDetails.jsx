@@ -52,11 +52,11 @@ export default function ApplicationDetails() {
                 </span>
                 <span className="text-green-600"> {app.jobname}</span>
               </h1>
-              <div className="w-full flex gap-6">
+              <div className="w-full flex gap-6 mt-1">
                 {app && app.fb && (
                   <a href={app.fb} target="_blank">
                     <img
-                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                       src="https://cdn-icons-png.flaticon.com/128/3670/3670124.png"
                       alt="fb"
                     />
@@ -65,7 +65,7 @@ export default function ApplicationDetails() {
                 {app && app.linkedin && (
                   <a href={app.linkedin} target="_blank">
                     <img
-                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                       src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
                       alt="linkedin"
                     />
@@ -74,7 +74,7 @@ export default function ApplicationDetails() {
                 {app && app.github && (
                   <a href={app.github} target="_blank">
                     <img
-                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                       src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
                       alt="git"
                     />
@@ -84,7 +84,7 @@ export default function ApplicationDetails() {
                 {app && app.portfolio && (
                   <a href={app.portfolio} target="_blank">
                     <img
-                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer"
+                      className="w-5 h-5 sm:w-7 sm:h-7 rounded-full hover:cursor-pointer hover:-translate-y-1 transition-all duration-300"
                       src="https://cdn-icons-png.flaticon.com/128/5195/5195762.png"
                       alt="port"
                     />
@@ -149,24 +149,26 @@ export default function ApplicationDetails() {
         Contact Details
       </h1>
       <div className="w-full flex flex-col sm:flex-row gap-5 sm:justify-between ">
-        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg">
+        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg items-end mt-1 ">
           <img
-            className="w-6 h-6"
-            src="https://cdn-icons-png.flaticon.com/128/546/546394.png"
+            className="w-8 h-8"
+            // src="https://cdn-icons-png.flaticon.com/128/546/546394.png"
+            src="https://cdn-icons-gif.flaticon.com/10826/10826776.gif"
             alt=""
           />
           <span className="hidden lg:flex">Email: </span>
           <a href={`mailto:${app.email}`}>
-            <span className="text-green-600 hover:cursor-pointer hover:text-blue-600">
+            <span className="text-green-600 hover:cursor-pointer hover:text-blue-600 ">
               {app.email}
             </span>
           </a>
         </div>
 
-        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg">
+        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg items-end mt-1">
           <img
-            className="w-6 h-6"
-            src="https://cdn-icons-png.flaticon.com/128/1034/1034131.png"
+            className="w-8 h-8"
+            // src="https://cdn-icons-png.flaticon.com/128/1034/1034131.png"
+            src="https://cdn-icons-gif.flaticon.com/6172/6172514.gif"
             alt=""
           />
 
@@ -178,10 +180,11 @@ export default function ApplicationDetails() {
           </a>
         </div>
 
-        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg">
+        <div className="w-[100%] flex gap-1 font-poppins font-medium  text-sm sm:text-lg items-end mt-1">
           <img
-            className="w-6 h-6"
-            src="https://cdn-icons-png.flaticon.com/128/819/819865.png"
+            className="w-8 h-8"
+            // src="https://cdn-icons-png.flaticon.com/128/819/819865.png"
+            src="https://cdn-icons-gif.flaticon.com/6839/6839003.gif"
             alt=""
           />
 
