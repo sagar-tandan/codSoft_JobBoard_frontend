@@ -59,7 +59,11 @@ export default function JobApplicationPage({}) {
               onClick={(e) => {
                 setStatus("pending");
               }}
-              className="bg-gray-500 px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-gray-600 active:scale-90 transition-all duration-300"
+              className={`${
+                status === "pending"
+                  ? "bg-gray-600"
+                  : "bg-gray-500 hover:-translate-y-2"
+              } px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-gray-600 active:scale-90 transition-all duration-300`}
             >
               Pendings
             </div>
@@ -67,15 +71,23 @@ export default function JobApplicationPage({}) {
               onClick={(e) => {
                 setStatus("accepted");
               }}
-              className="bg-green-500 px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-green-600 active:scale-90 transition-all duration-300"
+              className={`${
+                status === "accepted"
+                  ? "bg-green-600"
+                  : "bg-green-500 hover:-translate-y-2"
+              } px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-green-600 active:scale-90 transition-all duration-300`}
             >
               Accepted
             </div>
             <div
               onClick={(e) => {
-                setStatus(rejected);
+                setStatus("rejected");
               }}
-              className="bg-red-500 px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-red-600 active:scale-90 transition-all duration-300"
+              className={`${
+                status === "rejected"
+                  ? "bg-red-600"
+                  : "bg-red-500 hover:-translate-y-2"
+              } px-3 py-2 sm:text-lg text-sm  text-white font-poppins font-medium rounded-md w-[30%] flex items-center justify-center hover:cursor-pointer hover:bg-red-600 active:scale-90 transition-all duration-300`}
             >
               Rejected
             </div>
@@ -95,10 +107,10 @@ export default function JobApplicationPage({}) {
                   key={app._id}
                   className={`w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-8 shadow-slate-400 rounded-xl ${
                     app.status === "pending"
-                      ? "bg-gray-200"
+                      ? "bg-gray-100"
                       : app.status === "accepted"
-                      ? "bg-green-200"
-                      : "bg-red-200"
+                      ? "bg-green-100"
+                      : "bg-red-100"
                   }`}
                 >
                   <div className="w-full flex gap-4">
