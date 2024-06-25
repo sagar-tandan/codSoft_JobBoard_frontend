@@ -54,7 +54,7 @@ export default function JobApplicationPage({}) {
           <h1 className="font-poppins font-medium w-full text-lg mt-6 mb-2 px-1 sm:px-3">
             Available Applications:{" "}
           </h1>
-          <div className="w-[98%] flex justify-between mx-auto flex-row flex-wrap">
+          <div className="w-[98%] flex justify-between mx-auto flex-row flex-wrap mt-1">
             <div
               onClick={(e) => {
                 setStatus("pending");
