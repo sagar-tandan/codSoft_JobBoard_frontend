@@ -199,23 +199,30 @@ export default function ApplicationDetails() {
         </div>
       </div>
 
-      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
-        Experience
-      </h1>
+      {app && app.experience && (
+        <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
+          Experience
+        </h1>
+      )}
+      {app && app.experience && (
+        <div
+          className="w-full text-sm sm:text-lg"
+          dangerouslySetInnerHTML={{ __html: app.experience }}
+        ></div>
+      )}
 
-      <div
-        className="w-full text-sm sm:text-lg"
-        dangerouslySetInnerHTML={{ __html: app.experience }}
-      ></div>
+      {app && app.cover && (
+        <h1 className=" mt-5 w-full text-xl font-poppins font-semibold ">
+          Cover Letter
+        </h1>
+      )}
 
-      <h1 className=" mt-5 w-full text-xl font-poppins font-semibold ">
-        Cover Letter
-      </h1>
-
-      <div
-        className="w-full text-sm sm:text-lg "
-        dangerouslySetInnerHTML={{ __html: app.cover }}
-      ></div>
+      {app && app.cover && (
+        <div
+          className="w-full text-sm sm:text-lg "
+          dangerouslySetInnerHTML={{ __html: app.cover }}
+        ></div>
+      )}
 
       <div
         id="resume"
