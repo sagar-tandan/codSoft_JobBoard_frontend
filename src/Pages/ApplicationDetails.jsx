@@ -204,7 +204,7 @@ export default function ApplicationDetails() {
       </h1>
 
       <div
-        className="w-full  text-sm  sm:text-lg"
+        className="w-full text-sm sm:text-lg"
         dangerouslySetInnerHTML={{ __html: app.experience }}
       ></div>
 
@@ -213,7 +213,7 @@ export default function ApplicationDetails() {
       </h1>
 
       <div
-        className="w-full text-sm sm:text-lg flex flex-wrap"
+        className="w-full text-sm sm:text-lg "
         dangerouslySetInnerHTML={{ __html: app.cover }}
       ></div>
 
