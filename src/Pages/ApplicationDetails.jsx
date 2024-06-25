@@ -224,15 +224,12 @@ export default function ApplicationDetails() {
         ></div>
       )}
 
-      <div
-        id="resume"
-        className="w-full max-w-screen-2xl h-[100vh] mx-auto mb-20 mt-10"
-      >
+      <div id="resume" className="w-full max-w-screen-2xl mx-auto mb-20 mt-10">
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
           <div
+            className="w-full p-2"
             style={{
               border: "1px solid rgba(0, 0, 0, 0.3)",
-              height: "750px",
             }}
           >
             <Viewer fileUrl={app.resume} />
