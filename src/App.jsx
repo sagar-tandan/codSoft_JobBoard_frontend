@@ -92,7 +92,7 @@ function App() {
         <Route
           path="/:jobname/:applicatioid"
           element={
-            data && data.type == "company" ? <ApplicationDetails /> : <Login />
+            data && data.type == "company" ? <ApplicationDetails  /> : <Login />
           }
         />
       </Routes>
