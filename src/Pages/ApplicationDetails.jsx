@@ -4,6 +4,7 @@ import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import axios from "axios";
+import '../../src/index.css'
 
 export default function ApplicationDetails() {
   const location = useLocation();
@@ -28,7 +29,7 @@ export default function ApplicationDetails() {
           </span>
         </h1>
       </div>
-      <div className="w-full gap-1 flex flex-col bg-[#f2f2f2]">
+      <div id="" className="w-full gap-1 flex flex-col bg-[#f2f2f2] rounded-md ">
         <div className="w-full flex flex-row justify-between items-center bg-[#f2f2f2] px-3 py-6 rounded-lg">
           <div className="w-full flex gap-4">
             {app && app.Userimage ? (
