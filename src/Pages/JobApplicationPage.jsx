@@ -115,7 +115,7 @@ export default function JobApplicationPage({}) {
         {status == "pending" ? (
           <div className="w-full">
             {pendingApplication.length > 0 ? (
-              <div className="w-full">
+              <div className="w-full flex flex-col gap-5">
                 {pendingApplication.map((app) => (
                   <div
                     key={app._id}
@@ -253,7 +253,7 @@ export default function JobApplicationPage({}) {
         ) : status == "accepted" ? (
           <div className="w-full">
             {AcceptedApplication.length > 0 ? (
-              <div className="w-full">
+              <div className="w-full flex flex-col gap-5">
                 {AcceptedApplication.map((app) => (
                   <div
                     key={app._id}
@@ -391,7 +391,7 @@ export default function JobApplicationPage({}) {
         ) : (
           <div className="w-full">
             {RejectedApplication.length > 0 ? (
-              <div className="w-full">
+              <div className="w-full flex flex-col gap-5">
                 {RejectedApplication.map((app) => (
                   <div
                     key={app._id}
