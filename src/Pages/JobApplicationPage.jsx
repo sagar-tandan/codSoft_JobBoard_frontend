@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function JobApplicationPage({}) {
@@ -48,7 +48,6 @@ export default function JobApplicationPage({}) {
           </h1>
         </div>
       </div>
-
       {application && application.length > 0 ? (
         <div className="w-full flex flex-col gap-2">
           <h1 className="font-poppins font-medium w-full text-lg mt-6 mb-2 px-1 sm:px-3">
@@ -96,12 +95,12 @@ export default function JobApplicationPage({}) {
       ) : (
         <h1 className="font-poppins font-medium text-lg mt-8 flex justify-center items-center"></h1>
       )}
-
-      <div className="w-full flex flex-col gap-5 mt-3 px-3">
+      {/* will fix from yt commengt analyzer */}
+      <div className="w-full flex flex-col gap-5 mt-3 px-3 bg-red-600">
         {application &&
           application.length > 0 &&
           application.map((app) => (
-            <div className="w-full">
+            <div className="flex bg-green-700" key={app._id}>
               {app.status === status && (
                 <div
                   key={app._id}
