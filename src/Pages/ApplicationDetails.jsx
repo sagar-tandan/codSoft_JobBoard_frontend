@@ -230,7 +230,7 @@ export default function ApplicationDetails({ datas }) {
               </div>
             </div>
           ) : (
- <div className="w-[90%] flex gap-[3%] justify-center ">
+            <div className="w-[90%] flex gap-[3%] justify-center ">
               <div
                 onClick={(e) => {
                   changeStatus(e, "accepted");
