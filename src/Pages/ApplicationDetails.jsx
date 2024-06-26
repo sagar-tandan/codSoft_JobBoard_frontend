@@ -5,20 +5,43 @@ import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import axios from "axios";
 import "../../src/index.css";
+import toast from "react-hot-toast";
 
-export default function ApplicationDetails() {
+export default function ApplicationDetails({ datas }) {
   const location = useLocation();
   const { app } = location.state;
 
+  const [loading, setLoading] = useState(false);
   const scrollToResume = (e) => {
     document.getElementById("resume").scrollIntoView();
   };
 
-  const changeStatus = (e, status) => {
+  const changeStatus = async (e, status) => {
     e.preventDefault();
+
     //Change the status in Db and
-    
     //send email to that defined user email from Applications Email
+
+    try {
+      setLoading(true);
+      const { name, email } = datas;
+      const appId = app._id;
+      const UserEmail = app.email;
+
+      const response = await axios.post("/changeStatus", {
+        name,
+        email,
+        appId,
+        status,
+        UserEmail,
+      });
+      setLoading(false);
+      toast.success(response.data);
+      console.log(response);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   return (
