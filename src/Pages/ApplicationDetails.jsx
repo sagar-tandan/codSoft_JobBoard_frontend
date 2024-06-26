@@ -6,15 +6,19 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import axios from "axios";
 import "../../src/index.css";
 import toast from "react-hot-toast";
-
+import loader from "../assets/Asset!/loader.gif";
+import def from "../assets/Asset!/default.jpg";
 export default function ApplicationDetails({ datas }) {
+  const [loading, setLoading] = useState(false);
+
   const location = useLocation();
   const { app } = location.state;
 
-  const [loading, setLoading] = useState(false);
   const scrollToResume = (e) => {
     document.getElementById("resume").scrollIntoView();
   };
+
+  // console.log(loading);
 
   const changeStatus = async (e, status) => {
     e.preventDefault();
@@ -24,20 +28,22 @@ export default function ApplicationDetails({ datas }) {
 
     try {
       setLoading(true);
-      const { name, email } = datas;
+      const name = datas.name;
+      const email = datas.email;
       const appId = app._id;
       const UserEmail = app.email;
+      const newStatus = status;
 
       const response = await axios.post("/changeStatus", {
         name,
         email,
         appId,
-        status,
+        newStatus,
         UserEmail,
       });
       setLoading(false);
       toast.success(response.data);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -66,7 +72,7 @@ export default function ApplicationDetails({ datas }) {
             ) : (
               <img
                 className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
-                src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
+                src={def}
                 alt=""
               />
             )}
@@ -124,28 +130,30 @@ export default function ApplicationDetails({ datas }) {
             <div className="w-full flex items-center justify-end ">
               <h1
                 onClick={(e) => scrollToResume(e)}
-                className="w-[324px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+                className="w-[324px] flex justify-center bg-green-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
               >
                 View Resume
               </h1>
             </div>
             <div className="w-full flex gap-6 justify-end">
-              <h1
+              <div
                 onClick={(e) => {
                   changeStatus(e, "accepted");
                 }}
-                className="w-[150px] flex justify-center bg-green-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+                className="w-[150px] flex justify-center bg-green-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
               >
-                Accept
-              </h1>
-              <h1
+                {!loading && <h1>Accept</h1>}
+                {loading && <img className="w-7 h-7" src={loader} alt="" />}
+              </div>
+              <div
                 onClick={(e) => {
                   changeStatus(e, "rejected");
                 }}
-                className="w-[150px] flex justify-center bg-red-600 p-3 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+                className="w-[150px] flex justify-center bg-red-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
               >
-                Reject
-              </h1>
+                {!loading && <h1>Reject</h1>}
+                {loading && <img className="w-7 h-7" src={loader} alt="" />}
+              </div>
             </div>
           </div>
         </div>
@@ -154,7 +162,7 @@ export default function ApplicationDetails({ datas }) {
           <div className="w-full flex items-center justify-center ">
             <h1
               onClick={(e) => scrollToResume(e)}
-              className="w-[90%] flex justify-center bg-green-600 px-3 py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              className="w-[90%] flex justify-center bg-green-600 px-[10px] py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
               View Resume
             </h1>
@@ -164,7 +172,7 @@ export default function ApplicationDetails({ datas }) {
               onClick={(e) => {
                 changeStatus(e, "accepted");
               }}
-              className="w-[49%] flex justify-center bg-green-600 px-3 py-2  rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              className="w-[49%] flex justify-center bg-green-600 px-[10px] py-2  rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
               Accept
             </h1>
@@ -172,7 +180,7 @@ export default function ApplicationDetails({ datas }) {
               onClick={(e) => {
                 changeStatus(e, "rejected");
               }}
-              className="w-[49%] flex justify-center bg-red-600 px-3 py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+              className="w-[49%] flex justify-center bg-red-600 px-[10px] py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
               Reject
             </h1>
@@ -181,6 +189,7 @@ export default function ApplicationDetails({ datas }) {
       </div>
 
       {/* Contact Details */}
+
       <h1 className=" mt-5 w-full text-xl font-poppins font-semibold">
         Contact Details
       </h1>
