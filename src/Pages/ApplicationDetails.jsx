@@ -162,26 +162,34 @@ export default function ApplicationDetails({ datas }) {
                 View Resume
               </h1>
             </div>
-            <div className="w-full flex gap-6 justify-end">
-              <div
-                onClick={(e) => {
-                  changeStatus(e, "accepted");
-                }}
-                className="w-[150px] flex justify-center bg-green-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
-              >
-                {!loading && <h1>Accept</h1>}
-                {loading && <img className="w-7 h-7" src={loader} alt="" />}
+            {app.status === "accepted" ? (
+              <div className="w-full flex items-center justify-end">
+                <div className="w-[324px] border-[2px] rounded-full border-green-700 flex">
+                  <h1 className="flex w-full justify-center items-center tracking-widest font-poppins font-medium text-green-800 py-[6px]">APPROVED</h1>
+                </div>
               </div>
-              <div
-                onClick={(e) => {
-                  changeStatus(e, "rejected");
-                }}
-                className="w-[150px] flex justify-center bg-red-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
-              >
-                {!loading1 && <h1>Reject</h1>}
-                {loading1 && <img className="w-7 h-7" src={loader} alt="" />}
+            ) : (
+              <div className="w-full flex gap-6 justify-end">
+                <div
+                  onClick={(e) => {
+                    changeStatus(e, "accepted");
+                  }}
+                  className="w-[150px] flex justify-center bg-green-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+                >
+                  {!loading && <h1>Accept</h1>}
+                  {loading && <img className="w-7 h-7" src={loader} alt="" />}
+                </div>
+                <div
+                  onClick={(e) => {
+                    changeStatus(e, "rejected");
+                  }}
+                  className="w-[150px] flex justify-center bg-red-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
+                >
+                  {!loading1 && <h1>Reject</h1>}
+                  {loading1 && <img className="w-7 h-7" src={loader} alt="" />}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
