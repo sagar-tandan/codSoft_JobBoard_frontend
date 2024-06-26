@@ -230,28 +230,7 @@ export default function ApplicationDetails({ datas }) {
               </div>
             </div>
           ) : (
-            // <div className="w-full flex gap-6 justify-end">
-            //   <div
-            //     onClick={(e) => {
-            //       changeStatus(e, "accepted");
-            //     }}
-            //     className="w-[150px] flex justify-center bg-green-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
-            //   >
-            //     {!loading && <h1>Accept</h1>}
-            //     {loading && <img className="w-7 h-7" src={loader} alt="" />}
-            //   </div>
-            //   <div
-            //     onClick={(e) => {
-            //       changeStatus(e, "rejected");
-            //     }}
-            //     className="w-[150px] flex justify-center bg-red-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
-            //   >
-            //     {!loading1 && <h1>Reject</h1>}
-            //     {loading1 && <img className="w-7 h-7" src={loader} alt="" />}
-            //   </div>
-            // </div>
-
-            <div className="w-[90%] flex gap-[3%] justify-center ">
+ <div className="w-[90%] flex gap-[3%] justify-center ">
               <div
                 onClick={(e) => {
                   changeStatus(e, "accepted");
