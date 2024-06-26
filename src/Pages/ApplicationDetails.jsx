@@ -165,7 +165,17 @@ export default function ApplicationDetails({ datas }) {
             {app.status === "accepted" ? (
               <div className="w-full flex items-center justify-end">
                 <div className="w-[324px] border-[2px] rounded-full border-green-700 flex">
-                  <h1 className="flex w-full justify-center items-center tracking-widest font-poppins font-medium text-green-800 py-[6px]">APPROVED</h1>
+                  <h1 className="flex w-full justify-center items-center tracking-widest font-poppins font-medium text-green-800 py-[6px]">
+                    APPROVED
+                  </h1>
+                </div>
+              </div>
+            ) : app.status === "rejected" ? (
+              <div className="w-full flex items-center justify-end">
+                <div className="w-[324px] border-[2px] rounded-full border-red-700 flex">
+                  <h1 className="flex w-full justify-center items-center tracking-widest font-poppins font-medium text-red-800 py-[6px]">
+                    REJECTED
+                  </h1>
                 </div>
               </div>
             ) : (
