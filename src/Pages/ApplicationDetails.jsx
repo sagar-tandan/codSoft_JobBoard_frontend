@@ -178,8 +178,8 @@ export default function ApplicationDetails({ datas }) {
                 }}
                 className="w-[150px] flex justify-center bg-red-600 p-[10px] rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
               >
-                {!loading && <h1>Reject</h1>}
-                {loading && <img className="w-7 h-7" src={loader} alt="" />}
+                {!loading1 && <h1>Reject</h1>}
+                {loading1 && <img className="w-7 h-7" src={loader} alt="" />}
               </div>
             </div>
           </div>
@@ -195,22 +195,24 @@ export default function ApplicationDetails({ datas }) {
             </h1>
           </div>
           <div className="w-[90%] flex gap-[3%] justify-center ">
-            <h1
+            <div
               onClick={(e) => {
                 changeStatus(e, "accepted");
               }}
               className="w-[49%] flex justify-center bg-green-600 px-[10px] py-2  rounded-md text-white font-poppins font-medium text-lg hover:bg-green-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
-              Accept
-            </h1>
-            <h1
+              {!loading && <h1>Accept</h1>}
+              {loading && <img className="w-7 h-7" src={loader} alt="" />}
+            </div>
+            <div
               onClick={(e) => {
                 changeStatus(e, "rejected");
               }}
               className="w-[49%] flex justify-center bg-red-600 px-[10px] py-2 rounded-md text-white font-poppins font-medium text-lg hover:bg-red-700 hover:cursor-pointer transition-all ease-in-out duration-300"
             >
-              Reject
-            </h1>
+              {!loading1 && <h1>Reject</h1>}
+              {loading1 && <img className="w-7 h-7" src={loader} alt="" />}
+            </div>
           </div>
         </div>
       </div>
