@@ -94,7 +94,7 @@ export default function CompanyPage({ id, image }) {
     e.preventDefault();
     navigate(`/${pos}/${id}`, {
       state: {
-        app: app,
+        app1: app,
       },
     });
   };

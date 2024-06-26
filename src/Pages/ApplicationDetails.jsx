@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
@@ -11,15 +11,20 @@ import def from "../assets/Asset!/default.jpg";
 export default function ApplicationDetails({ datas }) {
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
+  const [app, setApp] = useState([]);
 
   const location = useLocation();
-  const { app } = location.state;
+  const { app1 } = location.state;
+  // const [app,setApp] = useState(location.state)
+  useEffect(() => {
+    setApp(app1);
+  }, []);
+
+  // console.log(app)
 
   const scrollToResume = (e) => {
     document.getElementById("resume").scrollIntoView();
   };
-
-  // console.log(loading);
 
   const changeStatus = async (e, status) => {
     e.preventDefault();
@@ -44,7 +49,9 @@ export default function ApplicationDetails({ datas }) {
           UserEmail,
         });
         setLoading(false);
-        toast.success(response.data);
+        toast.success(response.data.message);
+        setApp(response.data.foundApplication);
+        console.log(response);
       } catch (error) {
         setLoading(false);
         console.log(error);
@@ -67,14 +74,13 @@ export default function ApplicationDetails({ datas }) {
           UserEmail,
         });
         setLoading1(true);
-        toast.success(response.data);
+        toast.success(response.data.message);
+        setApp(response.data.foundApplication);
       } catch (error) {
         setLoading1(false);
         console.log(error);
       }
     }
-
-    // console.log(response);
   };
 
   return (
