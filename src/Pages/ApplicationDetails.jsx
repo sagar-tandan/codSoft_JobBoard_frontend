@@ -17,6 +17,7 @@ export default function ApplicationDetails() {
   const changeStatus = (e, status) => {
     e.preventDefault();
     //Change the status in Db and
+    
     //send email to that defined user email from Applications Email
   };
 
