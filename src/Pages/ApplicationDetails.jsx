@@ -10,6 +10,7 @@ import loader from "../assets/Asset!/loader.gif";
 import def from "../assets/Asset!/default.jpg";
 export default function ApplicationDetails({ datas }) {
   const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
 
   const location = useLocation();
   const { app } = location.state;
@@ -26,28 +27,54 @@ export default function ApplicationDetails({ datas }) {
     //Change the status in Db and
     //send email to that defined user email from Applications Email
 
-    try {
-      setLoading(true);
-      const name = datas.name;
-      const email = datas.email;
-      const appId = app._id;
-      const UserEmail = app.email;
-      const newStatus = status;
+    if (status === "accepted") {
+      try {
+        setLoading(true);
+        const name = datas.name;
+        const email = datas.email;
+        const appId = app._id;
+        const UserEmail = app.email;
+        const newStatus = status;
 
-      const response = await axios.post("/changeStatus", {
-        name,
-        email,
-        appId,
-        newStatus,
-        UserEmail,
-      });
-      setLoading(false);
-      toast.success(response.data);
-      // console.log(response);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
+        const response = await axios.post("/changeStatus", {
+          name,
+          email,
+          appId,
+          newStatus,
+          UserEmail,
+        });
+        setLoading(false);
+        toast.success(response.data);
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      }
     }
+    if (status === "rejected") {
+      try {
+        setLoading1(true);
+        const name = datas.name;
+        const email = datas.email;
+        const appId = app._id;
+        const UserEmail = app.email;
+        const newStatus = status;
+
+        const response = await axios.post("/changeStatus", {
+          name,
+          email,
+          appId,
+          newStatus,
+          UserEmail,
+        });
+        setLoading1(true);
+        toast.success(response.data);
+      } catch (error) {
+        setLoading1(false);
+        console.log(error);
+      }
+    }
+
+    // console.log(response);
   };
 
   return (
