@@ -82,66 +82,50 @@ export default function JobCards({
   }, []);
 
   return (
-    <div>
-      <div
-        className={`${width > 200 && width <= 300 && "w-[270px]"}  ${
-          width > 300 && width <= 350 && "w-[300px]"
-        } ${width > 350 && width < 450 && "w-[350px]"} ${
-          width > 450 && width < 550 && "w-[450px]"
-        } ${width > 550 && width < 680 && "w-[550px]"} ${
-          width >= 680 && width <= 750 && "w-[300px]"
-        } ${width >= 750 && width <= 800 && "w-[330px]"} ${
-          width >= 801 && width <= 902 && "w-[350px]"
-        } ${width >= 903 && width <= 1023 && "w-[400px]"} ${
-          width >= 1024 && width <= 1070 && "w-[440px]"
-        } ${width >= 1071 && width <= 1100 && "w-[300px]"} ${
-          width >= 1101 && width <= 1200 && "w-[310px]"
-        } ${width >= 1201 && width <= 1300 && "w-[340px]"} ${
-          width >= 1301 && width <= 1429 && "w-[370px]"
-        } ${width >= 1430 && width <= 1479 && "w-[300px]"} ${
-          width >= 1480 && width <= 1528 && "w-[307px]"
-        } ${
-          width > 1529 && "w-[320px]"
-        } flex flex-col px-4 py-6 gap-6 shadow-lg bg-[#f2f2f2] font-poppins`}
-      >
-        <div className="w-full flex gap-3">
-          <img
-            className="w-10 h-10 rounded-full object-cover"
-            src={image}
-            alt=""
-          />
-          <div className="flex flex-col">
-            <h1 className="text-black font-medium">{name}</h1>
-            <h2 className="text-black text-sm">{location}</h2>
-          </div>
-        </div>
-
+    <div
+      className={`${width > 200 && width <= 300 && "w-[270px]"}  ${
+        width > 300 && width <= 350 && "w-[300px]"
+      } ${width > 350 && width < 450 && "w-[350px]"} ${
+        width > 450 && width < 550 && "w-[450px]"
+      } ${width > 550 && width < 680 && "w-[550px]"} ${
+        width >= 680 && width <= 1024 && "w-[500px]"
+      }  ${width >= 1024 && "w-[350px]"}
+        } flex flex-col px-4 py-6 gap-6 shadow-lg bg-[#f2f2f2] hover:bg-gray-200 font-poppins rounded-lg hover:-translate-y-2 transition-all duration-300`}
+    >
+      <div className="w-full flex gap-3">
+        <img
+          className="w-10 h-10 rounded-full object-cover"
+          src={image}
+          alt=""
+        />
         <div className="flex flex-col">
-          <h1 className="text-black font-semibold">{position}</h1>
-          <h1 className="text-green-500 font-medium text-sm">{time}</h1>
+          <h1 className="text-black font-medium">{name}</h1>
+          <h2 className="text-black text-sm">{location}</h2>
         </div>
+      </div>
 
-        <h1 className="text-sm truncate w-full">{skills}</h1>
+      <div className="flex flex-col">
+        <h1 className="text-black font-semibold">{position}</h1>
+        <h1 className="text-green-500 font-medium text-sm">{time}</h1>
+      </div>
 
-        <div className="w-full flex justify-between py-1">
-          {salary != null ? (
-            <h1 className="text-black font-semibold">
-              {salary}
-              <span className="font-medium text-sm text-[#616161]">
-                {" "}
-                /month
-              </span>
-            </h1>
-          ) : (
-            <h1 className="text-black font-semibold">Negotiable</h1>
-          )}
+      <h1 className="text-sm truncate w-full">{skills}</h1>
 
-          <div
-            onClick={(e) => navigateToNext(e)}
-            className="flex flex-col gap-1 border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300"
-          >
-            Apply Now
-          </div>
+      <div className="w-full flex justify-between py-1 flex-wrap">
+        {salary != null ? (
+          <h1 className="text-black font-semibold">
+            {salary}
+            <span className="font-medium text-sm text-[#616161]"> /month</span>
+          </h1>
+        ) : (
+          <h1 className="text-black font-semibold">Negotiable</h1>
+        )}
+
+        <div
+          onClick={(e) => navigateToNext(e)}
+          className="flex flex-col gap-1 text-sm sm:text-lg border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300"
+        >
+          Apply Now
         </div>
       </div>
     </div>

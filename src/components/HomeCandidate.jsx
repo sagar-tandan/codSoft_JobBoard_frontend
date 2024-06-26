@@ -120,7 +120,7 @@ export default function HomeCandidate({
         </div>
         <div className="w-full flex gap-4 md:gap-6 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center lg:justify-start">
           {topJObs.map((job) => (
-            <div key={job._id}>
+            <div key={job._id} className="py-3">
               <JobCards
                 id={job._id}
                 name={job.CompanyName}
