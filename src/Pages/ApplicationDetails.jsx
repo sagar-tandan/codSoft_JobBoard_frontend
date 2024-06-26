@@ -320,7 +320,7 @@ export default function ApplicationDetails({ datas }) {
       )}
       {app && app.experience && (
         <div
-          className="w-full text-sm sm:text-lg"
+          className="w-full text-sm sm:text-lg font-light"
           dangerouslySetInnerHTML={{ __html: app.experience }}
         ></div>
       )}
@@ -333,7 +333,7 @@ export default function ApplicationDetails({ datas }) {
 
       {app && app.cover && (
         <div
-          className="w-full text-sm sm:text-lg "
+          className="w-full text-sm sm:text-lg font-light "
           dangerouslySetInnerHTML={{ __html: app.cover }}
         ></div>
       )}
