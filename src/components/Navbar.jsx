@@ -82,8 +82,8 @@ export default function Navbar() {
               </div>
             </Link>
 
-            <div className="w-full font-bold font-poppins text-xl lg:text-2xl tracking-wide flex justify-center items-center">
-              <h1>{`${day}, ${monthName}, ${year} `}</h1>
+            <div className="w-full font-poppins flex justify-center items-center gap-1">
+              <h1 className="text-lg font-medium">{`${day} ${monthName} ${year} `}</h1>
             </div>
             <div className="flex gap-2 lg:gap-4 py-3 items-center font-medium lg:font-semibold">
               <div className="flex gap-3 items-center">
