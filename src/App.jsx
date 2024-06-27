@@ -18,15 +18,20 @@ import { useCookies } from "react-cookie";
 import Start from "./Pages/Start";
 import JobApplicationPage from "./Pages/JobApplicationPage";
 import ApplicationDetails from "./Pages/ApplicationDetails";
+import AllJobs from "./Pages/AllJobs";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
+
 function App() {
   const [data, setData] = useState([]);
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   // // console.log(data.type)
+
+  //to store all the jobs
+  const [allJobs, setAllJobs] = useState([]);
 
   useEffect(() => {
     const verifyCookie = async () => {
@@ -56,6 +61,19 @@ function App() {
   //   }
   // }, [data]);
 
+  useEffect(() => {
+    const fetchAllJobs = async () => {
+      const jobs = await axios.get("/getAllJobs");
+      let reversed = [];
+      for (let i = jobs.data.findJobs.length - 1; i >= 0; i--) {
+        reversed.push(jobs.data.findJobs[i]);
+      }
+      setAllJobs(reversed);
+      // console.log(allJobs)
+    };
+    fetchAllJobs();
+  }, []);
+
   return (
     <>
       {/* <Navbar setData={setData}/> */}
@@ -67,6 +85,8 @@ function App() {
         <Route path="/registeruser" element={<JobSeekerRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/job/jobdetails/:id" element={<JobDetails />} />
+        {/* <Route path="/job" element={<AllJobs jobs={allJobs} datas={data} />} /> */}
+
         <Route
           path="/job/jobdetails/:ids/apply"
           element={<ApplicationForm />}
@@ -92,7 +112,11 @@ function App() {
         <Route
           path="/:jobname/:applicatioid"
           element={
-            data && data.type == "company" ? <ApplicationDetails datas = {data}  /> : <Login />
+            data && data.type == "company" ? (
+              <ApplicationDetails datas={data} />
+            ) : (
+              <Login />
+            )
           }
         />
       </Routes>

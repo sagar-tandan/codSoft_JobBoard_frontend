@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 import email from "../assets/Asset!/email.gif";
 import hero1 from "../assets/Asset!/hero1.webp";
 import video from "../assets/video.mp4";
+import loader from "../assets/Asset!/loader.gif";
 
 import Categories from "./Categories";
 import JobCards from "./JobCards";
@@ -17,24 +18,22 @@ export default function HomeCandidate({
   phones,
   cities,
   countries,
-  Userimage
+  Userimage,
 }) {
   // const [JobListing, setJobListing] = useState([]);
   const [reversedJob, setReversedjob] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const jobslist = async () => {
+      setLoading(true);
       const jobs = await axios.get("/getAllJobs");
-      // setJobListing(jobs.data.findJobs);
-      // for (let index = JobListing.length; index > 0; index--) {
-      //   console.log("index:" ,index);
-      //   setReversedjob({...reversedJob,reversedJob => JobListing[index-1]});
-      // }
       let reversed = [];
       for (let i = jobs.data.findJobs.length - 1; i >= 0; i--) {
         reversed.push(jobs.data.findJobs[i]);
       }
       setReversedjob(reversed);
+      setLoading(false);
     };
     jobslist();
   }, []);
@@ -111,47 +110,54 @@ export default function HomeCandidate({
           <h1 className="text-black text-lg inline-block lg:hidden font-semibold">
             Recent Jobs
           </h1>
-          <h1 className="font-medium lg:flex items-center hidden text-green-600 hover:cursor-pointer">
-            Explore more &gt;
+          {/* <h1 className="font-medium lg:flex items-center hidden text-green-600 hover:cursor-pointer hover:underline">
+            <Link to="/job">Explore more &gt;</Link>
           </h1>
-          <h1 className="font-medium text-sm flex lg:hidden text-green-600 hover:cursor-pointer items-center">
-            Explore &gt;
-          </h1>
+
+          <h1 className="font-medium text-sm flex lg:hidden text-green-600 hover:cursor-pointer items-center hover:underline">
+            <Link to="/job"> Explore &gt; </Link>
+          </h1> */}
         </div>
-        <div className="w-full flex gap-4 md:gap-6 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center lg:justify-start">
-          {topJObs.map((job) => (
-            <div key={job._id} className="py-3">
-              <JobCards
-                id={job._id}
-                name={job.CompanyName}
-                image={job.companyImage}
-                location={job.CompanyLocation}
-                position={job.Position}
-                time={job.Type}
-                skills={job.Skills}
-                salary={job.Salary}
-                desc={job.Desc}
-                responsibility={job.Responsibility}
-                requirements={job.Requirement}
-                benefit={job.Benefits}
-                category={job.Category}
-                Gender={job.Gender}
-                Experience={job.Experience}
-                Qualification={job.Qualification}
-                level={job.Level}
-                AppEnd={job.ExpiryDate}
-                date={job.PublishedDate}
-                username={name}
-                emails={emails}
-                phones={phones}
-                cities={cities}
-                countries={countries}
-                companyPhone={job.CompanyPhone}
-                Userimage = {Userimage}
-              />
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className="w-full flex gap-4 md:gap-6 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center">
+            <img className="w-10 h-10" src={loader} alt="loader" />
+          </div>
+        ) : (
+          <div className="w-full flex gap-4 md:gap-6 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center lg:justify-start">
+            {topJObs.map((job) => (
+              <div key={job._id} className="py-3">
+                <JobCards
+                  id={job._id}
+                  name={job.CompanyName}
+                  image={job.companyImage}
+                  location={job.CompanyLocation}
+                  position={job.Position}
+                  time={job.Type}
+                  skills={job.Skills}
+                  salary={job.Salary}
+                  desc={job.Desc}
+                  responsibility={job.Responsibility}
+                  requirements={job.Requirement}
+                  benefit={job.Benefits}
+                  category={job.Category}
+                  Gender={job.Gender}
+                  Experience={job.Experience}
+                  Qualification={job.Qualification}
+                  level={job.Level}
+                  AppEnd={job.ExpiryDate}
+                  date={job.PublishedDate}
+                  username={name}
+                  emails={emails}
+                  phones={phones}
+                  cities={cities}
+                  countries={countries}
+                  companyPhone={job.CompanyPhone}
+                  Userimage={Userimage}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
