@@ -110,13 +110,13 @@ export default function HomeCandidate({
           <h1 className="text-black text-lg inline-block lg:hidden font-semibold">
             Recent Jobs
           </h1>
-          {/* <h1 className="font-medium lg:flex items-center hidden text-green-600 hover:cursor-pointer hover:underline">
+          <h1 className="font-medium lg:flex items-center hidden text-green-600 hover:cursor-pointer hover:underline">
             <Link to="/job">Explore more &gt;</Link>
           </h1>
 
           <h1 className="font-medium text-sm flex lg:hidden text-green-600 hover:cursor-pointer items-center hover:underline">
             <Link to="/job"> Explore &gt; </Link>
-          </h1> */}
+          </h1>
         </div>
         {loading ? (
           <div className="w-full flex gap-4 md:gap-6 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center">
