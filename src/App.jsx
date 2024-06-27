@@ -37,7 +37,7 @@ function App() {
     const verifyCookie = async () => {
       setLoading(true);
       if (!cookies.token) {
-        // navigate("/login");
+        // navigate("/");
         // console.log("cookie not found")
         setLoading(false);
       }
@@ -77,7 +77,7 @@ function App() {
   return (
     <>
       {/* <Navbar setData={setData}/> */}
-      <Navbar />
+      <Navbar/>
       <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
       <Routes>
         <Route path="/" element={loading ? <Start /> : <Home data={data} />} />

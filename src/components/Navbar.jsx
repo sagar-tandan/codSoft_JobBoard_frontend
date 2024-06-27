@@ -13,15 +13,7 @@ export default function Navbar() {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (userName) {
-  //     console.log(userName);
-  //     setData(userName);
-  //   }
-  // }, [userName]);
-
   useEffect(() => {
-
     const verifyCookie = async () => {
       if (!cookies.token) {
         // navigate("/login");
@@ -37,85 +29,167 @@ export default function Navbar() {
 
   const Logout = () => {
     removeCookie("token");
-    setData('')
-    navigate("/");
+    setUserName("");
+    window.location.reload();
+    // navigate("/");
   };
 
   const toggleButton = () => {
     setRegister((prev) => !prev);
   };
 
+  // useEffect(() => {
+  //   navigate("/");
+  // }, [userName]);
+
+  console.log(userName);
   return (
     <nav>
-      <div className="bg-white w-full flex text-black px-6 fixed top-0 z-50">
-        <div className="w-full max-w-screen-2xl h-full flex justify-between mx-auto items-center">
-          <Link to="/">
-            <div className="text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600 flex gap-1">
-              <img className="w-8 h-8 lg:w-9 lg:h-9" src={logo} alt="" />
-              <h1 className="py-1">JobBoard</h1>
-            </div>
-          </Link>
-          <div className="flex gap-2 lg:gap-4 py-3 items-center font-medium lg:font-semibold">
-            {userName ? (
-              <div className="flex gap-3 items-center">
-                {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
-                <Link to="/">
-                  <img
-                    onClick={() => {
-                      Logout();
-                    }}
-                    className="w-7 h-7"
-                    src={profile}
-                    alt=""
-                  />
-                </Link>
+      {userName && userName.type === "company" ? (
+        <div
+          className={`bg-white w-full flex text-black px-6 fixed top-0 z-50 `}
+        >
+          <div className="w-full max-w-screen-2xl h-full flex justify-between mx-auto items-center">
+            <Link to="/">
+              <div className="text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600 flex gap-1">
+                <img className="w-8 h-8 lg:w-9 lg:h-9" src={logo} alt="" />
+                <h1 className="py-1">JobBoard</h1>
               </div>
-            ) : (
-              <div className="relative flex gap-4">
-                <Link to="/login">
-                  <h1 className="hidden sm:inline-block hover:cursor-pointer border-[2px] px-6 lg:px-8 py-1 rounded-full border-[#c1c1c1] hover:bg-green-600 hover:border-green-600 hover:text-white transition-all ease-in-out duration-300">
-                    Login
-                  </h1>
-                </Link>
-                <div
-                  onClick={() => {
-                    toggleButton();
-                  }}
-                  className="hidden sm:flex w-full gap-2 hover:cursor-pointer border-[2px] px-3 sm:px-6 lg:px-7 sm:py-1 rounded-full text-white border-green-600 bg-green-600 hover:bg-green-700  hover:border-green-700 transition-all ease-in-out duration-300"
-                >
-                  <h1 className="w-full ">Register </h1>
-                  {/* <h1 className="w-full ">▼</h1> */}
+            </Link>
+            <div className="flex gap-2 lg:gap-4 py-3 items-center font-medium lg:font-semibold">
+              {userName ? (
+                <div className="flex gap-3 items-center">
+                  {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
+                  <Link to="/">
+                    <img
+                      onClick={() => {
+                        Logout();
+                      }}
+                      className="w-7 h-7"
+                      src={profile}
+                      alt=""
+                    />
+                  </Link>
                 </div>
-                {/* </Link> */}
-                {register && (
-                  <div className="dropdownAnimation flex flex-col gap-2 py-2 absolute top-10 justify-center items-center bg-[#f2f2f2] shadow-md w-full">
-                    <Link to="/registeruser">
-                      <h1
-                        onClick={() => toggleButton()}
-                        className="hover:cursor-pointer hover:text-green-600"
-                      >
-                        Register JobSeeker
-                      </h1>
-                    </Link>
-                    <Link to="/registercompany">
-                      <h1
-                        onClick={() => toggleButton()}
-                        className="hover:cursor-pointer hover:text-green-600"
-                      >
-                        Register Company
-                      </h1>
-                    </Link>
+              ) : (
+                <div className="relative flex gap-4">
+                  <Link to="/login">
+                    <h1 className="hidden sm:inline-block hover:cursor-pointer border-[2px] px-6 lg:px-8 py-1 rounded-full border-[#c1c1c1] hover:bg-green-600 hover:border-green-600 hover:text-white transition-all ease-in-out duration-300">
+                      Login
+                    </h1>
+                  </Link>
+                  <div
+                    onClick={() => {
+                      toggleButton();
+                    }}
+                    className="hidden sm:flex w-full gap-2 hover:cursor-pointer border-[2px] px-3 sm:px-6 lg:px-7 sm:py-1 rounded-full text-white border-green-600 bg-green-600 hover:bg-green-700  hover:border-green-700 transition-all ease-in-out duration-300"
+                  >
+                    <h1 className="w-full ">Register </h1>
+                    {/* <h1 className="w-full ">▼</h1> */}
                   </div>
-                )}
-              </div>
-            )}
+                  {/* </Link> */}
+                  {register && (
+                    <div className="dropdownAnimation flex flex-col gap-2 py-2 absolute top-10 justify-center items-center bg-[#f2f2f2] shadow-md w-full">
+                      <Link to="/registeruser">
+                        <h1
+                          onClick={() => toggleButton()}
+                          className="hover:cursor-pointer hover:text-green-600"
+                        >
+                          Register JobSeeker
+                        </h1>
+                      </Link>
+                      <Link to="/registercompany">
+                        <h1
+                          onClick={() => toggleButton()}
+                          className="hover:cursor-pointer hover:text-green-600"
+                        >
+                          Register Company
+                        </h1>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
 
-            <div className="sm:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
-              <img className="w-6 h-6" src={hamburger} alt="" />
+              <div className="sm:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
+                <img className="w-6 h-6" src={hamburger} alt="" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div
+          className={`bg-white w-full flex text-black px-6 fixed top-0 z-50 `}
+        >
+          <div className="w-full max-w-screen-2xl h-full flex justify-between mx-auto items-center">
+            <Link to="/">
+              <div className="text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600 flex gap-1">
+                <img className="w-8 h-8 lg:w-9 lg:h-9" src={logo} alt="" />
+                <h1 className="py-1">JobBoard</h1>
+              </div>
+            </Link>
+            <div className="flex gap-2 lg:gap-4 py-3 items-center font-medium lg:font-semibold">
+              {userName ? (
+                <div className="flex gap-3 items-center">
+                  {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
+                  <Link to="/">
+                    <img
+                      onClick={() => {
+                        Logout();
+                      }}
+                      className="w-7 h-7"
+                      src={profile}
+                      alt=""
+                    />
+                  </Link>
+                </div>
+              ) : (
+                <div className="relative flex gap-4">
+                  <Link to="/login">
+                    <h1 className="hidden sm:inline-block hover:cursor-pointer border-[2px] px-6 lg:px-8 py-1 rounded-full border-[#c1c1c1] hover:bg-green-600 hover:border-green-600 hover:text-white transition-all ease-in-out duration-300">
+                      Login
+                    </h1>
+                  </Link>
+                  <div
+                    onClick={() => {
+                      toggleButton();
+                    }}
+                    className="hidden sm:flex w-full gap-2 hover:cursor-pointer border-[2px] px-3 sm:px-6 lg:px-7 sm:py-1 rounded-full text-white border-green-600 bg-green-600 hover:bg-green-700  hover:border-green-700 transition-all ease-in-out duration-300"
+                  >
+                    <h1 className="w-full ">Register </h1>
+                    {/* <h1 className="w-full ">▼</h1> */}
+                  </div>
+                  {/* </Link> */}
+                  {register && (
+                    <div className="dropdownAnimation flex flex-col gap-2 py-2 absolute top-10 justify-center items-center bg-[#f2f2f2] shadow-md w-full">
+                      <Link to="/registeruser">
+                        <h1
+                          onClick={() => toggleButton()}
+                          className="hover:cursor-pointer hover:text-green-600"
+                        >
+                          Register JobSeeker
+                        </h1>
+                      </Link>
+                      <Link to="/registercompany">
+                        <h1
+                          onClick={() => toggleButton()}
+                          className="hover:cursor-pointer hover:text-green-600"
+                        >
+                          Register Company
+                        </h1>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="sm:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
+                <img className="w-6 h-6" src={hamburger} alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
