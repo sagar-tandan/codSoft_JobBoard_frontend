@@ -75,34 +75,35 @@ export default function Navbar() {
           className={`bg-white w-full flex text-black px-6 fixed top-0 z-50 `}
         >
           <div className="w-full max-w-screen-2xl h-full flex justify-between mx-auto items-center">
-            <Link to="/">
-              <div className="text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600 flex gap-1">
+            <div className="text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600 flex  w-full">
+              <Link to="/" className="flex gap-1">
                 <img className="w-8 h-8 lg:w-9 lg:h-9" src={logo} alt="" />
                 <h1 className="py-1">JobBoard</h1>
-              </div>
-            </Link>
+              </Link>
+            </div>
 
-            <div className="w-full font-poppins flex justify-center items-center gap-1">
+            <div className="w-full font-poppins sm:flex justify-center items-center gap-1 hidden">
               <h1 className="text-lg font-medium">{`${day} ${monthName} ${year} `}</h1>
             </div>
-            <div className="flex gap-2 lg:gap-4 py-3 items-center font-medium lg:font-semibold">
-              <div className="flex gap-3 items-center">
-                {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
-                {/* <Link to="/"> */}
-                <img
-                  // onClick={() => {
-                  //   Logout();
-                  // }}
-                  className="w-8 h-8 object-cover "
-                  src={userName.image}
-                  alt="profile"
-                />
-                {/* </Link> */}
-              </div>
+            <div className="flex gap-2 lg:gap-4 py-3 items-center w-full justify-end">
+              {/* <div className="flex gap-2 items-center rounded-full justify-center w-full"> */}
+              {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
+              {/* <Link to="/"> */}
+              <img
+                // onClick={() => {
+                //   Logout();
+                // }}
+                className="w-8 h-8 object-cover "
+                src={userName.image}
+                alt="profile"
+              />
 
-              <div className="sm:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
+              {/* </Link> */}
+              {/* </div> */}
+
+              {/* <div className="sm:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
                 <img className="w-6 h-6" src={hamburger} alt="" />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

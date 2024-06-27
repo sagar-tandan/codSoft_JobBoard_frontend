@@ -188,21 +188,21 @@ export default function CompanyPage({ id, image }) {
                 key={app._id}
                 className="relative w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-7 shadow-slate-400 rounded-xl bg-gray-200"
               >
-                <div className="w-full flex gap-4">
+                <div className="w-full flex gap-4 ">
                   {app && app.Userimage ? (
                     <img
-                      className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
+                      className="w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover  mt-2 sm:mt-0"
                       src={app.Userimage}
                       alt=""
                     />
                   ) : (
                     <img
-                      className="w-24 h-24 rounded-full object-cover"
+                      className="w-24 h-24 rounded-full object-cover mt-2 sm:mt-0"
                       src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
                       alt=""
                     />
                   )}
-                  <div className="w-full flex flex-col gap-1 justify-center">
+                  <div className="w-full flex flex-col gap-1 justify-center  mt-2 sm:mt-0">
                     <h1 className="w-full text-xl font-semibold">{app.name}</h1>
                     <h1 className="text-lg font-medium w-full">
                       <span className="hidden md:inline-block">
@@ -295,7 +295,7 @@ export default function CompanyPage({ id, image }) {
 
                   <div className=" w-full flex flex-col  items-end gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
                     <div
-                      className={`absolute top-0 right-0 px-3 py-2 font-medium font-poppins ${
+                      className={`absolute top-0 right-0 px-3 py-1 sm:py-2 font-medium font-poppins ${
                         app.status === "accepted"
                           ? "bg-green-700"
                           : app.status === "rejected"
@@ -377,22 +377,22 @@ export default function CompanyPage({ id, image }) {
                   key={job._id}
                   className="relative w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-6 shadow-slate-400 rounded-xl bg-gray-200"
                 >
-                  <div className="w-full flex gap-4">
+                  <div className="w-full flex gap-4 ">
                     {image ? (
                       <img
-                        className=" w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
+                        className=" w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover mt-2 sm:mt-0"
                         src={image}
                         alt=""
                       />
                     ) : (
                       <img
-                        className="w-24 h-24 rounded-full object-cover"
+                        className="w-24 h-24 rounded-full object-cover mt-2 sm:mt-0"
                         src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
                         alt=""
                       />
                     )}
-                    <div className="w-full flex flex-col gap-1 justify-center">
-                      <h1 className="w-full sm:text-xl font-medium sm:font-semibold">
+                    <div className="w-full flex flex-col gap-1 justify-center mt-2 sm:mt-0">
+                      <h1 className="w-full sm:text-xl font-medium sm:font-semibold ">
                         {job.Position}
                       </h1>
                       <h1 className="font-medium">
@@ -445,11 +445,17 @@ export default function CompanyPage({ id, image }) {
                     />
                   </div>
 
-                  {todayTotal > total && (
+                  {todayTotal > total ? (
                     <div
-                      className={`absolute bg-red-600 top-0 right-0 px-6 py-[6px] font-medium text-white font-poppins rounded-tr-xl rounded-bl-xl `}
+                      className={`absolute bg-red-600 top-0 right-0 px-6 py-[4px] sm:py-[6px] font-medium text-white font-poppins rounded-tr-xl rounded-bl-xl `}
                     >
                       <h1>Expired</h1>
+                    </div>
+                  ) : (
+                    <div
+                      className={`absolute bg-green-600 top-0 right-0 px-6 py-[4px] sm:py-[6px] font-medium text-white font-poppins rounded-tr-xl rounded-bl-xl `}
+                    >
+                      <h1>Open</h1>
                     </div>
                   )}
                 </div>
