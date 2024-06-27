@@ -85,7 +85,7 @@ function App() {
         <Route path="/registeruser" element={<JobSeekerRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/job/jobdetails/:id" element={<JobDetails />} />
-        {/* <Route path="/job" element={<AllJobs jobs={allJobs} datas={data} />} /> */}
+        <Route path="/job" element={<AllJobs jobs={allJobs} datas={data} />} />
 
         <Route
           path="/job/jobdetails/:ids/apply"
