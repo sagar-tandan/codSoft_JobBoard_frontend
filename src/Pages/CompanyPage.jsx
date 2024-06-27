@@ -198,7 +198,7 @@ export default function CompanyPage({ id, image }) {
                       <span className="hidden md:inline-block">
                         Application for:
                       </span>
-                      <span className="text-green-600">{app.jobname}</span>
+                      <span className="text-green-600"> {app.jobname}</span>
                     </h1>
                     <div className="w-full mt-2 gap-6 hidden sm:flex">
                       {app && app.fb && (
@@ -366,7 +366,7 @@ export default function CompanyPage({ id, image }) {
                     </h1>
                     <h1 className="font-medium">
                       <span className="hidden sm:inline-block">Level : </span>
-                      <span className="text-green-600">{job.Level}</span>
+                      <span className="text-green-600"> {job.Level}</span>
                     </h1>
                     <h1 className="font-medium">
                       Applicants :{" "}
