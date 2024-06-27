@@ -98,11 +98,21 @@ export default function CompanyPage({ id, image }) {
       },
     });
   };
+  //get today date
+  let todayTotal;
+  useEffect(() => {
+    let date = new Date(); // Current date and time
+
+    let todayyear = date.getFullYear();
+    let todaymonth = date.getMonth() + 1; // Getting the month index (0-11)
+    let todayday = date.getDate();
+    todayTotal = todayyear + todaymonth + todayday;
+  }, []);
 
   return (
     <div className="mt-20 w-full max-w-screen-2xl px-2 sm:px-4 lg:mx-auto flex flex-col text-black gap-3">
-      <div className="w-full flex flex-row gap-4 flex-wrap">
-        <div className="flex flex-col border border-gray-200 bg-gray-200 shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
+      <div className="w-full flex flex-row flex-wrap">
+        <div className="flex flex-col border border-gray-200 bg-gray-200 shadow-custom-shadow mx-3 my-2 w-full sm:w-[45%] lg:w-[31%] p-5 rounded-lg">
           <div className="w-full flex gap-5 items-center">
             <img
               className="w-12 h-12 p-1 rounded-full bg-green-500"
@@ -124,7 +134,7 @@ export default function CompanyPage({ id, image }) {
           )}
         </div>
 
-        <div className="flex flex-col border border-gray-200 bg-gray-200 shadow-black shadow-lg mx-3 my-2 w-full sm:w-[45%] lg:w-[30%] p-5 rounded-lg">
+        <div className="flex flex-col border border-gray-200 bg-gray-200 shadow-custom-shadow mx-3 my-2 w-full sm:w-[45%] lg:w-[31%] p-5 rounded-lg">
           <div className="w-full flex gap-5 items-center">
             <img
               className="w-12 h-12 p-1 rounded-full bg-green-500"
@@ -146,7 +156,7 @@ export default function CompanyPage({ id, image }) {
           )}
         </div>
         <Link
-          className="w-full sm:w-[50%] lg:w-[30%] mx-3 my-2 p-5 rounded-lg hover:-translate-y-3  bg-green-600 shadow-black shadow-lg hover:cursor-pointer hover:bg-green-700 active:scale-[98%] transition-all ease-in-out duration-300"
+          className="w-full sm:w-[50%] lg:w-[31%] mx-3 my-2 p-5 rounded-lg hover:-translate-y-3  bg-green-600 shadow-custom-shadow hover:cursor-pointer hover:bg-green-700 active:scale-[98%] transition-all ease-in-out duration-300"
           to="/postjob"
         >
           <div className="flex flex-col text-white w-full ">
@@ -176,7 +186,7 @@ export default function CompanyPage({ id, image }) {
             recentApp.map((app) => (
               <div
                 key={app._id}
-                className="w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-7 shadow-slate-400 rounded-xl bg-gray-200"
+                className="relative w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-7 shadow-slate-400 rounded-xl bg-gray-200"
               >
                 <div className="w-full flex gap-4">
                   {app && app.Userimage ? (
@@ -283,7 +293,18 @@ export default function CompanyPage({ id, image }) {
                     )}
                   </div>
 
-                  <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
+                  <div className=" w-full flex flex-col  items-end gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
+                    <div
+                      className={`absolute top-0 right-0 px-3 py-2 font-medium font-poppins ${
+                        app.status === "accepted"
+                          ? "bg-green-700"
+                          : app.status === "rejected"
+                          ? "bg-red-700"
+                          : "bg-gray-700"
+                      } bg-green-700 rounded-tr-xl rounded-bl-xl text-white`}
+                    >
+                      <h1>{app.status}</h1>
+                    </div>
                     <h1
                       onClick={(e) => {
                         gotoApplicatioDetails(e, app._id, app.jobname, app);
@@ -341,80 +362,99 @@ export default function CompanyPage({ id, image }) {
 
         <div className="w-full flex flex-col gap-5 mt-3 px-3">
           {jobs && jobs.length > 0 ? (
-            jobs.map((job) => (
-              <div
-                key={job._id}
-                className="w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-6 shadow-slate-400 rounded-xl bg-gray-200"
-              >
-                <div className="w-full flex gap-4">
-                  {image ? (
-                    <img
-                      className=" w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
-                      src={image}
-                      alt=""
-                    />
-                  ) : (
-                    <img
-                      className="w-24 h-24 rounded-full object-cover"
-                      src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
-                      alt=""
-                    />
-                  )}
-                  <div className="w-full flex flex-col gap-1 justify-center">
-                    <h1 className="w-full sm:text-xl font-medium sm:font-semibold">
-                      {job.Position}
-                    </h1>
-                    <h1 className="font-medium">
-                      <span className="hidden sm:inline-block">Level : </span>
-                      <span className="text-green-600"> {job.Level}</span>
-                    </h1>
-                    <h1 className="font-medium">
-                      Applicants :{" "}
-                      <span className="text-green-600">
-                        {job.Applications.length}
-                      </span>
-                    </h1>
+            jobs.map((job) => {
+              // Split the date string into parts
+              let parts = job.ExpiryDate.split("-");
+              let year = parseInt(parts[0]);
+              let month = parseInt(parts[1]);
+              let day = parseInt(parts[2]);
+
+              // Add the year, month, and day together
+              let total = year + month + day;
+
+              return (
+                <div
+                  key={job._id}
+                  className="relative w-full px-3 flex flex-col sm:flex-row shadow-lg p-6 sm:py-6 shadow-slate-400 rounded-xl bg-gray-200"
+                >
+                  <div className="w-full flex gap-4">
+                    {image ? (
+                      <img
+                        className=" w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover"
+                        src={image}
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        className="w-24 h-24 rounded-full object-cover"
+                        src="https://i.pinimg.com/564x/d0/7b/a6/d07ba6dcf05fa86c0a61855bc722cb7a.jpg"
+                        alt=""
+                      />
+                    )}
+                    <div className="w-full flex flex-col gap-1 justify-center">
+                      <h1 className="w-full sm:text-xl font-medium sm:font-semibold">
+                        {job.Position}
+                      </h1>
+                      <h1 className="font-medium">
+                        <span className="hidden sm:inline-block">Level : </span>
+                        <span className="text-green-600"> {job.Level}</span>
+                      </h1>
+                      <h1 className="font-medium">
+                        Applicants :{" "}
+                        <span className="text-green-600">
+                          {job.Applications.length}
+                        </span>
+                      </h1>
+                    </div>
                   </div>
-                </div>
 
-                <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
-                  <img
-                    onClick={(e) => {
-                      gotoJobApplication(
-                        e,
-                        job._id,
-                        job.Position,
-                        job.Level,
-                        job.PublishedDate,
-                        job.ExpiryDate,
-                        job.Applications,
-                        image
-                      );
-                    }}
-                    className="w-10 h-10 cursor-pointer "
-                    src="https://cdn-icons-png.flaticon.com/128/709/709724.png"
-                    alt=""
-                  />
+                  <div className="w-full flex flex-row items-center gap-10 mt-3 sm:mt-0 justify-around sm:justify-end">
+                    <img
+                      onClick={(e) => {
+                        gotoJobApplication(
+                          e,
+                          job._id,
+                          job.Position,
+                          job.Level,
+                          job.PublishedDate,
+                          job.ExpiryDate,
+                          job.Applications,
+                          image
+                        );
+                      }}
+                      className="w-10 h-10 cursor-pointer "
+                      src="https://cdn-icons-png.flaticon.com/128/709/709724.png"
+                      alt=""
+                    />
 
-                  {/* <img
+                    {/* <img
                     onClick={() => gotoPostaJob(e)}
                     className="w-8 h-7 cursor-pointer "
                     src={edit}
                     alt=""
                   /> */}
 
-                  <img
-                    onClick={() => {
-                      setDialogBox(true);
-                      setJobId(job._id);
-                    }}
-                    className="w-8 h-8 hover:cursor-pointer"
-                    src={del}
-                    alt=""
-                  />
+                    <img
+                      onClick={() => {
+                        setDialogBox(true);
+                        setJobId(job._id);
+                      }}
+                      className="w-8 h-8 hover:cursor-pointer"
+                      src={del}
+                      alt=""
+                    />
+                  </div>
+
+                  {todayTotal > total && (
+                    <div
+                      className={`absolute bg-red-600 top-0 right-0 px-6 py-[6px] font-medium text-white font-poppins rounded-tr-xl rounded-bl-xl `}
+                    >
+                      <h1>Expired</h1>
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <div className="w-full ">
               <h1 className="font-medium text-lg flex items-center justify-center">
