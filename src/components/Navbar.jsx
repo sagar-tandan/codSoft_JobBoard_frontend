@@ -87,9 +87,6 @@ export default function Navbar() {
               <h1 className="text-lg font-medium">{`${day} ${monthName} ${year} `}</h1>
             </div>
             <div className="flex gap-2 lg:gap-4 py-3 items-center w-full justify-end">
-              {/* <div className="flex gap-2 items-center rounded-full justify-center w-full"> */}
-              {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
-              {/* <Link to="/"> */}
               <img
                 onClick={() => {
                   Logout();
@@ -98,9 +95,6 @@ export default function Navbar() {
                 src={logout}
                 alt="out"
               />
-
-              {/* </Link> */}
-              {/* </div> */}
 
               {/* <div className="sm:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
                 <img className="w-6 h-6" src={hamburger} alt="" />
