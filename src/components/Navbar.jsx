@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import hamburger from "../assets/Asset!/hamburger.png";
 import profile from "../assets/Asset!/profile.png";
 import logo from "../assets/jobLogo.png";
+import logout from "../assets/Asset!/log-out.png";
 
 export default function Navbar() {
   const [userName, setUserName] = useState();
@@ -56,7 +57,7 @@ export default function Navbar() {
     removeCookie("token");
     setUserName("");
     window.location.reload();
-    // navigate("/");
+    navigate("/");
   };
 
   const toggleButton = () => {
@@ -67,7 +68,7 @@ export default function Navbar() {
   //   navigate("/");
   // }, [userName]);
 
-  console.log(userName);
+  // console.log(userName);
   return (
     <nav>
       {userName && userName.type === "company" ? (
@@ -90,12 +91,12 @@ export default function Navbar() {
               {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
               {/* <Link to="/"> */}
               <img
-                // onClick={() => {
-                //   Logout();
-                // }}
-                className="w-8 h-8 object-cover "
-                src={userName.image}
-                alt="profile"
+                onClick={() => {
+                  Logout();
+                }}
+                className="w-8 h-8 object-cover hover:cursor-pointer"
+                src={logout}
+                alt="out"
               />
 
               {/* </Link> */}
