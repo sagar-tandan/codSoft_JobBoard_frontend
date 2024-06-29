@@ -59,7 +59,7 @@ export default function SearchPage({ data }) {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden lg:mt-5">
+    <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden mt-20 lg:mt-5">
       <div className="flex h-[40vh] lg:h-[60vh] w-full items-end lg:items-center ">
         <div className=" w-[100%] lg:w-1/2 flex justify-center items-center lg:ml-[5%] flex-col px-[10%] lg:pt-20 xl:pt-32 lg:px-[0%]">
           <h1 className="lg:text-4xl text-2xl font-bold w-full text-center lg:text-left">

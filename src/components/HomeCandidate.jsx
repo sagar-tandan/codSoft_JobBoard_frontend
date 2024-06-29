@@ -45,7 +45,7 @@ export default function HomeCandidate({
   // console.log(reversedJob);
 
   return (
-    <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden lg:mt-5">
+    <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden mt-20 lg:mt-5">
       <div className="flex h-[40vh] lg:h-[60vh] w-full items-end lg:items-center ">
         <div className=" w-[100%] lg:w-1/2 flex justify-center items-center lg:ml-[5%] flex-col px-[10%] lg:pt-20 xl:pt-32 lg:px-[0%]">
           <h1 className="lg:text-4xl text-2xl font-bold w-full text-center lg:text-left">
@@ -110,8 +110,8 @@ export default function HomeCandidate({
         </div>
         <Categories />
       </div> */}
-      <div className="border border-[#a9a9a9] w-full mt-16 max-w-screen-2xl"></div>
-      <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-10">
+      {/* <div className="border border-[#a9a9a9] w-full mt-16 max-w-screen-2xl"></div> */}
+      <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-12">
         <div className="flex justify-between mb-8">
           <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
             Recent Job Circulars
