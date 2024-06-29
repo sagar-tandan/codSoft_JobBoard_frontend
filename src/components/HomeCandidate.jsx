@@ -23,6 +23,7 @@ export default function HomeCandidate({
   // const [JobListing, setJobListing] = useState([]);
   const [reversedJob, setReversedjob] = useState([]);
   const [search, setSearchData] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -43,9 +44,23 @@ export default function HomeCandidate({
   const topJObs = reversedJob.slice(0, 6);
   // console.log(reversedJob);
 
-  const searchJobs = (e) => {
+  const searchJobs = async (e, query) => {
     e.preventDefault();
-    console.log(search);
+    // console.log(search);
+    try {
+      const response = await axios.get("/getSearchedJobs", {
+        params: { query }, // Pass query as params object
+      });
+
+      if (response.data.message) {
+        toast.error(response.data.message);
+      } else {
+        // If response contains job data
+        setSearchResults(response.data.findJobs);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -75,7 +90,7 @@ export default function HomeCandidate({
               />
             </div>
             <div
-              onClick={(e) => searchJobs(e)}
+              onClick={(e) => searchJobs(e, search)}
               className="flex justify-center items-center w-[80px] md:w-[100px] lg:w-[120px] text-sm lg:text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 "
             >
               Search
