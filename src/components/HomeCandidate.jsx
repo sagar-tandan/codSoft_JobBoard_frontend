@@ -84,7 +84,7 @@ export default function HomeCandidate({
         </div>
       </div>
 
-      <div className="w-full flex flex-col px-[5%] mt-16">
+      {/* <div className="w-full flex flex-col px-[5%] mt-16">
         <div className="flex justify-between mb-8">
           <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
             Most Demanding Categories
@@ -100,7 +100,7 @@ export default function HomeCandidate({
           </h1>
         </div>
         <Categories />
-      </div>
+      </div> */}
 
       <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-24">
         <div className="flex justify-between mb-8">
