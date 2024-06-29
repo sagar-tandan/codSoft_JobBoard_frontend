@@ -16,8 +16,8 @@ export default function ProfileUser({ data }) {
   const Logout = () => {
     navigate("/");
     removeCookie("token");
-    setUserName("");
     window.location.reload();
+    setUserData("");
   };
 
   return (
