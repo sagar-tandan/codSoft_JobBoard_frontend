@@ -63,6 +63,10 @@ export default function Navbar() {
   const toggleButton = () => {
     setRegister((prev) => !prev);
   };
+  const sendToProfile = (e, username) => {
+    e.preventDefault();
+    navigate("/profile");
+  };
 
   // useEffect(() => {
   //   navigate("/");
@@ -119,8 +123,8 @@ export default function Navbar() {
                   {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
                   <Link to="/">
                     <img
-                      onClick={() => {
-                        Logout();
+                      onClick={(e) => {
+                        sendToProfile(e, userName);
                       }}
                       className="w-7 h-7"
                       src={profile}
