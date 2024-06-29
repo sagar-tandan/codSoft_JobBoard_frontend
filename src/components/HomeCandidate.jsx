@@ -57,6 +57,7 @@ export default function HomeCandidate({
       } else {
         // If response contains job data
         setSearchResults(response.data.findJobs);
+        console.log(searchResults);
       }
     } catch (error) {
       console.log(error);
@@ -110,7 +111,6 @@ export default function HomeCandidate({
           </div>
         </div>
       </div>
-
       {/* <div className="w-full flex flex-col px-[5%] mt-16">
         <div className="flex justify-between mb-8">
           <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
@@ -129,7 +129,6 @@ export default function HomeCandidate({
         <Categories />
       </div> */}
       <div className="border border-[#a9a9a9] w-full mt-16 max-w-screen-2xl"></div>
-
       <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-10">
         <div className="flex justify-between mb-8">
           <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
