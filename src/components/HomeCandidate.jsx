@@ -22,8 +22,8 @@ export default function HomeCandidate({
 }) {
   // const [JobListing, setJobListing] = useState([]);
   const [reversedJob, setReversedjob] = useState([]);
-  const [search, setSearchData] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
+  // const [search, setSearchData] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -44,26 +44,6 @@ export default function HomeCandidate({
   const topJObs = reversedJob.slice(0, 6);
   // console.log(reversedJob);
 
-  const searchJobs = async (e, query) => {
-    e.preventDefault();
-    // console.log(search);
-    try {
-      const response = await axios.get("/getSearchedJobs", {
-        params: { query }, // Pass query as params object
-      });
-
-      if (response.data.message) {
-        toast.error(response.data.message);
-      } else {
-        // If response contains job data
-        setSearchResults(response.data.findJobs);
-        console.log(searchResults);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden lg:mt-5">
       <div className="flex h-[40vh] lg:h-[60vh] w-full items-end lg:items-center ">
@@ -82,16 +62,18 @@ export default function HomeCandidate({
 
           <div className="w-full mt-4 flex gap-2 justify-center lg:justify-start">
             <div className="w-[65%] ">
-              <input
-                className="bg-[#f2f2f2] px-3 py-2 rounded-full w-full outline-[1px]"
-                type="text"
-                value={search}
-                placeholder="Search jobs and all"
-                onChange={(e) => setSearchData(e.target.value)}
-              />
+              <Link to="/search">
+                <input
+                  className="bg-[#f2f2f2] px-3 py-2 rounded-full w-full outline-[1px]"
+                  type="text"
+                  // value={search}
+                  placeholder="Search jobs and all"
+                  // onChange={(e) => setSearchData(e.target.value)}
+                />
+              </Link>
             </div>
             <div
-              onClick={(e) => searchJobs(e, search)}
+              // onClick={(e) => searchJobs(e, search)}
               className="flex justify-center items-center w-[80px] md:w-[100px] lg:w-[120px] text-sm lg:text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 "
             >
               Search

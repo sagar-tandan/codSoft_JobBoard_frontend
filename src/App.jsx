@@ -19,6 +19,7 @@ import Start from "./Pages/Start";
 import JobApplicationPage from "./Pages/JobApplicationPage";
 import ApplicationDetails from "./Pages/ApplicationDetails";
 import AllJobs from "./Pages/AllJobs";
+import SearchPage from "./Pages/SearchPage";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
@@ -77,10 +78,11 @@ function App() {
   return (
     <>
       {/* <Navbar setData={setData}/> */}
-      <Navbar/>
+      <Navbar />
       <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
       <Routes>
         <Route path="/" element={loading ? <Start /> : <Home data={data} />} />
+        <Route path="/search" element={<SearchPage data={data} />} />
         <Route path="/registercompany" element={<Register />} />
         <Route path="/registeruser" element={<JobSeekerRegister />} />
         <Route path="/login" element={<Login />} />
