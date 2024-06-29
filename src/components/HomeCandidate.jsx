@@ -22,6 +22,7 @@ export default function HomeCandidate({
 }) {
   // const [JobListing, setJobListing] = useState([]);
   const [reversedJob, setReversedjob] = useState([]);
+  const [search, setSearchData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -37,9 +38,15 @@ export default function HomeCandidate({
     };
     jobslist();
   }, []);
+
   // const jobListings = JobListing.length;
   const topJObs = reversedJob.slice(0, 6);
   // console.log(reversedJob);
+
+  const searchJobs = (e) => {
+    e.preventDefault();
+    console.log(search);
+  };
 
   return (
     <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden lg:mt-5">
@@ -62,10 +69,15 @@ export default function HomeCandidate({
               <input
                 className="bg-[#f2f2f2] px-3 py-2 rounded-full w-full outline-[1px]"
                 type="text"
+                value={search}
                 placeholder="Search jobs and all"
+                onChange={(e) => setSearchData(e.target.value)}
               />
             </div>
-            <div className="flex justify-center items-center w-[80px] md:w-[100px] lg:w-[120px] text-sm lg:text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 ">
+            <div
+              onClick={(e) => searchJobs(e)}
+              className="flex justify-center items-center w-[80px] md:w-[100px] lg:w-[120px] text-sm lg:text-lg border-[2px] border-[#c1c1c1] hover:border-green-500 hover:text-white hover:bg-green-500 rounded-full hover:cursor-pointer hover:brightness-90 active:scale-90 transition-all ease-in-out duration-300 "
+            >
               Search
             </div>
           </div>
@@ -101,8 +113,9 @@ export default function HomeCandidate({
         </div>
         <Categories />
       </div> */}
+      <div className="border border-[#a9a9a9] w-full mt-16 max-w-screen-2xl"></div>
 
-      <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-24">
+      <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-10">
         <div className="flex justify-between mb-8">
           <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
             Recent Job Circulars
