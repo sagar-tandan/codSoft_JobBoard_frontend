@@ -54,7 +54,6 @@ export default function ProfileUser({ data }) {
             </div>
 
             <img
-              onClick={(e) => setIsTodoEditable(true)}
               className="w-4 h-4"
               src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png"
               alt=""
