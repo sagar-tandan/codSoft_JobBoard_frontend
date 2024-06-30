@@ -43,10 +43,13 @@ export default function ProfileUser({ data }) {
               />
               {/* <h1 className="font-poppins">{userData.Username}</h1> */}
               <input
-                className="outline-none font-poppins w-full bg-[#f2f2f2]"
+                className={` ${
+                  isTodoEditable ? "" : "outline-none"
+                }  font-poppins w-full bg-[#f2f2f2]`}
                 type="text"
                 value={username}
-                readOnly
+                readOnly={!isTodoEditable}
+                onChange={(e) => setUserName(e.target.value)}
               />
             </div>
 
