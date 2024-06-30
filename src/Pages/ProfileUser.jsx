@@ -5,11 +5,16 @@ import { useNavigate } from "react-router-dom";
 export default function ProfileUser({ data }) {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [userData, setUserData] = useState([]);
+  const [username, setUserName] = useState([]);
+  const [useremail, setUserEmail] = useState([]);
+  const [userphone, setUserPhone] = useState([]);
+  const [isTodoEditable, setIsTodoEditable] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
       setUserData(data);
+      setUserName(userData.Username);
     }
   }, []);
 
@@ -36,7 +41,13 @@ export default function ProfileUser({ data }) {
                 src="https://cdn-icons-png.flaticon.com/128/456/456212.png"
                 alt=""
               />
-              <h1 className="font-poppins">{userData.Username}</h1>
+              {/* <h1 className="font-poppins">{userData.Username}</h1> */}
+              <input
+                className="outline-none font-poppins w-full bg-[#f2f2f2]"
+                type="text"
+                value={username}
+                readOnly
+              />
             </div>
 
             <img
