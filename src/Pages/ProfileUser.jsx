@@ -29,12 +29,6 @@ export default function ProfileUser({ data }) {
     setUserData({});
   };
 
-  const setEditable = (field) => {
-    if (field === "username") setIsUsernameEditable(true);
-    if (field === "useremail") setIsUserEmailEditable(true);
-    if (field === "userphone") setIsUserPhoneEditable(true);
-  };
-
   return (
     <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden mt-20 lg:mt-20 justify-center items-center px-1">
       <div className="w-[100%] sm:w-[60%] flex flex-col gap-2 justify-center items-center bg-[#f2f2f2] px-1 sm:px-3 py-6 rounded-xl">
@@ -44,107 +38,56 @@ export default function ProfileUser({ data }) {
           alt=""
         />
         <div className="w-full flex gap-2 items-center justify-center mt-5">
-          <div className="flex gap-2 items-center w-[80%] sm:w-[500px] px-2 py-2 justify-between">
-            <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center w-[80%] sm:w-[500px] px-2 py-2 justify-between border rounded">
+            <div className="flex gap-2 items-center w-full">
               <img
                 className="w-4 h-4"
                 src="https://cdn-icons-png.flaticon.com/128/456/456212.png"
                 alt=""
               />
-              {isUsernameEditable ? (
-                <input
-                  className={`
-                  font-poppins w-full bg-[#f2f2f2]`}
-                  autoFocus
-                  type="text"
-                  value={username}
-                  // readOnly={!isUsernameEditable}
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-              ) : (
-                <input
-                  className={`
-                  font-poppins w-full bg-[#f2f2f2]`}
-                  type="text"
-                  value={username}
-                  readOnly={!isUsernameEditable}
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-              )}
-              {/* <input
-                className={`${
-                  isUsernameEditable ? "focus" : "outline-none"
-                } font-poppins w-full bg-[#f2f2f2]`}
+              <input
+                className={` font-poppins w-full bg-[#f2f2f2] outline-none`}
                 type="text"
                 value={username}
-                readOnly={!isUsernameEditable}
-                onChange={(e) => setUserName(e.target.value)}
-              /> */}
+                onChange={(e) => setUserPhone(e.target.value)}
+              />
             </div>
-            <img
-              onClick={() => setEditable("username")}
-              className="w-4 h-4 cursor-pointer"
-              src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png"
-              alt=""
-            />
           </div>
         </div>
 
         <div className="w-full flex gap-2 items-center justify-center">
-          <div className="flex gap-2 items-center w-[80%] sm:w-[500px] px-2 py-2 justify-between">
-            <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center w-[80%] sm:w-[500px] px-2 py-2 justify-between border rounded">
+            <div className="flex gap-2 items-center w-full">
               <img
                 className="w-4 h-4"
-                src="https://cdn-icons-png.flaticon.com/128/542/542689.png"
+                src="https://cdn-icons-png.flaticon.com/128/646/646135.png"
                 alt=""
               />
               <input
-                className={`${
-                  isUserEmailEditable
-                    ? "outline-1 border border-blue-500"
-                    : "outline-none"
-                } font-poppins w-full bg-[#f2f2f2]`}
+                className={` font-poppins w-full bg-[#f2f2f2] outline-none`}
                 type="text"
                 value={useremail}
-                readOnly={!isUserEmailEditable}
-                onChange={(e) => setUserEmail(e.target.value)}
+                onChange={(e) => setUserPhone(e.target.value)}
               />
             </div>
-            <img
-              onClick={() => setEditable("useremail")}
-              className="w-4 h-4 cursor-pointer"
-              src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png"
-              alt=""
-            />
           </div>
         </div>
 
         <div className="w-full flex gap-2 items-center justify-center">
-          <div className="flex gap-2 items-center w-[80%] sm:w-[500px] px-2 py-2 justify-between">
-            <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center w-[80%] sm:w-[500px] px-2 py-2 justify-between border rounded">
+            <div className="flex gap-2 items-center w-full">
               <img
                 className="w-4 h-4"
                 src="https://cdn-icons-png.flaticon.com/128/483/483947.png"
                 alt=""
               />
               <input
-                className={`${
-                  isUserPhoneEditable
-                    ? "outline-1 border border-blue-500"
-                    : "outline-none"
-                } font-poppins w-full bg-[#f2f2f2]`}
+                className={` font-poppins w-full bg-[#f2f2f2] outline-none`}
                 type="text"
                 value={userphone}
-                readOnly={!isUserPhoneEditable}
                 onChange={(e) => setUserPhone(e.target.value)}
               />
             </div>
-            <img
-              onClick={() => setEditable("userphone")}
-              className="w-4 h-4 cursor-pointer"
-              src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png"
-              alt=""
-            />
           </div>
         </div>
 
