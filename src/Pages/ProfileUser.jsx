@@ -102,6 +102,8 @@ export default function ProfileUser({ data }) {
             Logout
           </h1>
         </div>
+
+        <h1 className="mt-10 w-full flex justify-center items-center font-poppins font-medium">Applications</h1>
       </div>
     </div>
   );
