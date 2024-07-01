@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export default function ProfileUser({ data }) {
@@ -8,17 +10,19 @@ export default function ProfileUser({ data }) {
   const [username, setUserName] = useState("");
   const [useremail, setUserEmail] = useState("");
   const [userphone, setUserPhone] = useState("");
-  const [isUsernameEditable, setIsUsernameEditable] = useState(false);
-  const [isUserEmailEditable, setIsUserEmailEditable] = useState(false);
-  const [isUserPhoneEditable, setIsUserPhoneEditable] = useState(false);
+  // const [isUsernameEditable, setIsUsernameEditable] = useState(false);
+  // const [isUserEmailEditable, setIsUserEmailEditable] = useState(false);
+  // const [isUserPhoneEditable, setIsUserPhoneEditable] = useState(false);
   const navigate = useNavigate();
 
+  let email;
   useEffect(() => {
     if (data) {
       setUserData(data);
       setUserName(data.Username);
       setUserEmail(data.Useremail);
       setUserPhone(data.Userphone);
+      email = data.Useremail;
     }
   }, [data]);
 
@@ -29,8 +33,16 @@ export default function ProfileUser({ data }) {
     setUserData({});
   };
 
-  const UpdateData = (e, username, useremail, userphone) => {
+  const UpdateData = async (e, username, useremail, userphone) => {
     e.preventDefault();
+    const response = await axios.post("/updateCandiadte", {
+      email,
+      useremail,
+      username,
+      userphone,
+    });
+    // console.log(response);
+    toast.success(response.data.message);
   };
 
   return (
