@@ -29,6 +29,10 @@ export default function ProfileUser({ data }) {
     setUserData({});
   };
 
+  const UpdateData = (e, username, useremail, userphone) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="flex flex-col w-full max-w-screen-2xl pb-20 font-poppins mx-auto overflow-hidden mt-20 lg:mt-20 justify-center items-center px-1">
       <div className="w-[100%] sm:w-[60%] flex flex-col gap-2 justify-center items-center bg-[#f2f2f2] px-1 sm:px-3 py-6 rounded-xl">
@@ -92,7 +96,12 @@ export default function ProfileUser({ data }) {
         </div>
 
         <div className="w-full sm:w-[60%] flex items-center justify-between sm:justify-center gap-10">
-          <h1 className="px-3 sm:px-9 py-1 sm:py-2 bg-green-700 rounded font-poppins font-medium text-white mt-3 cursor-pointer active:scale-95 transition-all duration-200">
+          <h1
+            onClick={(e) => {
+              UpdateData(e, username, useremail, userphone);
+            }}
+            className="px-3 sm:px-9 py-1 sm:py-2 bg-green-700 rounded font-poppins font-medium text-white mt-3 cursor-pointer active:scale-95 transition-all duration-200"
+          >
             Update
           </h1>
           <h1
@@ -103,7 +112,9 @@ export default function ProfileUser({ data }) {
           </h1>
         </div>
 
-        <h1 className="mt-10 w-full flex justify-center items-center font-poppins font-medium">Applications</h1>
+        <h1 className="mt-5 w-full flex justify-center items-center font-poppins text-sm text-red-600">
+          * All of your applications details will be provided in your email.
+        </h1>
       </div>
     </div>
   );
