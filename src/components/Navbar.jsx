@@ -110,7 +110,7 @@ export default function Navbar() {
         <div
           className={`bg-white w-full flex text-black px-6 fixed top-0 z-50 `}
         >
-          <div className="w-full max-w-screen-2xl h-full flex justify-between mx-auto items-center">
+          <div className="w-full max-w-screen-2xl h-full flex justify-between mx-auto items-center relative">
             <Link to="/">
               <div className="text-2xl lg:text-3xl font-bold tracking-wide py-3 text-green-600 flex gap-1">
                 <img className="w-8 h-8 lg:w-9 lg:h-9" src={logo} alt="" />
@@ -118,6 +118,20 @@ export default function Navbar() {
               </div>
             </Link>
             <div className="flex gap-2 lg:gap-4 py-3 items-center font-medium lg:font-semibold">
+              <div className="absolute left-[25%] h-full top-0 flex items-center justify-between right-[25%] font-poppins text-lg font-medium">
+                <Link to="/">
+                  <h1 className="hidden lg:inline-block ">Home</h1>
+                </Link>
+                <a href="#">
+                  <h1 className="hidden lg:inline-block ">Company</h1>
+                </a>
+                <a href="#">
+                  <h1 className="hidden lg:inline-block ">Jobs</h1>
+                </a>
+                <a href="#">
+                  <h1 className="hidden lg:inline-block ">Contact</h1>
+                </a>{" "}
+              </div>
               {userName ? (
                 <div className="flex gap-3 items-center">
                   {/* <div className="bg-green-500 py-1 px-3 text-white rounded hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300">Post a Job</div> */}
@@ -135,10 +149,12 @@ export default function Navbar() {
               ) : (
                 <div className="relative flex gap-4">
                   <Link to="/login">
-                    <h1 className="hidden sm:inline-block hover:cursor-pointer border-[2px] px-6 lg:px-8 py-1 rounded-full border-[#c1c1c1] hover:bg-green-600 hover:border-green-600 hover:text-white transition-all ease-in-out duration-300">
-                      Login
-                    </h1>
+                    <div className="hidden sm:flex w-full gap-2 hover:cursor-pointer border-[2px] px-3 sm:px-6 lg:px-7 sm:py-1 rounded-full text-black border-black hover:text-white  hover:bg-green-700  hover:border-green-700 transition-all ease-in-out duration-500">
+                      <h1 className="w-full ">Login </h1>
+                      {/* <h1 className="w-full ">▼</h1> */}
+                    </div>
                   </Link>
+
                   <div
                     onClick={() => {
                       toggleButton();
@@ -172,7 +188,7 @@ export default function Navbar() {
                 </div>
               )}
 
-              <div className="sm:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
+              <div className="lg:hidden inline-block hover:cursor-pointer transition-all ease-in-out duration-300">
                 <img className="w-6 h-6" src={hamburger} alt="" />
               </div>
             </div>

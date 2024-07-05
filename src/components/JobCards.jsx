@@ -89,7 +89,7 @@ export default function JobCards({
         width > 450 && width < 550 && "w-[450px]"
       } ${width > 550 && width < 680 && "w-[550px]"} ${
         width >= 680 && width <= 1024 && "w-[500px]"
-      }  ${width >= 1024 && "w-[350px]"}
+      }  ${width >= 1024 && "w-[316px]"}
         } flex flex-col px-4 py-6 gap-6 shadow-lg bg-[#f2f2f2] hover:bg-gray-200 font-poppins rounded-lg hover:-translate-y-2 transition-all duration-300`}
     >
       <div className="w-full flex gap-3">
@@ -113,17 +113,17 @@ export default function JobCards({
 
       <div className="w-full flex justify-between py-1 flex-wrap">
         {salary != null ? (
-          <h1 className="text-black font-semibold">
-            {salary}
-            <span className="font-medium text-sm text-[#616161]"> /month</span>
-          </h1>
+          <div className="text-black font-semibold flex flex-col ">
+            <h1>{salary}</h1>
+            <h1 className="font-medium text-sm text-[#616161]"> /month</h1>
+          </div>
         ) : (
           <h1 className="text-black font-semibold">Negotiable</h1>
         )}
 
         <div
           onClick={(e) => navigateToNext(e)}
-          className="flex flex-col gap-1 text-sm sm:text-lg border-green-500 bg-green-500 rounded-lg text-white px-2 py-1 font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300"
+          className="flex flex-col items-center justify-center gap-1 text-sm sm:text-lg border-green-500 bg-green-500 rounded-lg text-white px-2 py-[2px] font-medium hover:cursor-pointer hover:bg-green-600 transition-all ease-in-out duration-300"
         >
           Apply Now
         </div>

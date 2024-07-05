@@ -13,6 +13,7 @@ import Categories from "../components/Categories";
 import JobListing from "../components/JobListing";
 import HomeCandidate from "../components/HomeCandidate";
 import CompanyPage from "./CompanyPage";
+import Footer from "../components/Footer";
 
 export default function Home({ data }) {
   const [userName, setUserName] = useState([]);
@@ -34,15 +35,20 @@ export default function Home({ data }) {
           phones={userName.Userphone || null}
           cities={userName.UserselectedCity || null}
           countries={userName.UserselectedCountry || null}
-          Userimage = {userName.Userimage || null}
+          Userimage={userName.Userimage || null}
         />
       )}
 
       {userName.length === 0 && <HomeCandidate />}
 
       {userName && userName.type == "company" && (
-        <div className="mt-16">{<CompanyPage id={userName._id} image= {userName.image} />}</div>
+        <div className="mt-16">
+          {<CompanyPage id={userName._id} image={userName.image} />}
+        </div>
       )}
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }

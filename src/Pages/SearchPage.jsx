@@ -9,6 +9,7 @@ import loader from "../assets/Asset!/loader.gif";
 
 import JobCards from "../components/JobCards";
 import React from "react";
+import Footer from "../components/Footer";
 
 export default function SearchPage({ data }) {
   const [userName, setUserName] = useState([]);
@@ -35,7 +36,7 @@ export default function SearchPage({ data }) {
     if (query.length === 0) {
       const searchInput = document.getElementById("searchid");
       searchInput.placeholder = "Enter query to search";
-      setSearchResults('')
+      setSearchResults("");
     } else {
       try {
         setLoading(true);
@@ -166,6 +167,9 @@ export default function SearchPage({ data }) {
             )}
           </div>
         )}
+      </div>
+      <div className="mt-32">
+        <Footer />
       </div>
     </div>
   );

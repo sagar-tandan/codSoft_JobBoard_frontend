@@ -21,6 +21,7 @@ import ApplicationDetails from "./Pages/ApplicationDetails";
 import AllJobs from "./Pages/AllJobs";
 import SearchPage from "./Pages/SearchPage";
 import ProfileUser from "./Pages/ProfileUser";
+import Footer from "./components/Footer";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;

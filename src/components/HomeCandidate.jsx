@@ -11,7 +11,7 @@ import loader from "../assets/Asset!/loader.gif";
 import Categories from "./Categories";
 import JobCards from "./JobCards";
 import React from "react";
-
+import PopularCompanies from "./Company";
 export default function HomeCandidate({
   name,
   emails,
@@ -93,23 +93,23 @@ export default function HomeCandidate({
           </div>
         </div>
       </div>
-      {/* <div className="w-full flex flex-col px-[5%] mt-16">
+      <div className="w-full flex flex-col px-[5%] mt-16">
         <div className="flex justify-between mb-8">
           <h1 className="lg:inline-block hidden text-black text-xl font-semibold">
-            Most Demanding Categories
+            Most Popular Companies
           </h1>
           <h1 className="text-black text-lg inline-block lg:hidden font-semibold">
-            Popular Categories
+            Popular Companies
           </h1>
-          <h1 className="lg:flex items-center hidden font-medium text-green-600 hover:cursor-pointer">
+          {/* <h1 className="lg:flex items-center hidden font-medium text-green-600 hover:cursor-pointer">
             Explore all fields &gt;
           </h1>
           <h1 className="font-medium text-sm flex items-center lg:hidden text-green-600 hover:cursor-pointer">
             Explore &gt;
-          </h1>
+          </h1> */}
         </div>
-        <Categories />
-      </div> */}
+        <PopularCompanies />
+      </div>
       {/* <div className="border border-[#a9a9a9] w-full mt-16 max-w-screen-2xl"></div> */}
       <div className="w-full flex flex-col px-[5%] mt-16 lg:mt-12">
         <div className="flex justify-between mb-8">
@@ -132,7 +132,7 @@ export default function HomeCandidate({
             <img className="w-10 h-10" src={loader} alt="loader" />
           </div>
         ) : (
-          <div className="w-full flex gap-4 md:gap-6 lg:gap-8 overflow-hidden flex-wrap lg:mx-auto justify-center lg:justify-start">
+          <div className="w-full flex gap-4 md:gap-6 lg:gap-4 overflow-hidden flex-wrap lg:mx-auto justify-center lg:justify-start">
             {topJObs.map((job) => (
               <div key={job._id} className="py-3">
                 <JobCards
@@ -168,6 +168,8 @@ export default function HomeCandidate({
           </div>
         )}
       </div>
+
+      <div></div>
     </div>
   );
 }
